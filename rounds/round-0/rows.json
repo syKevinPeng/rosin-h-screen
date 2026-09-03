@@ -2,11 +2,11 @@
   "round": 0,
   "round_label": "round 0",
   "title": "Violin teaching survey",
-  "intro": "We built a computer program that watches and listens to someone playing the violin and keeps track of {n} different things. Each card describes one of them in everyday words. For each one, tell us two things: do violin teachers care about it, and could a student use the number? There are no right or wrong answers.",
+  "intro": "We built a computer program that watches and listens to someone playing the violin and keeps track of many things about the playing. You will see {n} short cards; each describes one of those things in everyday words, and two of them appear twice, once as a warm-up. For each card, tell us two things: do violin teachers care about it, and could a student use the number? There are no right or wrong answers.",
   "questions": {
-    "h1": "Do violin teachers pay attention to {x} in lessons?",
-    "h2": "If a practice app gave a student a number for {x}, could the student act on it?",
-    "h2_gloss": "We mean the number itself. Could a student practise differently because of it?"
+    "h1": "In lessons, do violin teachers pay attention to {x}?",
+    "h2": "If a practice app showed a student this number, could the student do something about it?",
+    "h2_gloss": "We mean this card's number. Could a student practise differently because of it?"
   },
   "scale": [
     {
@@ -172,7 +172,7 @@
       "definition": "Whether the bow is touching the string closer to the bridge or closer to the fingerboard than this player usually does.",
       "unit": "a share of the string's length",
       "range": "0 = the player's usual spot; below 0 = closer to the bridge than usual; above 0 = closer to the fingerboard than usual",
-      "prose": "This records where the bow touches the string and compares it with the spot this player normally uses. The number is zero at the usual spot, below zero when the bow is nearer the bridge than usual, and above zero when it is nearer the fingerboard. Teachers call this spot the \"sounding point\" or \"contact point\".",
+      "prose": "This records where the bow touches the string and compares it with the spot this player normally uses. The number is zero at the usual spot, below zero when the bow is nearer the bridge than usual, and above zero when it is nearer the fingerboard. Teachers call this spot the \"sounding point\" or \"contact point\". (A separate card asks about the player's usual spot itself; this one is about moment-to-moment changes away from it.)",
       "short": "where the bow touches the string"
     },
     {
@@ -335,7 +335,7 @@
       "definition": "How fast the bow is moving, and whether it is going down-bow or up-bow.",
       "unit": "bow-lengths per second (1 = a full bow in one second)",
       "range": "0 = the bow is not moving; above 0 = down-bow; below 0 = up-bow",
-      "prose": "This records how fast the bow is moving, and whether it is a down-bow or an up-bow. The number is zero when the bow is still, above zero for a down-bow and below zero for an up-bow; the bigger the number, the faster the bow. Teachers call this \"bow speed\".",
+      "prose": "This records how fast the bow is moving, and whether it is a down-bow or an up-bow. The number is zero when the bow is still, above zero for a down-bow and below zero for an up-bow; the bigger the number, the faster the bow. Teachers call this \"bow speed\". (Two related cards ask about speed alone and about direction alone.)",
       "short": "bow speed"
     },
     {
@@ -362,7 +362,7 @@
       "definition": "How fast the bow is moving, whether it is a down-bow or an up-bow.",
       "unit": "bow-lengths per second (1 = a full bow in one second)",
       "range": "0 = not moving; bigger = faster",
-      "prose": "This records how fast the bow is moving, without caring whether it is a down-bow or an up-bow. The number is zero when the bow is still, and the bigger the number, the faster the bow. Teachers call this \"bow speed\".",
+      "prose": "This records how fast the bow is moving, without caring whether it is a down-bow or an up-bow. The number is zero when the bow is still, and the bigger the number, the faster the bow. Teachers call this \"bow speed\". (A related card keeps the direction as well.)",
       "short": "bow speed regardless of direction"
     },
     {
@@ -409,7 +409,7 @@
       "definition": "Whether the bow is moving as a down-bow or an up-bow, passing smoothly through zero when it turns around.",
       "unit": "a value between −1 and +1",
       "range": "+1 = clearly down-bow; −1 = clearly up-bow; near 0 = stopped or changing direction",
-      "prose": "This records whether the bow is moving as a down-bow or an up-bow. The number is +1 for a clear down-bow, −1 for a clear up-bow, and near zero while the bow is stopped or turning around. Teachers say \"down-bow\" and \"up-bow\".",
+      "prose": "This records whether the bow is moving as a down-bow or an up-bow. The number is +1 for a clear down-bow, −1 for a clear up-bow, and near zero while the bow is stopped or turning around. Teachers say \"down-bow\" and \"up-bow\". (A related card gives the speed together with the direction.)",
       "short": "whether the bow is going down or up"
     },
     {
@@ -470,7 +470,7 @@
       "definition": "One of three ways the bow-hand wrist can turn, as a computer body model measures it, compared with this player's usual wrist position. The three directions belong to the model; they are not the words a teacher would use, such as \"bent\" or \"flexed\".",
       "unit": "degrees (an estimate from a body model, not a medical measurement)",
       "range": "0 = the player's usual wrist position; above or below 0 = turned one way or the other",
-      "prose": "Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist twists. The number is zero when the wrist is in the player's usual position and grows as the wrist moves more than usual in this way. Teachers do not have a word for this exact movement; the closest is a \"bent wrist\".",
+      "prose": "Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist twists. The number is zero when the wrist is in the player's usual position and grows as the wrist moves more than usual in this way. We could not find a teacher's word for this exact movement; the closest is a \"bent wrist\".",
       "short": "how the bow-hand wrist twists",
       "figure": {
         "kind": "wrist",
@@ -502,7 +502,7 @@
       "definition": "One of three ways the bow-hand wrist can turn, as a computer body model measures it, compared with this player's usual wrist position. The three directions belong to the model; they are not the words a teacher would use, such as \"bent\" or \"flexed\".",
       "unit": "degrees (an estimate from a body model, not a medical measurement)",
       "range": "0 = the player's usual wrist position; above or below 0 = turned one way or the other",
-      "prose": "Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist tilts from side to side. The number is zero when the wrist is in the player's usual position and grows as the wrist moves more than usual in this way. Teachers do not have a word for this exact movement; the closest is a \"bent wrist\".",
+      "prose": "Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist tilts from side to side. The number is zero when the wrist is in the player's usual position and grows as the wrist moves more than usual in this way. We could not find a teacher's word for this exact movement; the closest is a \"bent wrist\".",
       "short": "how the bow-hand wrist tilts from side to side",
       "figure": {
         "kind": "wrist",
@@ -534,7 +534,7 @@
       "definition": "One of three ways the bow-hand wrist can turn, as a computer body model measures it, compared with this player's usual wrist position. The three directions belong to the model; they are not the words a teacher would use, such as \"bent\" or \"flexed\".",
       "unit": "degrees (an estimate from a body model, not a medical measurement)",
       "range": "0 = the player's usual wrist position; above or below 0 = turned one way or the other",
-      "prose": "Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist bends up and down. The number is zero when the wrist is in the player's usual position and grows as the wrist moves more than usual in this way. Teachers do not have a word for this exact movement; the closest is a \"bent wrist\".",
+      "prose": "Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist bends up and down. The number is zero when the wrist is in the player's usual position and grows as the wrist moves more than usual in this way. We could not find a teacher's word for this exact movement; the closest is a \"bent wrist\".",
       "short": "how the bow-hand wrist bends up and down",
       "figure": {
         "kind": "wrist",
@@ -929,7 +929,7 @@
       "unit": "a score from 0 to 1",
       "range": "0 = the same string the music suggests; 1 = clearly a different string; blank when the music does not say",
       "prose": "This records whether a note was played on a different string from the one the sheet music suggests. The number is zero when it is the same string and 1 when it is clearly a different string; it is left blank when the music does not suggest a string. Teachers say \"wrong string\" or \"play it on the A string\".",
-      "short": "whether the player used a different string than the music suggests"
+      "short": "playing a note on a different string than the music suggests"
     },
     {
       "id": "position_dev_semi",
@@ -1024,7 +1024,7 @@
       "definition": "Where on the string this player's bow usually sits during a recording, between the bridge and the fingerboard.",
       "unit": "a share of the string's length",
       "range": "0 = at the bridge; bigger = closer to the fingerboard; one number for the whole recording",
-      "prose": "This records where the bow usually touches the string over a whole recording, between the bridge and the fingerboard. The number is zero at the bridge, and the bigger the number, the closer to the fingerboard. Teachers call this spot the \"sounding point\" or \"contact point\".",
+      "prose": "This records where the bow usually touches the string over a whole recording, between the bridge and the fingerboard. The number is zero at the bridge, and the bigger the number, the closer to the fingerboard. Teachers call this spot the \"sounding point\" or \"contact point\". (A separate card asks about moment-to-moment changes away from this spot; this one is about the usual spot itself.)",
       "short": "the player's usual bow-contact spot"
     }
   ],
