@@ -1,17 +1,17 @@
 # Violin teaching survey · round 0
 
-**form version:** `b9c0f83c36ed` · **rater:** ☐ the violinist · ☐ the author (Siyuan)
+**form version:** `29bd8e2d7bae` · **rater:** ☐ the violinist · ☐ the author (Siyuan)
 
 Paper version: cards in a fixed order, tick one box per question.
 
-We built a computer system that watches and listens to someone playing the violin and measures 27 different things. Each card below describes one of them in plain words. For each one, tell us two things: do violin teachers care about it, and could a student use the number? There are no right answers.
+We built a computer program that watches and listens to someone playing the violin and keeps track of 27 different things. Each card describes one of them in everyday words. For each one, tell us two things: do violin teachers care about it, and could a student use the number? There are no right or wrong answers.
 
 ## The two questions
 
 **Question 1.** Do violin teachers pay attention to this in lessons?
 
 **Question 2.** If a practice app reported this to a student, could the student act on it?  
-*We mean the number itself, not just the idea.*
+*We mean the number itself. Could a student practise differently because of it?*
 
 ## How to answer
 
@@ -26,7 +26,7 @@ We built a computer system that watches and listens to someone playing the violi
 <sub>bow_speed</sub>  
 **Warm-up card: answer it like any other.**
 
-How fast the bow is moving, and whether it is a down-bow or an up-bow. Zero means the bow is still; above zero is a down-bow, below zero an up-bow. Teachers call this "bow speed" (Fischer, Flesch).
+This records how fast the bow is moving, and whether it is a down-bow or an up-bow. The number is zero when the bow is still, above zero for a down-bow and below zero for an up-bow; the bigger the number, the faster the bow. Teachers call this "bow speed".
 
 **Question 1.** Do violin teachers pay attention to bow speed in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -41,12 +41,12 @@ How fast the bow is moving, and whether it is a down-bow or an up-bow. Zero mean
 <sub>right_wrist_aa_z_dev_deg</sub>  
 **Warm-up card: answer it like any other.**
 
-The computer body model describes how the bow-hand wrist is turned with three numbers, one for each of three directions, roughly bending the wrist up or down, tilting it from side to side, and rotating it, although we cannot say for certain which number is which. This card is direction 3 of the three. It is measured in degrees, compared with the player's usual wrist position, so zero is the usual position and numbers above or below zero mean the wrist is turned one way or the other. Teachers do not have a name for these directions; the nearest phrase is a "bent wrist" (Rolland).
+Our system watches the wrist of the bow hand and records how it is turned. It splits that turn into three directions, a bit like bending the wrist up and down, tilting it from side to side, and twisting it, though we cannot say exactly which direction is which. This card is about direction 3 of the three. The number is zero when the wrist is in the player's usual position, and it goes up or down as the wrist turns away from that. Teachers do not have a word for this; the closest is a "bent wrist".
 
-**Question 1.** Do violin teachers pay attention to the bow-hand wrist turn (direction 3 of 3) in lessons?  
+**Question 1.** Do violin teachers pay attention to direction 3 of the bow-hand wrist turn in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported the bow-hand wrist turn (direction 3 of 3) to a student, could the student act on it?  
+**Question 2.** If a practice app reported direction 3 of the bow-hand wrist turn to a student, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -55,7 +55,7 @@ The computer body model describes how the bow-hand wrist is turned with three nu
 ### 3. Where the bow touches the string, compared with the player's usual spot
 <sub>contact_bridge_ratio_dev</sub>
 
-Whether the bow is touching the string closer to the bridge or closer to the fingerboard than this player usually does. Zero is the usual spot; below zero is nearer the bridge, above zero nearer the fingerboard. Teachers call this spot the "soundpoint" (Fischer) or "contact point" (Flesch).
+This records where the bow touches the string and compares it with the spot this player normally uses. The number is zero at the usual spot, below zero when the bow is nearer the bridge than usual, and above zero when it is nearer the fingerboard. Teachers call this spot the "sounding point" or "contact point".
 
 **Question 1.** Do violin teachers pay attention to where the bow touches the string, compared with the player's usual spot in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -69,7 +69,7 @@ Whether the bow is touching the string closer to the bridge or closer to the fin
 ### 4. Which part of the bow is on the string
 <sub>hair_pos</sub>
 
-Whether the player is using the bow near the frog, the middle, or the tip. Zero is the frog, 0.5 the middle, 1 the tip. Teachers talk about playing "at the frog" or "at the tip" and about "bow distribution".
+This records which part of the bow is on the string: near the hand end (the frog), the middle, or the tip. The number is 0 at the frog, 0.5 in the middle and 1 at the tip. Teachers talk about playing "at the frog" or "at the tip".
 
 **Question 1.** Do violin teachers pay attention to which part of the bow is on the string in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -83,7 +83,7 @@ Whether the player is using the bow near the frog, the middle, or the tip. Zero 
 ### 5. Is the bow on the string or lifted off?
 <sub>hair_string_gap_ratio</sub>
 
-How far the bow hair is from the string. Zero means the bow is on the string; bigger numbers mean it is lifted further off. Teachers speak of playing "on the string" or "off the string".
+This records whether the bow is touching the string or lifted off it. The number is zero when the bow is on the string and grows as the bow lifts higher. Teachers speak of playing "on the string" or "off the string".
 
 **Question 1.** Do violin teachers pay attention to whether the bow is on the string or lifted off in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -97,7 +97,7 @@ How far the bow hair is from the string. Zero means the bow is on the string; bi
 ### 6. Is the bow straight or crooked?
 <sub>skew_deg</sub>
 
-How far the bow is from a right angle to the strings, in degrees. Zero is a perfectly straight bow; bigger numbers mean more crooked. Teachers say "keep the bow straight" and diagnose a "crooked bow" (Hamann & Gillespie).
+This records whether the bow is straight or crooked, in other words whether it crosses the strings at a right angle. The number is zero for a perfectly straight bow and grows as the bow gets more crooked. Teachers say "keep the bow straight" or "your bow is crooked".
 
 **Question 1.** Do violin teachers pay attention to how straight the bow is in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -111,7 +111,7 @@ How far the bow is from a right angle to the strings, in degrees. Zero is a perf
 ### 7. Which string the bow is leaning toward
 <sub>string_side_deg</sub>
 
-The tilt of the bow around the strings, in degrees, which shows which string it is playing or moving toward. Smaller numbers lean toward the G string, larger toward the E string. Teachers talk about "string crossing" (Galamian, Rolland).
+This records which string the bow is leaning toward. Lower numbers mean the bow is leaning toward the G string, the lowest one; higher numbers mean toward the E string, the highest one. Teachers talk about "string crossing".
 
 **Question 1.** Do violin teachers pay attention to which string the bow is leaning toward in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -125,7 +125,7 @@ The tilt of the bow around the strings, in degrees, which shows which string it 
 ### 8. Bow speed (with direction)
 <sub>bow_speed</sub>
 
-How fast the bow is moving, and whether it is a down-bow or an up-bow. Zero means the bow is still; above zero is a down-bow, below zero an up-bow. Teachers call this "bow speed" (Fischer, Flesch).
+This records how fast the bow is moving, and whether it is a down-bow or an up-bow. The number is zero when the bow is still, above zero for a down-bow and below zero for an up-bow; the bigger the number, the faster the bow. Teachers call this "bow speed".
 
 **Question 1.** Do violin teachers pay attention to bow speed in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -139,7 +139,7 @@ How fast the bow is moving, and whether it is a down-bow or an up-bow. Zero mean
 ### 9. Bow speed (without direction)
 <sub>bow_speed_abs</sub>
 
-How fast the bow is moving, whether it is a down-bow or an up-bow. Zero means the bow is still; 1 means a full bow in one second. Teachers call this "bow speed" (Fischer, Flesch).
+This records how fast the bow is moving, without caring whether it is a down-bow or an up-bow. The number is zero when the bow is still, and the bigger the number, the faster the bow. Teachers call this "bow speed".
 
 **Question 1.** Do violin teachers pay attention to bow speed, ignoring direction in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -153,7 +153,7 @@ How fast the bow is moving, whether it is a down-bow or an up-bow. Zero means th
 ### 10. How quickly the bow speeds up or slows down
 <sub>bow_accel</sub>
 
-Whether the bow is speeding up, slowing down, or moving steadily during a stroke. Zero means a steady speed; bigger numbers mean a quicker change. Teachers speak of "speeding up or slowing down the bow within a stroke".
+This records whether the bow is speeding up, slowing down, or keeping a steady speed during a stroke. The number is zero for a steady speed, and the bigger the number, the faster the speed is changing. Teachers talk about "speeding up" or "slowing down" the bow within a stroke.
 
 **Question 1.** Do violin teachers pay attention to how quickly the bow speeds up or slows down in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -167,7 +167,7 @@ Whether the bow is speeding up, slowing down, or moving steadily during a stroke
 ### 11. Down-bow or up-bow
 <sub>direction_sign</sub>
 
-Whether the bow is moving as a down-bow or an up-bow. Plus one is a clear down-bow, minus one a clear up-bow, and near zero means stopped or turning around. Teachers simply say "down-bow" and "up-bow".
+This records whether the bow is moving as a down-bow or an up-bow. The number is +1 for a clear down-bow, −1 for a clear up-bow, and near zero while the bow is stopped or turning around. Teachers say "down-bow" and "up-bow".
 
 **Question 1.** Do violin teachers pay attention to whether the bow is going down or up in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -181,7 +181,7 @@ Whether the bow is moving as a down-bow or an up-bow. Plus one is a clear down-b
 ### 12. How bent the bow-arm elbow is
 <sub>right_elbow_flexion_deg</sub>
 
-How much the right elbow is bent, in degrees, estimated from a computer model of the body. Zero is a straight arm; bigger numbers mean more bend. Teachers talk about the "elbow angle" of the bow arm and about "whole-arm strokes" (Rolland).
+This records how much the elbow of the bow arm is bent. The number is zero for a straight arm, and the bigger the number, the more the elbow is bent. Teachers talk about the "elbow" being too high or too low, and about "whole-arm strokes".
 
 **Question 1.** Do violin teachers pay attention to how bent the bow-arm elbow is in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -195,12 +195,12 @@ How much the right elbow is bent, in degrees, estimated from a computer model of
 ### 13. Bow-hand wrist turn, direction 1 of 3
 <sub>right_wrist_aa_x_dev_deg</sub>
 
-The computer body model describes how the bow-hand wrist is turned with three numbers, one for each of three directions, roughly bending the wrist up or down, tilting it from side to side, and rotating it, although we cannot say for certain which number is which. This card is direction 1 of the three. It is measured in degrees, compared with the player's usual wrist position, so zero is the usual position and numbers above or below zero mean the wrist is turned one way or the other. Teachers do not have a name for these directions; the nearest phrase is a "bent wrist" (Rolland).
+Our system watches the wrist of the bow hand and records how it is turned. It splits that turn into three directions, a bit like bending the wrist up and down, tilting it from side to side, and twisting it, though we cannot say exactly which direction is which. This card is about direction 1 of the three. The number is zero when the wrist is in the player's usual position, and it goes up or down as the wrist turns away from that. Teachers do not have a word for this; the closest is a "bent wrist".
 
-**Question 1.** Do violin teachers pay attention to the bow-hand wrist turn (direction 1 of 3) in lessons?  
+**Question 1.** Do violin teachers pay attention to direction 1 of the bow-hand wrist turn in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported the bow-hand wrist turn (direction 1 of 3) to a student, could the student act on it?  
+**Question 2.** If a practice app reported direction 1 of the bow-hand wrist turn to a student, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -209,12 +209,12 @@ The computer body model describes how the bow-hand wrist is turned with three nu
 ### 14. Bow-hand wrist turn, direction 2 of 3
 <sub>right_wrist_aa_y_dev_deg</sub>
 
-The computer body model describes how the bow-hand wrist is turned with three numbers, one for each of three directions, roughly bending the wrist up or down, tilting it from side to side, and rotating it, although we cannot say for certain which number is which. This card is direction 2 of the three. It is measured in degrees, compared with the player's usual wrist position, so zero is the usual position and numbers above or below zero mean the wrist is turned one way or the other. Teachers do not have a name for these directions; the nearest phrase is a "bent wrist" (Rolland).
+Our system watches the wrist of the bow hand and records how it is turned. It splits that turn into three directions, a bit like bending the wrist up and down, tilting it from side to side, and twisting it, though we cannot say exactly which direction is which. This card is about direction 2 of the three. The number is zero when the wrist is in the player's usual position, and it goes up or down as the wrist turns away from that. Teachers do not have a word for this; the closest is a "bent wrist".
 
-**Question 1.** Do violin teachers pay attention to the bow-hand wrist turn (direction 2 of 3) in lessons?  
+**Question 1.** Do violin teachers pay attention to direction 2 of the bow-hand wrist turn in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported the bow-hand wrist turn (direction 2 of 3) to a student, could the student act on it?  
+**Question 2.** If a practice app reported direction 2 of the bow-hand wrist turn to a student, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -223,12 +223,12 @@ The computer body model describes how the bow-hand wrist is turned with three nu
 ### 15. Bow-hand wrist turn, direction 3 of 3
 <sub>right_wrist_aa_z_dev_deg</sub>
 
-The computer body model describes how the bow-hand wrist is turned with three numbers, one for each of three directions, roughly bending the wrist up or down, tilting it from side to side, and rotating it, although we cannot say for certain which number is which. This card is direction 3 of the three. It is measured in degrees, compared with the player's usual wrist position, so zero is the usual position and numbers above or below zero mean the wrist is turned one way or the other. Teachers do not have a name for these directions; the nearest phrase is a "bent wrist" (Rolland).
+Our system watches the wrist of the bow hand and records how it is turned. It splits that turn into three directions, a bit like bending the wrist up and down, tilting it from side to side, and twisting it, though we cannot say exactly which direction is which. This card is about direction 3 of the three. The number is zero when the wrist is in the player's usual position, and it goes up or down as the wrist turns away from that. Teachers do not have a word for this; the closest is a "bent wrist".
 
-**Question 1.** Do violin teachers pay attention to the bow-hand wrist turn (direction 3 of 3) in lessons?  
+**Question 1.** Do violin teachers pay attention to direction 3 of the bow-hand wrist turn in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported the bow-hand wrist turn (direction 3 of 3) to a student, could the student act on it?  
+**Question 2.** If a practice app reported direction 3 of the bow-hand wrist turn to a student, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -237,7 +237,7 @@ The computer body model describes how the bow-hand wrist is turned with three nu
 ### 16. Bow-arm shoulder position, compared with the player's usual
 <sub>right_shoulder_rotation_dev_deg</sub>
 
-How far the right shoulder has moved from this player's usual position, in degrees, for example when it is raised or hunched. Zero is the usual position; bigger numbers mean further from it. Teachers warn about a "raised shoulder" (Rolland).
+This records how far the bow-arm shoulder has moved away from the position this player normally holds it in, for example when the shoulder rises or hunches. The number is zero in the usual position, and the bigger the number, the further the shoulder has moved. Teachers warn about a "raised shoulder".
 
 **Question 1.** Do violin teachers pay attention to the bow-arm shoulder position in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -251,7 +251,7 @@ How far the right shoulder has moved from this player's usual position, in degre
 ### 17. Head tilt
 <sub>neck_tilt_deg</sub>
 
-How far the head is tilted from upright, in degrees, in any direction. Zero is upright; bigger numbers mean more tilt. Teachers talk about "head position".
+This records how far the head is tilted away from upright, in any direction. The number is zero when the head is upright, and the bigger the number, the more it is tilted. Teachers talk about "head position".
 
 **Question 1.** Do violin teachers pay attention to head tilt in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -265,7 +265,7 @@ How far the head is tilted from upright, in degrees, in any direction. Zero is u
 ### 18. Posture: upright or slouched
 <sub>spine_curvature_deg</sub>
 
-How much the upper body is bent forward or sideways from upright, in degrees. Zero is upright; bigger numbers mean more bend. Teachers simply call this "posture" (Kreitman, Flesch) or "slouching".
+This records how much the upper body is bent forward or sideways instead of standing upright. The number is zero when upright, and the bigger the number, the more the body is bent. Teachers call this "posture" or "slouching".
 
 **Question 1.** Do violin teachers pay attention to posture in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -279,7 +279,7 @@ How much the upper body is bent forward or sideways from upright, in degrees. Ze
 ### 19. How high the violin is held
 <sub>violin_hold_height_ratio</sub>
 
-How high the violin sits compared with the player's hips: lower when the scroll droops, higher when the violin is held up. Bigger numbers mean the violin is held higher. Teachers warn about "scroll drooping" (Auer).
+This records how high the violin is held compared with the player's hips: lower when the scroll droops, higher when the violin is held up. The bigger the number, the higher the violin. Teachers warn about a "drooping scroll".
 
 **Question 1.** Do violin teachers pay attention to how high the violin is held in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -293,7 +293,7 @@ How high the violin sits compared with the player's hips: lower when the scroll 
 ### 20. In tune, sharp, or flat
 <sub>pitch_dev_semi</sub>
 
-How far the note played is from the note written in the music, in semitones. Zero is in tune; above zero is sharp, below zero is flat. Teachers call this "intonation" (Fischer, Galamian).
+This records whether each note is in tune and, if not, how far off it is. The number is zero when the note is in tune, above zero when it is sharp (too high) and below zero when it is flat (too low). Teachers call this "intonation".
 
 **Question 1.** Do violin teachers pay attention to whether a note is in tune, sharp or flat in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -307,7 +307,7 @@ How far the note played is from the note written in the music, in semitones. Zer
 ### 21. Loudness
 <sub>env_db</sub>
 
-How loud the sound is from moment to moment, in decibels. Higher numbers are louder; very low numbers mean silence. Teachers talk about "dynamics" and "volume".
+This records how loud the playing is from moment to moment. The bigger the number, the louder the sound; very low numbers mean silence. Teachers talk about "dynamics" or "volume".
 
 **Question 1.** Do violin teachers pay attention to loudness in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -321,7 +321,7 @@ How loud the sound is from moment to moment, in decibels. Higher numbers are lou
 ### 22. How strongly each note starts
 <sub>onset_strength</sub>
 
-How clearly and strongly a new note begins: high for a crisp, accented start, low in the middle of a held note. Teachers talk about the "attack" of a note and about accented strokes such as martelé.
+This records how clearly and strongly each note starts. The number is high for a crisp, accented start and low in the middle of a long, held note. Teachers talk about the "attack" of a note.
 
 **Question 1.** Do violin teachers pay attention to how strongly each note starts in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -335,7 +335,7 @@ How clearly and strongly a new note begins: high for a crisp, accented start, lo
 ### 23. The note being played
 <sub>f0_midi</sub>
 
-Which pitch the violin is sounding at each moment, tracked continuously, so vibrato and slides show too. Higher numbers are higher notes. Teachers talk about "the note you are playing" and its "intonation" (Galamian).
+This records which note the violin is sounding at every moment, including the small wobbles of vibrato and the slides between notes. Higher numbers mean higher notes. Teachers talk about "the note you are playing".
 
 **Question 1.** Do violin teachers pay attention to the note being played in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -349,7 +349,7 @@ Which pitch the violin is sounding at each moment, tracked continuously, so vibr
 ### 24. How clean and clear the tone is
 <sub>f0_salience</sub>
 
-How clearly a definite note can be heard: high for a clean, focused tone, low for scratchy, noisy or silent moments. Teachers speak of a "clean tone" or a "scratchy tone" (Hamann & Gillespie); Fischer says "it is impossible to scratch if the bow keeps moving".
+This records how clean and clear the tone is. The number is high for a clear, focused sound and low when the sound is scratchy, noisy, or silent. Teachers talk about a "clean tone" or a "scratchy tone".
 
 **Question 1.** Do violin teachers pay attention to how clean and clear the tone is in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -363,7 +363,7 @@ How clearly a definite note can be heard: high for a clean, focused tone, low fo
 ### 25. Played on a different string than the music suggests
 <sub>string_disagreement</sub>
 
-How likely it is that the player used a different string from the one the written music points to. Zero means the same string; 1 means clearly a different one. Teachers say "wrong string" or "play it on the A string".
+This records whether a note was played on a different string from the one the sheet music suggests. The number is zero when it is the same string and 1 when it is clearly a different string; it is left blank when the music does not suggest a string. Teachers say "wrong string" or "play it on the A string".
 
 **Question 1.** Do violin teachers pay attention to whether the player used a different string than the music suggests in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -377,7 +377,7 @@ How likely it is that the player used a different string from the one the writte
 ### 26. Left-hand position, compared with what the music suggests
 <sub>position_dev_semi</sub>
 
-Whether the left hand was higher or lower on the fingerboard than the position the music points to, in semitones. Zero is the expected position; above zero is higher, below zero lower. Teachers say "stay in third position" and teach "shifting" (Fischer, Ding Zhinuo).
+This records whether the left hand was higher or lower on the fingerboard than the sheet music suggests. The number is zero in the expected position, above zero when the hand is higher up and below zero when it is lower. Teachers talk about "positions" and "shifting".
 
 **Question 1.** Do violin teachers pay attention to the left-hand position compared with what the music suggests in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -391,7 +391,7 @@ Whether the left hand was higher or lower on the fingerboard than the position t
 ### 27. The player's usual bow-contact spot
 <sub>contact_bridge_ratio_neutral</sub>
 
-Where on the string this player's bow usually sits during a recording, between the bridge and the fingerboard, as one number for the whole recording. Zero is at the bridge; bigger numbers are nearer the fingerboard. Teachers call this the "soundpoint" (Fischer) or "contact point" (Flesch).
+This records where the bow usually touches the string over a whole recording, between the bridge and the fingerboard. The number is zero at the bridge, and the bigger the number, the closer to the fingerboard. Teachers call this spot the "sounding point" or "contact point".
 
 **Question 1.** Do violin teachers pay attention to the player's usual bow-contact spot in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
