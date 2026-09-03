@@ -107,7 +107,7 @@ def validate(data: dict) -> list[str]:
         for k in ("group", "status"):
             if not (isinstance(r.get(k), str) and r[k]):
                 errs.append(f"{p}.{k}: non-empty string required")
-        for k in ("name", "definition", "unit", "range"):
+        for k in ("name", "definition", "unit", "range", "prose"):
             _s(r.get(k), f"{p}.{k}", errs)
         ph = r.get("phrases")
         if not (isinstance(ph, list) and ph):
@@ -215,11 +215,7 @@ def render_form_md(data: dict, version: str) -> str:
         L.append(f"### {i}. {_bl(r['name'])}")
         L.append(f"<sub>{r['id']}</sub>" + (f"  \n**{_bl(ui['calibration'])}**" if c["is_anchor"] else ""))
         L.append("")
-        L.append(f"**{_bl(ui['phrases'])}:** " + " · ".join(f"“{p['text']}” ({p['short_source']})" for p in r["phrases"]))
-        L.append("")
-        L.append(f"**{_bl(ui['definition'])}:** {_bl(r['definition'])}  ")
-        L.append(f"**{_bl(ui['unit'])}:** {_bl(r['unit'])}  ")
-        L.append(f"**{_bl(ui['range'])}:** {_bl(r['range'])}")
+        L.append(r["prose"])
         L.append("")
         L.append(f"**{_bl(ui['q1_label'])}.** {_bl(q['h1'])}  \n{boxes}")
         L.append("")

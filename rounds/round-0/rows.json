@@ -54,9 +54,9 @@
     "questions_heading": "The two questions",
     "unanswered": "Please answer both questions first.",
     "finish_text": "All cards answered. Download your answers and send the file to Siyuan.",
-    "download_csv": "Download my answers (CSV)",
-    "download_json": "Also as JSON",
-    "copy_csv": "Copy CSV",
+    "download_csv": "Download my answers",
+    "download_json": "JSON version",
+    "copy_csv": "Copy as text",
     "copied": "Copied.",
     "send_hint": "Please send the downloaded file to Siyuan by email or through the shared Dropbox folder.",
     "saved_hint": "Your answers are saved in this browser as you go; you can close the page and come back.",
@@ -83,7 +83,34 @@
     "thanks": "Thank you",
     "finish_summary": "All {n} cards done in {t}.",
     "preview": "Preview the file",
-    "rating_as": "Rating as"
+    "rating_as": "Rating as",
+    "hero_title": "Help us understand what matters in violin teaching",
+    "cta_start": "Start the survey",
+    "cta_continue": "Continue from card {i}",
+    "meta_cards": "{n} short cards",
+    "meta_time": "about 30 minutes",
+    "meta_saved": "saves as you go",
+    "how_title": "How it works",
+    "how_1": "Read a short paragraph about one thing our system measures.",
+    "how_2": "Answer two quick questions on a 1 to 4 scale. Add a note if you like.",
+    "how_3": "Download your answers as one file and send it to Siyuan.",
+    "privacy": "Nothing is sent anywhere. Your answers stay in this browser until you download the file.",
+    "rater_prompt": "First, who is answering?",
+    "welcome_back": "Welcome back",
+    "review_title": "Review your answers",
+    "review_intro": "Everything is saved. Change anything you like, then finish to get your file.",
+    "edit": "Edit",
+    "submit": "Finish and get my file",
+    "back_to_review": "Back to review",
+    "saved": "Saved",
+    "q_short_1": "Q1",
+    "q_short_2": "Q2",
+    "note_short": "Note",
+    "no_storage": "This browser cannot save progress, so please finish in one sitting.",
+    "done_title": "All done. Thank you!",
+    "done_summary": "{n} cards answered in {t}.",
+    "footer_note": "Round {r} · form {v}",
+    "step": "Step"
   },
   "anchors": [
     "bow_speed",
@@ -132,7 +159,8 @@
       ],
       "definition": "Whether the bow is touching the string closer to the bridge or closer to the fingerboard than this player usually does.",
       "unit": "a share of the string's length",
-      "range": "0 = the player's usual spot; below 0 = closer to the bridge than usual; above 0 = closer to the fingerboard than usual"
+      "range": "0 = the player's usual spot; below 0 = closer to the bridge than usual; above 0 = closer to the fingerboard than usual",
+      "prose": "This measures where the bow touches the string, compared with the spot this player usually uses. It is a share of the string's length between the bridge and the fingerboard, so zero means the player's usual spot, a negative number means closer to the bridge than usual, and a positive number means closer to the fingerboard than usual. Teachers call this spot the \"soundpoint\" (Fischer) or the \"contact point\" (Flesch) and warn about \"the bow drifting from the contact point\" (Starr); Lin Yaoji's maxim of \"evenness\" is about keeping it steady."
     },
     {
       "id": "hair_pos",
@@ -164,7 +192,8 @@
       ],
       "definition": "Whether the player is using the bow near the frog (the hand end), the middle, or the tip.",
       "unit": "a share of the bow's length",
-      "range": "0 = at the frog; 0.5 = the middle of the bow; 1 = at the tip"
+      "range": "0 = at the frog; 0.5 = the middle of the bow; 1 = at the tip",
+      "prose": "This measures which part of the bow is on the string: near the frog (the hand end), the middle, or the tip. It is a share of the bow's length, so 0 means the frog, 0.5 the middle and 1 the tip. Teachers talk about playing \"at the frog\", \"in the middle\" or \"at the tip\", about \"bow distribution\" (a teaching syllabus), and about using \"whole bows\" (Fischer)."
     },
     {
       "id": "hair_string_gap_ratio",
@@ -189,7 +218,8 @@
       ],
       "definition": "How far the bow hair is from the string: zero when the bow is on the string, more when it is lifted off.",
       "unit": "a share of the string's length",
-      "range": "0 = on the string; bigger = lifted further off"
+      "range": "0 = on the string; bigger = lifted further off",
+      "prose": "This measures how far the bow hair is from the string. It is zero when the bow is on the string and grows as the bow is lifted off, counted as a share of the string's length. Teachers speak of the bow being \"on the string\" or \"off the string\", and of off-the-string strokes such as spiccato, sautillé and ricochet (a teaching syllabus)."
     },
     {
       "id": "skew_deg",
@@ -221,7 +251,8 @@
       ],
       "definition": "How far the bow is from being at a right angle to the strings, in other words how crooked the bow stroke is.",
       "unit": "degrees",
-      "range": "0 = perfectly straight; bigger = more crooked, in either direction"
+      "range": "0 = perfectly straight; bigger = more crooked, in either direction",
+      "prose": "This measures how far the bow is from being at a right angle to the strings, in other words how crooked the bow stroke is. It is given in degrees: zero is a perfectly straight bow, and bigger numbers mean more crooked, in either direction. Teachers say \"keep the bow straight\" and diagnose a \"crooked bow\" (Hamann & Gillespie); a research study calls it the \"bow–string angle\"."
     },
     {
       "id": "string_side_deg",
@@ -253,7 +284,8 @@
       ],
       "definition": "The tilt of the bow around the strings, which shows which string it is playing on or moving toward.",
       "unit": "degrees",
-      "range": "smaller = toward the G string (the lowest); larger = toward the E string (the highest)"
+      "range": "smaller = toward the G string (the lowest); larger = toward the E string (the highest)",
+      "prose": "This measures the tilt of the bow around the strings, which shows which string the bow is playing on or moving toward. It is an angle in degrees: smaller numbers lean toward the G string, the lowest, and larger numbers toward the E string, the highest. Teachers talk about \"string crossing\" (Galamian; Rolland) and \"string level\"; a research study calls it \"bow tilt\"."
     },
     {
       "id": "bow_speed",
@@ -285,7 +317,8 @@
       ],
       "definition": "How fast the bow is moving, and whether it is going down-bow or up-bow.",
       "unit": "bow-lengths per second (1 = a full bow in one second)",
-      "range": "0 = the bow is not moving; above 0 = down-bow; below 0 = up-bow"
+      "range": "0 = the bow is not moving; above 0 = down-bow; below 0 = up-bow",
+      "prose": "This measures how fast the bow is moving and whether it is a down-bow or an up-bow. It is counted in bow-lengths per second, so 1 means a full bow in one second; zero means the bow is not moving, above zero is a down-bow, and below zero is an up-bow. Teachers usually just call this \"bow speed\" (Fischer; Flesch); Fischer adds that \"it is impossible to scratch if the bow keeps moving\", and Lin Yaoji's maxim \"evenness, accuracy, beauty\" begins with an even bow."
     },
     {
       "id": "bow_speed_abs",
@@ -310,7 +343,8 @@
       ],
       "definition": "How fast the bow is moving, whether it is a down-bow or an up-bow.",
       "unit": "bow-lengths per second (1 = a full bow in one second)",
-      "range": "0 = not moving; bigger = faster"
+      "range": "0 = not moving; bigger = faster",
+      "prose": "This measures how fast the bow is moving, ignoring whether it is a down-bow or an up-bow. It is counted in bow-lengths per second: zero means not moving, 1 means a full bow in one second, and bigger numbers mean faster. Teachers call this \"bow speed\" (Fischer; Flesch) and remind students to keep \"the bow moving\" (Fischer)."
     },
     {
       "id": "bow_accel",
@@ -335,7 +369,8 @@
       ],
       "definition": "Whether the bow is speeding up, slowing down, or moving at a steady speed during a stroke.",
       "unit": "change in bow speed per second",
-      "range": "0 = steady speed; bigger = the speed is changing more quickly"
+      "range": "0 = steady speed; bigger = the speed is changing more quickly",
+      "prose": "This measures whether the bow is speeding up, slowing down, or moving at a steady speed during a stroke. It is the change in bow speed per second: zero means a steady speed, and bigger numbers mean the speed is changing more quickly. Teachers describe \"speeding up or slowing down the bow within a stroke\" and teach accented strokes such as martelé and marcato (a teaching syllabus)."
     },
     {
       "id": "direction_sign",
@@ -353,7 +388,8 @@
       ],
       "definition": "Whether the bow is moving as a down-bow or an up-bow, passing smoothly through zero when it turns around.",
       "unit": "a value between −1 and +1",
-      "range": "+1 = clearly down-bow; −1 = clearly up-bow; near 0 = stopped or changing direction"
+      "range": "+1 = clearly down-bow; −1 = clearly up-bow; near 0 = stopped or changing direction",
+      "prose": "This tells whether the bow is moving as a down-bow or an up-bow. It runs from −1 to +1: +1 is clearly a down-bow, −1 is clearly an up-bow, and values near zero mean the bow is stopped or changing direction. Teachers simply say \"down-bow\" and \"up-bow\"."
     },
     {
       "id": "right_elbow_flexion_deg",
@@ -385,7 +421,8 @@
       ],
       "definition": "How much the right elbow is bent, estimated from a computer model of the player's body.",
       "unit": "degrees (an estimate from a body model, not a medical measurement)",
-      "range": "0 = arm straight; bigger = more bent"
+      "range": "0 = arm straight; bigger = more bent",
+      "prose": "This measures how much the right elbow, the bow-arm elbow, is bent, estimated from a computer model of the player's body rather than a medical measurement. It is given in degrees: zero is a straight arm, and bigger numbers mean more bend. Teachers talk about the \"elbow angle\" or \"elbow height\" of the bow arm and about \"whole-arm strokes\" (Rolland; Galamian); Lin Yaoji speaks of \"changing notes without changing the arm shape\"."
     },
     {
       "id": "right_wrist_aa_x_dev_deg",
@@ -410,7 +447,8 @@
       ],
       "definition": "One of three ways the bow-hand wrist can turn, as a computer body model measures it, compared with this player's usual wrist position. The three directions belong to the model; they are not the words a teacher would use, such as \"bent\" or \"flexed\".",
       "unit": "degrees (an estimate from a body model, not a medical measurement)",
-      "range": "0 = the player's usual wrist position; above or below 0 = turned one way or the other"
+      "range": "0 = the player's usual wrist position; above or below 0 = turned one way or the other",
+      "prose": "This is one of three ways the bow-hand wrist can turn, as a computer body model measures it, compared with this player's usual wrist position. It is given in degrees: zero is the player's usual position, and numbers above or below zero mean the wrist is turned one way or the other. The three directions belong to the model, not to a teacher's vocabulary; the nearest teacher phrases are a \"bent wrist\" (Rolland) and \"wrist flexion at the frog\" (a teaching syllabus)."
     },
     {
       "id": "right_wrist_aa_y_dev_deg",
@@ -435,7 +473,8 @@
       ],
       "definition": "One of three ways the bow-hand wrist can turn, as a computer body model measures it, compared with this player's usual wrist position. The three directions belong to the model; they are not the words a teacher would use, such as \"bent\" or \"flexed\".",
       "unit": "degrees (an estimate from a body model, not a medical measurement)",
-      "range": "0 = the player's usual wrist position; above or below 0 = turned one way or the other"
+      "range": "0 = the player's usual wrist position; above or below 0 = turned one way or the other",
+      "prose": "This is one of three ways the bow-hand wrist can turn, as a computer body model measures it, compared with this player's usual wrist position. It is given in degrees: zero is the player's usual position, and numbers above or below zero mean the wrist is turned one way or the other. The three directions belong to the model, not to a teacher's vocabulary; the nearest teacher phrases are a \"bent wrist\" (Rolland) and \"wrist flexion at the frog\" (a teaching syllabus)."
     },
     {
       "id": "right_wrist_aa_z_dev_deg",
@@ -460,7 +499,8 @@
       ],
       "definition": "One of three ways the bow-hand wrist can turn, as a computer body model measures it, compared with this player's usual wrist position. The three directions belong to the model; they are not the words a teacher would use, such as \"bent\" or \"flexed\".",
       "unit": "degrees (an estimate from a body model, not a medical measurement)",
-      "range": "0 = the player's usual wrist position; above or below 0 = turned one way or the other"
+      "range": "0 = the player's usual wrist position; above or below 0 = turned one way or the other",
+      "prose": "This is one of three ways the bow-hand wrist can turn, as a computer body model measures it, compared with this player's usual wrist position. It is given in degrees: zero is the player's usual position, and numbers above or below zero mean the wrist is turned one way or the other. The three directions belong to the model, not to a teacher's vocabulary; the nearest teacher phrases are a \"bent wrist\" (Rolland) and \"wrist flexion at the frog\" (a teaching syllabus)."
     },
     {
       "id": "right_shoulder_rotation_dev_deg",
@@ -492,7 +532,8 @@
       ],
       "definition": "How much the right shoulder has moved away from this player's usual shoulder position, for example raised or hunched.",
       "unit": "degrees (an estimate from a body model, not a medical measurement)",
-      "range": "0 = the usual position; bigger = further from it"
+      "range": "0 = the usual position; bigger = further from it",
+      "prose": "This measures how much the right shoulder, the bow-arm shoulder, has moved away from this player's usual shoulder position, for example when it is raised or hunched. It is given in degrees from a computer body model: zero is the usual position, and bigger numbers mean further from it. Teachers warn about a \"raised shoulder\" (Rolland) and about \"gripping\" or \"clamping\" (Havas), and Lin Yaoji says to \"let the violin become part of the body\"."
     },
     {
       "id": "neck_tilt_deg",
@@ -517,7 +558,8 @@
       ],
       "definition": "How far the head and neck are tilted away from upright, in any direction.",
       "unit": "degrees (an estimate from a body model)",
-      "range": "0 = upright; bigger = more tilted"
+      "range": "0 = upright; bigger = more tilted",
+      "prose": "This measures how far the head and neck are tilted away from upright, in any direction, estimated from a computer body model. It is given in degrees: zero is upright, and bigger numbers mean more tilt. Teachers talk about \"head position\" or \"head tilt\" and about \"chin or jaw pressure\" (a teaching syllabus)."
     },
     {
       "id": "spine_curvature_deg",
@@ -549,7 +591,8 @@
       ],
       "definition": "How much the upper body is bent forward or sideways from upright.",
       "unit": "degrees (an estimate from a body model)",
-      "range": "0 = upright; bigger = more bent"
+      "range": "0 = upright; bigger = more bent",
+      "prose": "This measures how much the upper body is bent forward or sideways from upright, estimated from a computer body model. It is given in degrees: zero is upright, and bigger numbers mean more bend. Teachers simply call this \"posture\" (Kreitman; Flesch) or a \"balanced stance\" (Rolland), and when it goes wrong, \"slouching\"."
     },
     {
       "id": "violin_hold_height_ratio",
@@ -588,7 +631,8 @@
       ],
       "definition": "How high the violin sits compared with the player's hips: lower when the scroll droops, higher when the violin is held up.",
       "unit": "a share of the string's length (so body size does not matter)",
-      "range": "bigger = the violin is held higher"
+      "range": "bigger = the violin is held higher",
+      "prose": "This measures how high the violin sits compared with the player's hips: lower when the scroll droops, higher when the violin is held up. It is a share of the string's length, so body size does not matter, and bigger numbers mean the violin is held higher. Teachers warn about \"scroll drooping\" (Auer) and the \"violin drifting over the right arm\" (Starr), talk about \"instrument support\" (Rolland), and in Lin Yaoji's words aim to \"let the violin become part of the body\"."
     },
     {
       "id": "pitch_dev_semi",
@@ -634,7 +678,8 @@
       ],
       "definition": "How far the note played is from the note written in the music.",
       "unit": "semitones (the distance between two neighbouring piano keys; 100 cents)",
-      "range": "0 = in tune; above 0 = sharp; below 0 = flat; 0.5 = a quarter-tone off"
+      "range": "0 = in tune; above 0 = sharp; below 0 = flat; 0.5 = a quarter-tone off",
+      "prose": "This measures how far the note played is from the note written in the music. It is given in semitones, the distance between two neighbouring piano keys or 100 cents: zero is in tune, above zero is sharp, below zero is flat, and 0.5 is a quarter-tone off. Teachers call this \"intonation\" (Fischer) and say a note is \"sharp\" or \"flat\"; Galamian describes tuning as \"constant adjustment\", and Lin Yaoji's maxim asks for \"accuracy\"."
     },
     {
       "id": "env_db",
@@ -666,7 +711,8 @@
       ],
       "definition": "How loud the sound is from moment to moment.",
       "unit": "decibels",
-      "range": "higher = louder; very low = silence"
+      "range": "higher = louder; very low = silence",
+      "prose": "This measures how loud the sound is from moment to moment. It is given in decibels: higher numbers are louder, and very low numbers mean silence. Teachers talk about \"dynamics\" (a teaching syllabus), \"nuance\" (Auer), and \"volume\" or \"a bigger sound\"."
     },
     {
       "id": "onset_strength",
@@ -705,7 +751,8 @@
       ],
       "definition": "How clearly and strongly a new note begins: high for a crisp, accented start, low in the middle of a held note.",
       "unit": "a score with no unit",
-      "range": "0 = no note starting; bigger = a stronger start"
+      "range": "0 = no note starting; bigger = a stronger start",
+      "prose": "This measures how clearly and strongly each new note begins: high for a crisp, accented start and low in the middle of a held note. It is a score with no unit: zero means no note is starting, and bigger numbers mean a stronger start. Teachers talk about the \"attack\" or \"the start of the note\", about \"articulation\" (a research study), and about accented strokes such as martelé and marcato and the \"key bow strokes\" (Fischer)."
     },
     {
       "id": "f0_midi",
@@ -751,7 +798,8 @@
       ],
       "definition": "Which pitch the violin is sounding at each moment, tracked continuously, so vibrato, slides and tuning all show.",
       "unit": "piano-key numbers, with fractions in between",
-      "range": "higher = a higher note"
+      "range": "higher = a higher note",
+      "prose": "This measures which pitch the violin is sounding at each moment, tracked continuously, so vibrato, slides and tuning all show. It is given as piano-key numbers with fractions in between: higher numbers are higher notes. Teachers simply talk about \"the note you are playing\"; Galamian calls tuning it \"constant adjustment\", Hamann & Gillespie mention a \"flat 3rd finger\", and Lin Yaoji's maxim asks for \"accuracy\"."
     },
     {
       "id": "f0_salience",
@@ -797,7 +845,8 @@
       ],
       "definition": "How clearly a definite note can be heard in the sound: high for a clean, focused tone, low for scratchy, noisy or silent moments.",
       "unit": "a score with no unit",
-      "range": "near 0 = no clear note (silence or noise); bigger = a clearer tone"
+      "range": "near 0 = no clear note (silence or noise); bigger = a clearer tone",
+      "prose": "This measures how clearly a definite note can be heard in the sound: high for a clean, focused tone and low for scratchy, noisy or silent moments. It is a score with no unit: near zero means no clear note, and bigger numbers mean a clearer tone. Teachers talk about a \"clean, focused tone\" and a \"scratchy tone\" (Hamann & Gillespie); Fischer says \"it is impossible to scratch if the bow keeps moving\", Suzuki teachers practise \"tonalization\", and Lin Yaoji's maxim asks for \"evenness\" and \"beauty\"."
     },
     {
       "id": "string_disagreement",
@@ -829,7 +878,8 @@
       ],
       "definition": "How likely it is that the player used a different string from the one the written music points to.",
       "unit": "a score from 0 to 1",
-      "range": "0 = the same string the music suggests; 1 = clearly a different string; blank when the music does not say"
+      "range": "0 = the same string the music suggests; 1 = clearly a different string; blank when the music does not say",
+      "prose": "This measures how likely it is that the player used a different string from the one the written music points to. It is a score from 0 to 1: zero means the same string the music suggests, 1 means clearly a different string, and it is left blank when the music does not say. Teachers say things like \"wrong string\" or \"play it on the A string\", and teaching materials note which string or strings a piece uses (a teaching syllabus)."
     },
     {
       "id": "position_dev_semi",
@@ -875,7 +925,8 @@
       ],
       "definition": "Whether the left hand was higher or lower on the fingerboard than the position the written music points to.",
       "unit": "semitones along the string",
-      "range": "0 = the expected position; above 0 = higher up the fingerboard; below 0 = lower"
+      "range": "0 = the expected position; above 0 = higher up the fingerboard; below 0 = lower",
+      "prose": "This measures whether the left hand was higher or lower on the fingerboard than the position the written music points to. It is given in semitones along the string: zero is the expected position, above zero is higher up the fingerboard, and below zero is lower. Teachers say \"stay in third position\", teach \"position changing\" (Fischer), \"shifting\" and the \"hand frame\" (Ding Zhinuo), and diagnose a \"missed shift\" (Gerle)."
     },
     {
       "id": "contact_bridge_ratio_neutral",
@@ -921,7 +972,8 @@
       ],
       "definition": "Where on the string this player's bow usually sits during a recording, between the bridge and the fingerboard.",
       "unit": "a share of the string's length",
-      "range": "0 = at the bridge; bigger = closer to the fingerboard; one number for the whole recording"
+      "range": "0 = at the bridge; bigger = closer to the fingerboard; one number for the whole recording",
+      "prose": "This is where on the string this player's bow usually sits during a recording, between the bridge and the fingerboard, as one number for the whole recording. It is a share of the string's length: zero is at the bridge, and bigger numbers are closer to the fingerboard. Teachers call this spot the \"soundpoint\" (Fischer) or \"contact point\" (Flesch) and warn about \"playing too close to the fingerboard\" or \"too close to the bridge\"; Lin Yaoji's maxim of \"evenness\" is about keeping it steady."
     }
   ]
 }

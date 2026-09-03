@@ -1,6 +1,6 @@
 # Violin teaching survey · round 0
 
-**form version:** `4673b2d432b2` · **rater:** ☐ the violinist · ☐ the author (Siyuan)
+**form version:** `880a346ff874` · **rater:** ☐ the violinist · ☐ the author (Siyuan)
 
 Paper version: cards in a fixed order, tick one box per question.
 
@@ -26,11 +26,7 @@ We built a computer system that watches and listens to someone playing the violi
 <sub>bow_speed</sub>  
 **Warm-up card: answer it like any other.**
 
-**Teachers might say:** “bow speed” (Fischer; Flesch) · “It is impossible to scratch if the bow keeps moving” (Fischer) · “evenness, accuracy, beauty” (Lin Yaoji)
-
-**What this is:** How fast the bow is moving, and whether it is going down-bow or up-bow.  
-**Measured as:** bow-lengths per second (1 = a full bow in one second)  
-**What the numbers mean:** 0 = the bow is not moving; above 0 = down-bow; below 0 = up-bow
+This measures how fast the bow is moving and whether it is a down-bow or an up-bow. It is counted in bow-lengths per second, so 1 means a full bow in one second; zero means the bow is not moving, above zero is a down-bow, and below zero is an up-bow. Teachers usually just call this "bow speed" (Fischer; Flesch); Fischer adds that "it is impossible to scratch if the bow keeps moving", and Lin Yaoji's maxim "evenness, accuracy, beauty" begins with an even bow.
 
 **Question 1.** Do violin teachers pay attention to this in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -45,11 +41,7 @@ We built a computer system that watches and listens to someone playing the violi
 <sub>right_wrist_aa_z_dev_deg</sub>  
 **Warm-up card: answer it like any other.**
 
-**Teachers might say:** “bent wrist” (Rolland) · “wrist flexion at the frog” (a teaching syllabus)
-
-**What this is:** One of three ways the bow-hand wrist can turn, as a computer body model measures it, compared with this player's usual wrist position. The three directions belong to the model; they are not the words a teacher would use, such as "bent" or "flexed".  
-**Measured as:** degrees (an estimate from a body model, not a medical measurement)  
-**What the numbers mean:** 0 = the player's usual wrist position; above or below 0 = turned one way or the other
+This is one of three ways the bow-hand wrist can turn, as a computer body model measures it, compared with this player's usual wrist position. It is given in degrees: zero is the player's usual position, and numbers above or below zero mean the wrist is turned one way or the other. The three directions belong to the model, not to a teacher's vocabulary; the nearest teacher phrases are a "bent wrist" (Rolland) and "wrist flexion at the frog" (a teaching syllabus).
 
 **Question 1.** Do violin teachers pay attention to this in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -63,11 +55,7 @@ We built a computer system that watches and listens to someone playing the violi
 ### 3. Where the bow touches the string, compared with the player's usual spot
 <sub>contact_bridge_ratio_dev</sub>
 
-**Teachers might say:** “soundpoint” (Fischer) · “contact point” (Flesch) · “the bow drifting from the contact point” (Starr (Suzuki method)) · “evenness” (Lin Yaoji)
-
-**What this is:** Whether the bow is touching the string closer to the bridge or closer to the fingerboard than this player usually does.  
-**Measured as:** a share of the string's length  
-**What the numbers mean:** 0 = the player's usual spot; below 0 = closer to the bridge than usual; above 0 = closer to the fingerboard than usual
+This measures where the bow touches the string, compared with the spot this player usually uses. It is a share of the string's length between the bridge and the fingerboard, so zero means the player's usual spot, a negative number means closer to the bridge than usual, and a positive number means closer to the fingerboard than usual. Teachers call this spot the "soundpoint" (Fischer) or the "contact point" (Flesch) and warn about "the bow drifting from the contact point" (Starr); Lin Yaoji's maxim of "evenness" is about keeping it steady.
 
 **Question 1.** Do violin teachers pay attention to this in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -81,11 +69,7 @@ We built a computer system that watches and listens to someone playing the violi
 ### 4. Which part of the bow is on the string
 <sub>hair_pos</sub>
 
-**Teachers might say:** “at the frog / in the middle / at the tip” (common saying) · “bow distribution” (a teaching syllabus) · “whole bows” (Fischer)
-
-**What this is:** Whether the player is using the bow near the frog (the hand end), the middle, or the tip.  
-**Measured as:** a share of the bow's length  
-**What the numbers mean:** 0 = at the frog; 0.5 = the middle of the bow; 1 = at the tip
+This measures which part of the bow is on the string: near the frog (the hand end), the middle, or the tip. It is a share of the bow's length, so 0 means the frog, 0.5 the middle and 1 the tip. Teachers talk about playing "at the frog", "in the middle" or "at the tip", about "bow distribution" (a teaching syllabus), and about using "whole bows" (Fischer).
 
 **Question 1.** Do violin teachers pay attention to this in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -99,11 +83,7 @@ We built a computer system that watches and listens to someone playing the violi
 ### 5. Is the bow on the string or lifted off?
 <sub>hair_string_gap_ratio</sub>
 
-**Teachers might say:** “bow on the string / off the string” (common saying) · “spiccato, sautillé, ricochet (off-the-string strokes)” (a teaching syllabus)
-
-**What this is:** How far the bow hair is from the string: zero when the bow is on the string, more when it is lifted off.  
-**Measured as:** a share of the string's length  
-**What the numbers mean:** 0 = on the string; bigger = lifted further off
+This measures how far the bow hair is from the string. It is zero when the bow is on the string and grows as the bow is lifted off, counted as a share of the string's length. Teachers speak of the bow being "on the string" or "off the string", and of off-the-string strokes such as spiccato, sautillé and ricochet (a teaching syllabus).
 
 **Question 1.** Do violin teachers pay attention to this in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -117,11 +97,7 @@ We built a computer system that watches and listens to someone playing the violi
 ### 6. Is the bow straight or crooked?
 <sub>skew_deg</sub>
 
-**Teachers might say:** “crooked bow” (Hamann & Gillespie) · “keep the bow straight” (common saying) · “bow–string angle” (a research study)
-
-**What this is:** How far the bow is from being at a right angle to the strings, in other words how crooked the bow stroke is.  
-**Measured as:** degrees  
-**What the numbers mean:** 0 = perfectly straight; bigger = more crooked, in either direction
+This measures how far the bow is from being at a right angle to the strings, in other words how crooked the bow stroke is. It is given in degrees: zero is a perfectly straight bow, and bigger numbers mean more crooked, in either direction. Teachers say "keep the bow straight" and diagnose a "crooked bow" (Hamann & Gillespie); a research study calls it the "bow–string angle".
 
 **Question 1.** Do violin teachers pay attention to this in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -135,11 +111,7 @@ We built a computer system that watches and listens to someone playing the violi
 ### 7. Which string the bow is leaning toward
 <sub>string_side_deg</sub>
 
-**Teachers might say:** “string crossing” (Galamian; Rolland) · “bow tilt” (a research study) · “string level” (common saying)
-
-**What this is:** The tilt of the bow around the strings, which shows which string it is playing on or moving toward.  
-**Measured as:** degrees  
-**What the numbers mean:** smaller = toward the G string (the lowest); larger = toward the E string (the highest)
+This measures the tilt of the bow around the strings, which shows which string the bow is playing on or moving toward. It is an angle in degrees: smaller numbers lean toward the G string, the lowest, and larger numbers toward the E string, the highest. Teachers talk about "string crossing" (Galamian; Rolland) and "string level"; a research study calls it "bow tilt".
 
 **Question 1.** Do violin teachers pay attention to this in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -153,11 +125,7 @@ We built a computer system that watches and listens to someone playing the violi
 ### 8. Bow speed, including direction
 <sub>bow_speed</sub>
 
-**Teachers might say:** “bow speed” (Fischer; Flesch) · “It is impossible to scratch if the bow keeps moving” (Fischer) · “evenness, accuracy, beauty” (Lin Yaoji)
-
-**What this is:** How fast the bow is moving, and whether it is going down-bow or up-bow.  
-**Measured as:** bow-lengths per second (1 = a full bow in one second)  
-**What the numbers mean:** 0 = the bow is not moving; above 0 = down-bow; below 0 = up-bow
+This measures how fast the bow is moving and whether it is a down-bow or an up-bow. It is counted in bow-lengths per second, so 1 means a full bow in one second; zero means the bow is not moving, above zero is a down-bow, and below zero is an up-bow. Teachers usually just call this "bow speed" (Fischer; Flesch); Fischer adds that "it is impossible to scratch if the bow keeps moving", and Lin Yaoji's maxim "evenness, accuracy, beauty" begins with an even bow.
 
 **Question 1.** Do violin teachers pay attention to this in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -171,11 +139,7 @@ We built a computer system that watches and listens to someone playing the violi
 ### 9. Bow speed, ignoring direction
 <sub>bow_speed_abs</sub>
 
-**Teachers might say:** “bow speed” (Fischer; Flesch) · “the bow keeps moving” (Fischer)
-
-**What this is:** How fast the bow is moving, whether it is a down-bow or an up-bow.  
-**Measured as:** bow-lengths per second (1 = a full bow in one second)  
-**What the numbers mean:** 0 = not moving; bigger = faster
+This measures how fast the bow is moving, ignoring whether it is a down-bow or an up-bow. It is counted in bow-lengths per second: zero means not moving, 1 means a full bow in one second, and bigger numbers mean faster. Teachers call this "bow speed" (Fischer; Flesch) and remind students to keep "the bow moving" (Fischer).
 
 **Question 1.** Do violin teachers pay attention to this in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -189,11 +153,7 @@ We built a computer system that watches and listens to someone playing the violi
 ### 10. How quickly the bow speeds up or slows down
 <sub>bow_accel</sub>
 
-**Teachers might say:** “speeding up or slowing down the bow within a stroke” (common saying) · “martelé, marcato, accents” (a teaching syllabus)
-
-**What this is:** Whether the bow is speeding up, slowing down, or moving at a steady speed during a stroke.  
-**Measured as:** change in bow speed per second  
-**What the numbers mean:** 0 = steady speed; bigger = the speed is changing more quickly
+This measures whether the bow is speeding up, slowing down, or moving at a steady speed during a stroke. It is the change in bow speed per second: zero means a steady speed, and bigger numbers mean the speed is changing more quickly. Teachers describe "speeding up or slowing down the bow within a stroke" and teach accented strokes such as martelé and marcato (a teaching syllabus).
 
 **Question 1.** Do violin teachers pay attention to this in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -207,11 +167,7 @@ We built a computer system that watches and listens to someone playing the violi
 ### 11. Down-bow or up-bow
 <sub>direction_sign</sub>
 
-**Teachers might say:** “down-bow / up-bow” (common saying)
-
-**What this is:** Whether the bow is moving as a down-bow or an up-bow, passing smoothly through zero when it turns around.  
-**Measured as:** a value between −1 and +1  
-**What the numbers mean:** +1 = clearly down-bow; −1 = clearly up-bow; near 0 = stopped or changing direction
+This tells whether the bow is moving as a down-bow or an up-bow. It runs from −1 to +1: +1 is clearly a down-bow, −1 is clearly an up-bow, and values near zero mean the bow is stopped or changing direction. Teachers simply say "down-bow" and "up-bow".
 
 **Question 1.** Do violin teachers pay attention to this in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -225,11 +181,7 @@ We built a computer system that watches and listens to someone playing the violi
 ### 12. How bent the bow-arm elbow is
 <sub>right_elbow_flexion_deg</sub>
 
-**Teachers might say:** “elbow angle / elbow height of the bow arm” (common saying) · “whole-arm strokes” (Rolland; Galamian) · “changing notes without changing the arm shape” (Lin Yaoji)
-
-**What this is:** How much the right elbow is bent, estimated from a computer model of the player's body.  
-**Measured as:** degrees (an estimate from a body model, not a medical measurement)  
-**What the numbers mean:** 0 = arm straight; bigger = more bent
+This measures how much the right elbow, the bow-arm elbow, is bent, estimated from a computer model of the player's body rather than a medical measurement. It is given in degrees: zero is a straight arm, and bigger numbers mean more bend. Teachers talk about the "elbow angle" or "elbow height" of the bow arm and about "whole-arm strokes" (Rolland; Galamian); Lin Yaoji speaks of "changing notes without changing the arm shape".
 
 **Question 1.** Do violin teachers pay attention to this in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -243,11 +195,7 @@ We built a computer system that watches and listens to someone playing the violi
 ### 13. Bow-hand wrist turn, direction 1 of 3, compared with the player's usual
 <sub>right_wrist_aa_x_dev_deg</sub>
 
-**Teachers might say:** “bent wrist” (Rolland) · “wrist flexion at the frog” (a teaching syllabus)
-
-**What this is:** One of three ways the bow-hand wrist can turn, as a computer body model measures it, compared with this player's usual wrist position. The three directions belong to the model; they are not the words a teacher would use, such as "bent" or "flexed".  
-**Measured as:** degrees (an estimate from a body model, not a medical measurement)  
-**What the numbers mean:** 0 = the player's usual wrist position; above or below 0 = turned one way or the other
+This is one of three ways the bow-hand wrist can turn, as a computer body model measures it, compared with this player's usual wrist position. It is given in degrees: zero is the player's usual position, and numbers above or below zero mean the wrist is turned one way or the other. The three directions belong to the model, not to a teacher's vocabulary; the nearest teacher phrases are a "bent wrist" (Rolland) and "wrist flexion at the frog" (a teaching syllabus).
 
 **Question 1.** Do violin teachers pay attention to this in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -261,11 +209,7 @@ We built a computer system that watches and listens to someone playing the violi
 ### 14. Bow-hand wrist turn, direction 2 of 3, compared with the player's usual
 <sub>right_wrist_aa_y_dev_deg</sub>
 
-**Teachers might say:** “bent wrist” (Rolland) · “wrist flexion at the frog” (a teaching syllabus)
-
-**What this is:** One of three ways the bow-hand wrist can turn, as a computer body model measures it, compared with this player's usual wrist position. The three directions belong to the model; they are not the words a teacher would use, such as "bent" or "flexed".  
-**Measured as:** degrees (an estimate from a body model, not a medical measurement)  
-**What the numbers mean:** 0 = the player's usual wrist position; above or below 0 = turned one way or the other
+This is one of three ways the bow-hand wrist can turn, as a computer body model measures it, compared with this player's usual wrist position. It is given in degrees: zero is the player's usual position, and numbers above or below zero mean the wrist is turned one way or the other. The three directions belong to the model, not to a teacher's vocabulary; the nearest teacher phrases are a "bent wrist" (Rolland) and "wrist flexion at the frog" (a teaching syllabus).
 
 **Question 1.** Do violin teachers pay attention to this in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -279,11 +223,7 @@ We built a computer system that watches and listens to someone playing the violi
 ### 15. Bow-hand wrist turn, direction 3 of 3, compared with the player's usual
 <sub>right_wrist_aa_z_dev_deg</sub>
 
-**Teachers might say:** “bent wrist” (Rolland) · “wrist flexion at the frog” (a teaching syllabus)
-
-**What this is:** One of three ways the bow-hand wrist can turn, as a computer body model measures it, compared with this player's usual wrist position. The three directions belong to the model; they are not the words a teacher would use, such as "bent" or "flexed".  
-**Measured as:** degrees (an estimate from a body model, not a medical measurement)  
-**What the numbers mean:** 0 = the player's usual wrist position; above or below 0 = turned one way or the other
+This is one of three ways the bow-hand wrist can turn, as a computer body model measures it, compared with this player's usual wrist position. It is given in degrees: zero is the player's usual position, and numbers above or below zero mean the wrist is turned one way or the other. The three directions belong to the model, not to a teacher's vocabulary; the nearest teacher phrases are a "bent wrist" (Rolland) and "wrist flexion at the frog" (a teaching syllabus).
 
 **Question 1.** Do violin teachers pay attention to this in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -297,11 +237,7 @@ We built a computer system that watches and listens to someone playing the violi
 ### 16. Bow-arm shoulder position, compared with the player's usual
 <sub>right_shoulder_rotation_dev_deg</sub>
 
-**Teachers might say:** “raised shoulder” (Rolland) · “gripping / clamping” (Havas) · “let the violin become part of the body” (Lin Yaoji)
-
-**What this is:** How much the right shoulder has moved away from this player's usual shoulder position, for example raised or hunched.  
-**Measured as:** degrees (an estimate from a body model, not a medical measurement)  
-**What the numbers mean:** 0 = the usual position; bigger = further from it
+This measures how much the right shoulder, the bow-arm shoulder, has moved away from this player's usual shoulder position, for example when it is raised or hunched. It is given in degrees from a computer body model: zero is the usual position, and bigger numbers mean further from it. Teachers warn about a "raised shoulder" (Rolland) and about "gripping" or "clamping" (Havas), and Lin Yaoji says to "let the violin become part of the body".
 
 **Question 1.** Do violin teachers pay attention to this in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -315,11 +251,7 @@ We built a computer system that watches and listens to someone playing the violi
 ### 17. Head tilt
 <sub>neck_tilt_deg</sub>
 
-**Teachers might say:** “head position / head tilt” (common saying) · “chin or jaw pressure” (a teaching syllabus)
-
-**What this is:** How far the head and neck are tilted away from upright, in any direction.  
-**Measured as:** degrees (an estimate from a body model)  
-**What the numbers mean:** 0 = upright; bigger = more tilted
+This measures how far the head and neck are tilted away from upright, in any direction, estimated from a computer body model. It is given in degrees: zero is upright, and bigger numbers mean more tilt. Teachers talk about "head position" or "head tilt" and about "chin or jaw pressure" (a teaching syllabus).
 
 **Question 1.** Do violin teachers pay attention to this in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -333,11 +265,7 @@ We built a computer system that watches and listens to someone playing the violi
 ### 18. Posture: upright or slouched
 <sub>spine_curvature_deg</sub>
 
-**Teachers might say:** “posture” (Kreitman; Flesch) · “balanced stance” (Rolland) · “slouching” (common saying)
-
-**What this is:** How much the upper body is bent forward or sideways from upright.  
-**Measured as:** degrees (an estimate from a body model)  
-**What the numbers mean:** 0 = upright; bigger = more bent
+This measures how much the upper body is bent forward or sideways from upright, estimated from a computer body model. It is given in degrees: zero is upright, and bigger numbers mean more bend. Teachers simply call this "posture" (Kreitman; Flesch) or a "balanced stance" (Rolland), and when it goes wrong, "slouching".
 
 **Question 1.** Do violin teachers pay attention to this in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -351,11 +279,7 @@ We built a computer system that watches and listens to someone playing the violi
 ### 19. How high the violin is held
 <sub>violin_hold_height_ratio</sub>
 
-**Teachers might say:** “scroll drooping” (Auer) · “violin drifting over the right arm” (Starr (Suzuki method)) · “instrument support” (Rolland) · “let the violin become part of the body” (Lin Yaoji)
-
-**What this is:** How high the violin sits compared with the player's hips: lower when the scroll droops, higher when the violin is held up.  
-**Measured as:** a share of the string's length (so body size does not matter)  
-**What the numbers mean:** bigger = the violin is held higher
+This measures how high the violin sits compared with the player's hips: lower when the scroll droops, higher when the violin is held up. It is a share of the string's length, so body size does not matter, and bigger numbers mean the violin is held higher. Teachers warn about "scroll drooping" (Auer) and the "violin drifting over the right arm" (Starr), talk about "instrument support" (Rolland), and in Lin Yaoji's words aim to "let the violin become part of the body".
 
 **Question 1.** Do violin teachers pay attention to this in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -369,11 +293,7 @@ We built a computer system that watches and listens to someone playing the violi
 ### 20. In tune, sharp, or flat
 <sub>pitch_dev_semi</sub>
 
-**Teachers might say:** “constant adjustment” (Galamian) · “Intonation” (Fischer) · “sharp / flat” (a research study) · “intonation” (Chinese teaching articles) · “accuracy” (Lin Yaoji)
-
-**What this is:** How far the note played is from the note written in the music.  
-**Measured as:** semitones (the distance between two neighbouring piano keys; 100 cents)  
-**What the numbers mean:** 0 = in tune; above 0 = sharp; below 0 = flat; 0.5 = a quarter-tone off
+This measures how far the note played is from the note written in the music. It is given in semitones, the distance between two neighbouring piano keys or 100 cents: zero is in tune, above zero is sharp, below zero is flat, and 0.5 is a quarter-tone off. Teachers call this "intonation" (Fischer) and say a note is "sharp" or "flat"; Galamian describes tuning as "constant adjustment", and Lin Yaoji's maxim asks for "accuracy".
 
 **Question 1.** Do violin teachers pay attention to this in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -387,11 +307,7 @@ We built a computer system that watches and listens to someone playing the violi
 ### 21. Loudness
 <sub>env_db</sub>
 
-**Teachers might say:** “dynamics” (a teaching syllabus) · “nuance” (Auer) · “volume / a bigger sound” (common saying)
-
-**What this is:** How loud the sound is from moment to moment.  
-**Measured as:** decibels  
-**What the numbers mean:** higher = louder; very low = silence
+This measures how loud the sound is from moment to moment. It is given in decibels: higher numbers are louder, and very low numbers mean silence. Teachers talk about "dynamics" (a teaching syllabus), "nuance" (Auer), and "volume" or "a bigger sound".
 
 **Question 1.** Do violin teachers pay attention to this in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -405,11 +321,7 @@ We built a computer system that watches and listens to someone playing the violi
 ### 22. How strongly each note starts
 <sub>onset_strength</sub>
 
-**Teachers might say:** “articulation” (a research study) · “accents, martelé, marcato” (a teaching syllabus) · “key bow strokes” (Fischer) · “attack / the start of the note” (common saying)
-
-**What this is:** How clearly and strongly a new note begins: high for a crisp, accented start, low in the middle of a held note.  
-**Measured as:** a score with no unit  
-**What the numbers mean:** 0 = no note starting; bigger = a stronger start
+This measures how clearly and strongly each new note begins: high for a crisp, accented start and low in the middle of a held note. It is a score with no unit: zero means no note is starting, and bigger numbers mean a stronger start. Teachers talk about the "attack" or "the start of the note", about "articulation" (a research study), and about accented strokes such as martelé and marcato and the "key bow strokes" (Fischer).
 
 **Question 1.** Do violin teachers pay attention to this in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -423,11 +335,7 @@ We built a computer system that watches and listens to someone playing the violi
 ### 23. The note being played
 <sub>f0_midi</sub>
 
-**Teachers might say:** “constant adjustment” (Galamian) · “flat 3rd finger” (Hamann & Gillespie) · “accuracy” (Lin Yaoji) · “intonation” (Chinese teaching articles) · “the note you are playing” (common saying)
-
-**What this is:** Which pitch the violin is sounding at each moment, tracked continuously, so vibrato, slides and tuning all show.  
-**Measured as:** piano-key numbers, with fractions in between  
-**What the numbers mean:** higher = a higher note
+This measures which pitch the violin is sounding at each moment, tracked continuously, so vibrato, slides and tuning all show. It is given as piano-key numbers with fractions in between: higher numbers are higher notes. Teachers simply talk about "the note you are playing"; Galamian calls tuning it "constant adjustment", Hamann & Gillespie mention a "flat 3rd finger", and Lin Yaoji's maxim asks for "accuracy".
 
 **Question 1.** Do violin teachers pay attention to this in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -441,11 +349,7 @@ We built a computer system that watches and listens to someone playing the violi
 ### 24. How clean and clear the tone is
 <sub>f0_salience</sub>
 
-**Teachers might say:** “It is impossible to scratch if the bow keeps moving” (Fischer) · “scratchy tone” (Hamann & Gillespie) · “tonalization” (Suzuki) · “evenness, beauty” (Lin Yaoji) · “clean, focused tone” (common saying)
-
-**What this is:** How clearly a definite note can be heard in the sound: high for a clean, focused tone, low for scratchy, noisy or silent moments.  
-**Measured as:** a score with no unit  
-**What the numbers mean:** near 0 = no clear note (silence or noise); bigger = a clearer tone
+This measures how clearly a definite note can be heard in the sound: high for a clean, focused tone and low for scratchy, noisy or silent moments. It is a score with no unit: near zero means no clear note, and bigger numbers mean a clearer tone. Teachers talk about a "clean, focused tone" and a "scratchy tone" (Hamann & Gillespie); Fischer says "it is impossible to scratch if the bow keeps moving", Suzuki teachers practise "tonalization", and Lin Yaoji's maxim asks for "evenness" and "beauty".
 
 **Question 1.** Do violin teachers pay attention to this in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -459,11 +363,7 @@ We built a computer system that watches and listens to someone playing the violi
 ### 25. Played on a different string than the music suggests
 <sub>string_disagreement</sub>
 
-**Teachers might say:** “wrong string / play it on the A string” (common saying) · “which string(s) a piece uses” (a teaching syllabus) · “building stepwise fingers on one string (D)” (a teaching syllabus)
-
-**What this is:** How likely it is that the player used a different string from the one the written music points to.  
-**Measured as:** a score from 0 to 1  
-**What the numbers mean:** 0 = the same string the music suggests; 1 = clearly a different string; blank when the music does not say
+This measures how likely it is that the player used a different string from the one the written music points to. It is a score from 0 to 1: zero means the same string the music suggests, 1 means clearly a different string, and it is left blank when the music does not say. Teachers say things like "wrong string" or "play it on the A string", and teaching materials note which string or strings a piece uses (a teaching syllabus).
 
 **Question 1.** Do violin teachers pay attention to this in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -477,11 +377,7 @@ We built a computer system that watches and listens to someone playing the violi
 ### 26. Left-hand position, compared with what the music suggests
 <sub>position_dev_semi</sub>
 
-**Teachers might say:** “position changing” (Fischer) · “position, small shifts” (a teaching syllabus) · “missed shift” (Gerle) · “shifting / hand frame” (Ding Zhinuo) · “stay in third position” (common saying)
-
-**What this is:** Whether the left hand was higher or lower on the fingerboard than the position the written music points to.  
-**Measured as:** semitones along the string  
-**What the numbers mean:** 0 = the expected position; above 0 = higher up the fingerboard; below 0 = lower
+This measures whether the left hand was higher or lower on the fingerboard than the position the written music points to. It is given in semitones along the string: zero is the expected position, above zero is higher up the fingerboard, and below zero is lower. Teachers say "stay in third position", teach "position changing" (Fischer), "shifting" and the "hand frame" (Ding Zhinuo), and diagnose a "missed shift" (Gerle).
 
 **Question 1.** Do violin teachers pay attention to this in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -495,11 +391,7 @@ We built a computer system that watches and listens to someone playing the violi
 ### 27. The player's usual bow-contact spot
 <sub>contact_bridge_ratio_neutral</sub>
 
-**Teachers might say:** “soundpoint” (Fischer) · “contact point” (Flesch) · “the bow drifting from the contact point” (Starr (Suzuki method)) · “evenness” (Lin Yaoji) · “playing too close to the fingerboard / too close to the bridge” (common saying)
-
-**What this is:** Where on the string this player's bow usually sits during a recording, between the bridge and the fingerboard.  
-**Measured as:** a share of the string's length  
-**What the numbers mean:** 0 = at the bridge; bigger = closer to the fingerboard; one number for the whole recording
+This is where on the string this player's bow usually sits during a recording, between the bridge and the fingerboard, as one number for the whole recording. It is a share of the string's length: zero is at the bridge, and bigger numbers are closer to the fingerboard. Teachers call this spot the "soundpoint" (Fischer) or "contact point" (Flesch) and warn about "playing too close to the fingerboard" or "too close to the bridge"; Lin Yaoji's maxim of "evenness" is about keeping it steady.
 
 **Question 1.** Do violin teachers pay attention to this in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes

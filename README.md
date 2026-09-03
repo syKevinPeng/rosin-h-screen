@@ -8,8 +8,9 @@ measurement "atom" of violin performance on two questions, each on a
 - **H1 attended**: is this something violin teachers actually attend to in lessons?
 - **H2 actionable**: if a tutor reported this value to a student, could the student act on it?
 
-Static site, no server, no network calls. Answers autosave in the rater's
-browser and are exported as a file; the durable record is the merged CSV
+Static site, no server. The only external request is the Inter font from
+Google Fonts; no answer data ever leaves the page. Answers autosave in the
+rater's browser and are exported as a file; the durable record is the merged CSV
 committed to the rosin repo (`docs/h-screen/round-<n>-scores.csv`). The
 protocol is `docs/2026-09-03-h-screen-plan.md` in rosin; decisions D-M6 and
 D-M8 in `docs/2026-09-03-mining-loop-decisions.md`.
@@ -25,7 +26,7 @@ caveat words; the rule is broader than the test.
 ## Layout
 
 ```
-rounds/round-<n>/rows.json        content: the single source of truth (bilingual, cited)
+rounds/round-<n>/rows.json        content: the single source of truth (plain English; `prose` is what the rater reads, the structured fields and cited phrases are the record)
 rounds/round-<n>/index.html       built page (rows inlined, form_version stamped)
 rounds/round-<n>/form.md          built printable form, fixed order (paper fallback)
 rounds/round-<n>/blank-scores.csv built blank score sheet (spreadsheet fallback)
