@@ -1,6 +1,6 @@
 # Violin teaching survey · round 0
 
-**form version:** `f5e7848cbe49` · **rater:** ☐ the violinist · ☐ the author (Siyuan)
+**form version:** `3243590b656a` · **rater:** ☐ the violinist · ☐ the author (Siyuan)
 
 Paper version: cards in a fixed order, tick one box per question.
 
@@ -41,7 +41,7 @@ This records how fast the bow is moving, and whether it is a down-bow or an up-b
 <sub>right_wrist_aa_z_dev_deg</sub>  
 **Warm-up card: answer it like any other.**
 
-Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist bends up and down. The number is zero when the wrist is in the player's usual position and goes up or down as the wrist moves away from that. Teachers do not have a word for this exact movement; the closest is a "bent wrist". The three labels are our best understanding of the program's three directions.
+Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist bends up and down. The number is zero when the wrist is in the player's usual position and grows as the wrist moves more than usual in this way. Teachers do not have a word for this exact movement; the closest is a "bent wrist".
 
 **Question 1.** Do violin teachers pay attention to how the bow-hand wrist bends up and down in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -195,7 +195,7 @@ This records how much the elbow of the bow arm is bent. The number is zero for a
 ### 13. Bow-hand wrist: twisting
 <sub>right_wrist_aa_x_dev_deg</sub>
 
-Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist twists. The number is zero when the wrist is in the player's usual position and goes up or down as the wrist moves away from that. Teachers do not have a word for this exact movement; the closest is a "bent wrist". The three labels are our best understanding of the program's three directions.
+Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist twists. The number is zero when the wrist is in the player's usual position and grows as the wrist moves more than usual in this way. Teachers do not have a word for this exact movement; the closest is a "bent wrist".
 
 **Question 1.** Do violin teachers pay attention to how the bow-hand wrist twists in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -209,7 +209,7 @@ Our program watches the wrist of the bow hand and records how it is turned, spli
 ### 14. Bow-hand wrist: tilting from side to side
 <sub>right_wrist_aa_y_dev_deg</sub>
 
-Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist tilts from side to side. The number is zero when the wrist is in the player's usual position and goes up or down as the wrist moves away from that. Teachers do not have a word for this exact movement; the closest is a "bent wrist". The three labels are our best understanding of the program's three directions.
+Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist tilts from side to side. The number is zero when the wrist is in the player's usual position and grows as the wrist moves more than usual in this way. Teachers do not have a word for this exact movement; the closest is a "bent wrist".
 
 **Question 1.** Do violin teachers pay attention to how the bow-hand wrist tilts from side to side in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -223,7 +223,7 @@ Our program watches the wrist of the bow hand and records how it is turned, spli
 ### 15. Bow-hand wrist: bending up and down
 <sub>right_wrist_aa_z_dev_deg</sub>
 
-Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist bends up and down. The number is zero when the wrist is in the player's usual position and goes up or down as the wrist moves away from that. Teachers do not have a word for this exact movement; the closest is a "bent wrist". The three labels are our best understanding of the program's three directions.
+Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist bends up and down. The number is zero when the wrist is in the player's usual position and grows as the wrist moves more than usual in this way. Teachers do not have a word for this exact movement; the closest is a "bent wrist".
 
 **Question 1.** Do violin teachers pay attention to how the bow-hand wrist bends up and down in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes

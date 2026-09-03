@@ -470,12 +470,13 @@
       "definition": "One of three ways the bow-hand wrist can turn, as a computer body model measures it, compared with this player's usual wrist position. The three directions belong to the model; they are not the words a teacher would use, such as \"bent\" or \"flexed\".",
       "unit": "degrees (an estimate from a body model, not a medical measurement)",
       "range": "0 = the player's usual wrist position; above or below 0 = turned one way or the other",
-      "prose": "Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist twists. The number is zero when the wrist is in the player's usual position and goes up or down as the wrist moves away from that. Teachers do not have a word for this exact movement; the closest is a \"bent wrist\". The three labels are our best understanding of the program's three directions.",
+      "prose": "Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist twists. The number is zero when the wrist is in the player's usual position and grows as the wrist moves more than usual in this way. Teachers do not have a word for this exact movement; the closest is a \"bent wrist\".",
       "short": "how the bow-hand wrist twists",
       "figure": {
         "kind": "wrist",
         "dir": 1
-      }
+      },
+      "locator_note": "axis mapping verified by forward kinematics on the SMPL-X neutral model (rosin session, 2026-09-03, wrist_axes.py): X = forearm twist, Y = side-to-side deviation, Z = up-and-down flexion; template palms-down measured"
     },
     {
       "id": "right_wrist_aa_y_dev_deg",
@@ -501,12 +502,13 @@
       "definition": "One of three ways the bow-hand wrist can turn, as a computer body model measures it, compared with this player's usual wrist position. The three directions belong to the model; they are not the words a teacher would use, such as \"bent\" or \"flexed\".",
       "unit": "degrees (an estimate from a body model, not a medical measurement)",
       "range": "0 = the player's usual wrist position; above or below 0 = turned one way or the other",
-      "prose": "Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist tilts from side to side. The number is zero when the wrist is in the player's usual position and goes up or down as the wrist moves away from that. Teachers do not have a word for this exact movement; the closest is a \"bent wrist\". The three labels are our best understanding of the program's three directions.",
+      "prose": "Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist tilts from side to side. The number is zero when the wrist is in the player's usual position and grows as the wrist moves more than usual in this way. Teachers do not have a word for this exact movement; the closest is a \"bent wrist\".",
       "short": "how the bow-hand wrist tilts from side to side",
       "figure": {
         "kind": "wrist",
         "dir": 2
-      }
+      },
+      "locator_note": "axis mapping verified by forward kinematics on the SMPL-X neutral model (rosin session, 2026-09-03, wrist_axes.py): X = forearm twist, Y = side-to-side deviation, Z = up-and-down flexion; template palms-down measured"
     },
     {
       "id": "right_wrist_aa_z_dev_deg",
@@ -532,12 +534,13 @@
       "definition": "One of three ways the bow-hand wrist can turn, as a computer body model measures it, compared with this player's usual wrist position. The three directions belong to the model; they are not the words a teacher would use, such as \"bent\" or \"flexed\".",
       "unit": "degrees (an estimate from a body model, not a medical measurement)",
       "range": "0 = the player's usual wrist position; above or below 0 = turned one way or the other",
-      "prose": "Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist bends up and down. The number is zero when the wrist is in the player's usual position and goes up or down as the wrist moves away from that. Teachers do not have a word for this exact movement; the closest is a \"bent wrist\". The three labels are our best understanding of the program's three directions.",
+      "prose": "Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist bends up and down. The number is zero when the wrist is in the player's usual position and grows as the wrist moves more than usual in this way. Teachers do not have a word for this exact movement; the closest is a \"bent wrist\".",
       "short": "how the bow-hand wrist bends up and down",
       "figure": {
         "kind": "wrist",
         "dir": 3
-      }
+      },
+      "locator_note": "axis mapping verified by forward kinematics on the SMPL-X neutral model (rosin session, 2026-09-03, wrist_axes.py): X = forearm twist, Y = side-to-side deviation, Z = up-and-down flexion; template palms-down measured"
     },
     {
       "id": "right_shoulder_rotation_dev_deg",
