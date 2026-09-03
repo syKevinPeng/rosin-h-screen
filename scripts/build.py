@@ -178,6 +178,7 @@ def render_html(data: dict, version: str) -> str:
     out = (tpl.replace("__ROWS_JSON__", inlined)
               .replace("__ORDER_JS__", js)
               .replace("__FORM_VERSION__", version)
+              .replace("__TITLE__", data["title"].replace("<", "&lt;"))
               .replace("__ROUND__", str(data["round"])))
     left = PLACEHOLDER_RE.findall(out)
     if left:
