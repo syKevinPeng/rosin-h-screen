@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Atom audit · round 0</title>
+<style>
+:root{--bg:#f7f6f2;--card:#ffffff;--ink:#1d1d1b;--muted:#6b6a66;--line:#e2e0d9;--accent:#3b5bdb;--accent-ink:#ffffff;--warn:#c92a2a;--tag:#eef0f5}
+@media (prefers-color-scheme:dark){:root{--bg:#161615;--card:#1f1f1d;--ink:#ecebe6;--muted:#a3a29b;--line:#34332f;--accent:#8fa3ff;--accent-ink:#0f1330;--warn:#ff8787;--tag:#2a2b31}}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Noto Sans CJK SC","PingFang SC","Microsoft YaHei",sans-serif}
+header{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);padding:.55rem 1rem .5rem;z-index:2}
+.hrow{max-width:760px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.3rem 1rem;align-items:center;justify-content:space-between;font-size:.82rem;color:var(--muted)}
+.hrow code{font-size:.78rem}
+.lang button{background:none;border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:.1rem .6rem;cursor:pointer;font:inherit;font-size:.78rem}
+.lang button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.progress{height:4px;background:var(--line);border-radius:2px;margin:.45rem auto 0;max-width:760px}
+.progress i{display:block;height:100%;background:var(--accent);border-radius:2px;width:0;transition:width .2s}
+main{max-width:760px;margin:0 auto;padding:1.2rem 1rem 4rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.2rem 1.3rem;margin-bottom:1rem}
+h1{font-size:1.5rem;margin:.2rem 0 .6rem;line-height:1.25}
+h2{font-size:1.2rem;margin:0 0 .25rem;line-height:1.3}
+h3{font-size:1rem;margin:1rem 0 .3rem}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.78rem;color:var(--muted)}
+.badge{display:inline-block;font-size:.7rem;padding:.05rem .5rem;border-radius:999px;background:var(--tag);color:var(--muted);margin-left:.4rem;vertical-align:middle;font-weight:400}
+.banner{background:var(--tag);border-left:4px solid var(--accent);padding:.5rem .8rem;border-radius:6px;margin:0 0 .8rem;font-size:.9rem}
+dl{margin:.8rem 0 0}
+dt{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-top:.75rem}
+dd{margin:.15rem 0 0}
+ul.phr{margin:.15rem 0 0;padding-left:1.1rem}
+ul.phr li{margin:.2rem 0}
+.src{font-size:.78rem;color:var(--muted)}
+.q{margin-top:1.1rem;padding-top:.9rem;border-top:1px dashed var(--line)}
+.q p{margin:0 0 .55rem;font-weight:600}
+.gloss{font-weight:400;color:var(--muted);font-size:.88rem}
+.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:.4rem}
+.seg label{border:1px solid var(--line);border-radius:8px;padding:.45rem .25rem;text-align:center;cursor:pointer;font-size:.82rem;line-height:1.25;user-select:none}
+.seg label b{display:block;font-size:1.1rem}
+.seg input{position:absolute;opacity:0;pointer-events:none;width:0;height:0}
+.seg input:checked+label{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.seg input:checked+label .zh{color:inherit}
+.seg input:focus-visible+label{outline:2px solid var(--accent);outline-offset:2px}
+textarea{width:100%;min-height:4.5rem;border:1px solid var(--line);border-radius:8px;padding:.5rem;font:inherit;background:var(--bg);color:var(--ink)}
+.nav{display:flex;justify-content:space-between;gap:.6rem;margin-top:1.1rem}
+button.btn{background:var(--accent);color:var(--accent-ink);border:0;border-radius:8px;padding:.6rem 1.1rem;font:inherit;font-weight:600;cursor:pointer}
+button.btn[disabled]{opacity:.45;cursor:not-allowed}
+button.ghost{background:none;color:var(--ink);border:1px solid var(--line);font-weight:500}
+.row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.8rem}
+.warn{color:var(--warn);font-size:.85rem;margin-top:.5rem;min-height:1.2em}
+.muted{color:var(--muted);font-size:.9rem}
+.zh{display:block;color:var(--muted)}
+.pair.inline .zh{display:inline;margin-left:.4em}
+body.lang-en .zh{display:none}
+body.lang-zh .en{display:none}
+body.lang-zh .zh{color:inherit}
+.list{list-style:none;padding:0;margin:.5rem 0}
+.list li{display:flex;justify-content:space-between;gap:.5rem;border-bottom:1px solid var(--line);padding:.35rem 0;font-size:.9rem}
+.list a{color:var(--accent)}
+.ok{color:var(--accent)}
+pre.csv{white-space:pre;overflow:auto;font-size:.72rem;background:var(--tag);padding:.6rem;border-radius:8px;max-height:14rem}
+@media print{
+  header,.nav,.noprint{display:none!important}
+  body{background:#fff;color:#000;font-size:11pt}
+  .card{break-inside:avoid;border-color:#999;padding:.7rem .9rem;margin-bottom:.6rem}
+  .zh{color:#333}
+  .seg label{border-color:#777;padding:.25rem}
+  .seg input:checked+label{background:none;color:#000}
+  textarea{min-height:3rem;border-color:#777;background:#fff}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="hrow">
+    <div class="stamp"><span id="stamp-round"></span> · <span class="pair inline" id="stamp-version"></span> <code>cf35edf19d24</code> · <span id="stamp-rater"></span></div>
+    <div class="lang" role="group" aria-label="language">
+      <button type="button" data-lang="both" aria-pressed="true">EN + 中文</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-lang="zh" aria-pressed="false">中文</button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+</header>
+<main id="app"></main>
+<script id="rows-json" type="application/json">{"round":0,"round_label":{"en":"round 0: incumbent atoms","zh":"第 0 轮：现有原子"},"title":{"en":"Atom audit","zh":"原子审核"},"intro":{"en":"You will see {n} short cards. Each describes one thing our system measures from a violin performance (an \"atom\"). For each card answer two questions and, if you like, leave a note. There are no right answers; we want your judgment as a teacher. About 25 to 35 minutes.","zh":"下面有 {n} 张卡片，每张描述我们的系统从小提琴演奏中测量的一项内容（一个“原子”）。请对每张卡片回答两个问题，也可以留言。没有标准答案，我们需要的是您作为老师的判断。大约需要 25 到 35 分钟。"},"questions":{"h1":{"en":"Is this something violin teachers actually attend to in lessons?","zh":"小提琴老师在课上真的会关注这一点吗？"},"h2":{"en":"If a tutor reported this value to a student, could the student act on it?","zh":"如果辅导系统把这个数值报告给学生，学生能据此做出调整吗？"},"h2_gloss":{"en":"The number itself, not the concept: for example \"your bow speed varied a lot in this phrase\", as opposed to a quantity that no instruction maps to.","zh":"指的是数值本身，而不是概念：例如“这一句里你的弓速变化很大”，相对于一个无法转化为任何练习指令的量。"}},"scale":[{"value":1,"en":"clearly no","zh":"明显不是"},{"value":2,"en":"probably no","zh":"可能不是"},{"value":3,"en":"probably yes","zh":"可能是"},{"value":4,"en":"clearly yes","zh":"明显是"}],"ui":{"start":{"en":"Start","zh":"开始"},"next":{"en":"Next","zh":"下一张"},"back":{"en":"Back","zh":"上一张"},"finish":{"en":"Finish","zh":"完成"},"card_of":{"en":"Card {i} of {n}","zh":"第 {i} 张，共 {n} 张"},"calibration":{"en":"Calibration example: rate it like any other card.","zh":"校准示例：请像对待其他卡片一样评分。"},"incoming":{"en":"incoming (v18)","zh":"即将加入（v18）"},"definition":{"en":"What it measures","zh":"测量内容"},"unit":{"en":"Unit","zh":"单位"},"range":{"en":"Range","zh":"取值范围"},"phrases":{"en":"How teachers say it","zh":"老师的说法"},"tag_labels":{"verbatim":{"en":"quoted","zh":"原文引用"},"synthesis":{"en":"attributed to","zh":"转述自"},"expert-opinion":{"en":"expert spreadsheet","zh":"专家表格"},"experiment":{"en":"measurement study","zh":"实验研究"},"uncited":{"en":"paraphrase, uncited","zh":"转述，未引用"}},"note_prompt":{"en":"Notes (optional): how would you say this to a student? Anything unclear?","zh":"备注（选填）：您会怎样对学生说这一点？有不清楚的地方吗？"},"pick_rater":{"en":"Who is rating?","zh":"评分人是谁？"},"rater_names":{"violinist":{"en":"the violinist","zh":"小提琴老师"},"author":{"en":"the author (Siyuan)","zh":"作者（思远）"}},"scale_heading":{"en":"The scale (no midpoint, on purpose)","zh":"评分标准（有意不设中间值）"},"questions_heading":{"en":"The two questions","zh":"两个问题"},"unanswered":{"en":"Please answer both questions to continue.","zh":"请回答两个问题后再继续。"},"finish_text":{"en":"All cards answered. Download your answers and send the file to Siyuan.","zh":"所有卡片已完成。请下载您的回答并把文件发给思远。"},"download_csv":{"en":"Download CSV","zh":"下载 CSV"},"download_json":{"en":"Download JSON","zh":"下载 JSON"},"copy_csv":{"en":"Copy CSV to clipboard","zh":"复制 CSV 到剪贴板"},"copied":{"en":"Copied.","zh":"已复制。"},"send_hint":{"en":"Please send the downloaded file to Siyuan by email or through the shared Dropbox folder.","zh":"请把下载的文件通过邮件或共享的 Dropbox 文件夹发给思远。"},"saved_hint":{"en":"Your answers are saved in this browser as you go; you can close the page and come back.","zh":"您的回答会随时保存在这个浏览器里，可以关闭页面后再回来继续。"},"start_over":{"en":"Start over (clears your answers)","zh":"重新开始（清除回答）"},"start_over_confirm":{"en":"Click again to confirm","zh":"再点一次确认"},"review":{"en":"Review answers","zh":"检查回答"},"elapsed":{"en":"Time taken","zh":"用时"},"version":{"en":"form version","zh":"表格版本"},"rater":{"en":"rater","zh":"评分人"},"print_title":{"en":"Printable form (paper fallback): cards in fixed order, tick one box per question.","zh":"打印版（纸质备用）：卡片按固定顺序排列，每题勾选一个方框。"},"continue":{"en":"Continue","zh":"继续"},"print_button":{"en":"Print","zh":"打印"},"your_answers":{"en":"answered","zh":"已回答"},"jump":{"en":"go to card","zh":"前往卡片"}},"anchors":["bow_speed","right_wrist_aa_z_dev_deg"],"anchor_policy":"repeat","raters":["violinist","author"],"rows":[{"id":"contact_bridge_ratio_dev","group":"bow-string","status":"incumbent","name":{"en":"Contact point, relative to the player's usual","zh":"触弦点（相对于演奏者本次的习惯位置）"},"phrases":[{"text":"soundpoint / the five soundpoints","lang":"en","tag":"synthesis","source":"Fischer, The Violin Lesson (2013)","locator":"T:23"},{"text":"contact point","lang":"en","tag":"synthesis","source":"Flesch, The Art of Violin Playing, Book 1","locator":"T:40"},{"text":"the bow drifting from the contact point","lang":"en","tag":"synthesis","source":"Starr, The Suzuki Violinist","locator":"T:76"},{"text":"匀","lang":"zh","tag":"verbatim","source":"林耀基 口诀，见 杨宝智《林耀基小提琴教学法精要》(2004)","locator":"C:24"},{"text":"触弦点 / 弓与弦的接触点","lang":"zh","tag":"uncited","source":"","locator":""}],"definition":{"en":"Where the bow hair touches the string between the bridge and the fingerboard, compared with the player's own usual contact point in that recording.","zh":"弓毛在琴马与指板之间触弦的位置，与演奏者在这次录音中自己惯常的触弦点相比较。"},"unit":{"en":"a fraction of the string length (bridge to nut)","zh":"弦长（琴马到琴枕）的比例"},"range":{"en":"0 = the player's usual point; negative = closer to the bridge than usual; positive = closer to the fingerboard than usual","zh":"0 = 惯常位置；负值 = 比平时更靠近琴马；正值 = 比平时更靠近指板"}},{"id":"hair_pos","group":"bow-string","status":"incumbent","name":{"en":"Position along the bow, frog to tip","zh":"弓段位置（弓根到弓尖）"},"phrases":[{"text":"at the frog / in the middle / at the tip","lang":"en","tag":"uncited","source":"","locator":""},{"text":"bow distribution","lang":"en","tag":"expert-opinion","source":"ViolinITS etude classification spreadsheet, columns \"Equal length, 2 bow length, 3-4 bow length\"","locator":"X:35, X:55"},{"text":"whole bows","lang":"en","tag":"synthesis","source":"Fischer, The Violin Lesson (2013)","locator":"T:23"},{"text":"弓根 / 中弓 / 弓尖；分弓段","lang":"zh","tag":"uncited","source":"","locator":""}],"definition":{"en":"Which part of the bow hair is on the string at that moment, from the frog to the tip.","zh":"此刻弓毛的哪一段在弦上，从弓根到弓尖。"},"unit":{"en":"a fraction of the bow-hair length","zh":"弓毛全长的比例"},"range":{"en":"0 = at the frog; 0.5 = the middle of the bow; 1 = at the tip","zh":"0 = 弓根；0.5 = 中弓；1 = 弓尖"}},{"id":"hair_string_gap_ratio","group":"bow-string","status":"incumbent","name":{"en":"Bow-to-string gap, on or off the string","zh":"弓毛与弦的距离（贴弦或离弦）"},"phrases":[{"text":"bow on the string / off the string","lang":"en","tag":"uncited","source":"","locator":""},{"text":"Sautillé & Spiccato, Ricochet, Flying staccato (off-string strokes)","lang":"en","tag":"expert-opinion","source":"ViolinITS etude classification spreadsheet","locator":"X:54, X:97"},{"text":"贴弦 / 离弦；跳弓","lang":"zh","tag":"uncited","source":"","locator":""}],"definition":{"en":"How far the bow hair is from the string: zero when the bow is on the string, larger when it is lifted off.","zh":"弓毛离弦有多远：弓贴弦时为零，抬起时变大。"},"unit":{"en":"a fraction of the string length","zh":"弦长的比例"},"range":{"en":"0 = hair on the string; larger = further off the string","zh":"0 = 弓毛贴弦；越大 = 离弦越远"}},{"id":"skew_deg","group":"bow-string","status":"incumbent","name":{"en":"Bow skew: straight versus crooked bow","zh":"弓的偏斜角（运弓直不直）"},"phrases":[{"text":"crooked bow","lang":"en","tag":"synthesis","source":"Hamann & Gillespie, Strategies for Teaching Strings (4th ed., 2018)","locator":"T:158"},{"text":"keep the bow straight","lang":"en","tag":"uncited","source":"","locator":""},{"text":"bow–string angle","lang":"en","tag":"experiment","source":"Provenzale et al. (2024), Sensors","locator":"E:219"},{"text":"运弓要直 / 弓走直线","lang":"zh","tag":"uncited","source":"","locator":""}],"definition":{"en":"How far the bow is from being at a right angle to the string, that is, how crooked the bow is.","zh":"弓偏离与弦垂直的程度，也就是运弓有多“歪”。"},"unit":{"en":"degrees","zh":"度"},"range":{"en":"0 = perfectly straight bow; larger = more crooked, whichever way it leans","zh":"0 = 完全垂直于弦（弓走直线）；越大 = 越歪，不分方向"}},{"id":"string_side_deg","group":"bow-string","status":"incumbent","name":{"en":"Bow tilt around the string: which string the bow is on","zh":"弓绕弦的倾角（弓靠向哪根弦）"},"phrases":[{"text":"string crossing","lang":"en","tag":"synthesis","source":"Galamian, Principles of Violin Playing and Teaching (1962); Rolland, The Teaching of Action in String Playing (1974)","locator":"T:50, T:67"},{"text":"bow tilt","lang":"en","tag":"experiment","source":"Provenzale et al. (2024), Sensors","locator":"E:219"},{"text":"string level","lang":"en","tag":"uncited","source":"","locator":""},{"text":"换弦角度 / 弦平面","lang":"zh","tag":"uncited","source":"","locator":""}],"definition":{"en":"The angle at which the bow sits around the string, which shows which string the bow is leaning toward, measured against the violin body.","zh":"弓绕着弦所处的角度，反映弓靠向哪根弦，以琴身为参照。"},"unit":{"en":"degrees","zh":"度"},"range":{"en":"an angle; smaller toward the G-string side, larger toward the E-string side","zh":"角度；越靠 G 弦一侧越小，越靠 E 弦一侧越大"}},{"id":"bow_speed","group":"bow-string","status":"incumbent","name":{"en":"Bow speed, with direction","zh":"弓速（含方向）"},"phrases":[{"text":"bow speed","lang":"en","tag":"synthesis","source":"Fischer, The Violin Lesson (2013); Flesch, The Art of Violin Playing, Book 1","locator":"T:23, T:40"},{"text":"It is impossible to scratch if the bow keeps moving","lang":"en","tag":"verbatim","source":"Fischer, The Violin Lesson (2013), chapter heading","locator":"T:23"},{"text":"匀、准、美","lang":"zh","tag":"verbatim","source":"林耀基 口诀，见 杨宝智《林耀基小提琴教学法精要》(2004)","locator":"C:24"},{"text":"弓速","lang":"zh","tag":"uncited","source":"","locator":""}],"definition":{"en":"How fast the bow is moving along the string, with the sign showing whether it is a down-bow or an up-bow.","zh":"弓沿弦运动的速度，正负号表示下弓还是上弓。"},"unit":{"en":"bow-hair lengths per second, so 1 means a whole bow in one second","zh":"每秒多少个弓长，1 表示一秒拉完一整弓"},"range":{"en":"0 = bow stopped; positive = down-bow (toward the tip); negative = up-bow","zh":"0 = 弓静止；正值 = 下弓（向弓尖）；负值 = 上弓"}},{"id":"bow_speed_abs","group":"bow-string","status":"incumbent","name":{"en":"Bow speed: how fast, regardless of direction","zh":"弓速（只看快慢，不分方向）"},"phrases":[{"text":"bow speed","lang":"en","tag":"synthesis","source":"Fischer, The Violin Lesson (2013); Flesch, The Art of Violin Playing, Book 1","locator":"T:23, T:40"},{"text":"the bow keeps moving","lang":"en","tag":"verbatim","source":"Fischer, The Violin Lesson (2013), chapter heading","locator":"T:23"},{"text":"弓速","lang":"zh","tag":"uncited","source":"","locator":""}],"definition":{"en":"How fast the bow is moving, regardless of whether it is a down-bow or an up-bow.","zh":"弓运动有多快，不区分上弓下弓。"},"unit":{"en":"bow-hair lengths per second","zh":"每秒多少个弓长"},"range":{"en":"0 = stopped; 1 = a whole bow in one second; larger = faster","zh":"0 = 静止；1 = 一秒拉完一整弓；越大越快"}},{"id":"bow_accel","group":"bow-string","status":"incumbent","name":{"en":"Bow acceleration","zh":"弓的加速度"},"phrases":[{"text":"speeding up or slowing down the bow within a stroke","lang":"en","tag":"uncited","source":"","locator":""},{"text":"Martelé & Marcato, Accent (accented strokes)","lang":"en","tag":"expert-opinion","source":"ViolinITS etude classification spreadsheet","locator":"X:54"},{"text":"弓速变化 / 加速、减速","lang":"zh","tag":"uncited","source":"","locator":""}],"definition":{"en":"How quickly the bow is speeding up or slowing down within a stroke.","zh":"在一弓之内，弓速变快或变慢的快慢程度。"},"unit":{"en":"change in bow speed per second","zh":"弓速每秒的变化量"},"range":{"en":"0 = steady speed; larger = the speed is changing faster; the sign follows the down-bow-positive convention","zh":"0 = 匀速；越大 = 速度变化越快；正负与“下弓为正”一致"}},{"id":"direction_sign","group":"bow-string","status":"incumbent","name":{"en":"Bow direction: down-bow or up-bow","zh":"运弓方向（下弓或上弓）"},"phrases":[{"text":"down-bow / up-bow","lang":"en","tag":"uncited","source":"","locator":""},{"text":"下弓 / 上弓","lang":"zh","tag":"uncited","source":"","locator":""}],"definition":{"en":"Whether the bow is moving as a down-bow or an up-bow, as a smooth value that passes through zero when the bow changes direction.","zh":"弓正在下弓还是上弓，用一个连续的软符号表示，换弓时经过零。"},"unit":{"en":"a sign from −1 to +1","zh":"−1 到 +1 之间的符号值"},"range":{"en":"+1 = clearly down-bow; −1 = clearly up-bow; near 0 = stopped or changing direction","zh":"+1 = 明确的下弓；−1 = 明确的上弓；接近 0 = 静止或正在换弓"}},{"id":"right_elbow_flexion_deg","group":"body","status":"incumbent","name":{"en":"Right elbow bend (bow arm)","zh":"右臂肘部弯曲（持弓手臂）"},"phrases":[{"text":"elbow angle / elbow height of the bow arm","lang":"en","tag":"uncited","source":"","locator":""},{"text":"whole-arm strokes","lang":"en","tag":"synthesis","source":"Rolland, The Teaching of Action in String Playing (1974); Galamian, Principles (1962)","locator":"T:67, T:50"},{"text":"changing notes without changing the arm shape","lang":"en","tag":"synthesis","source":"林耀基，见 杨宝智 (2004)（合集中仅有英文转述，未录原文）","locator":"C:24"},{"text":"右肘的高低 / 肘部弯曲","lang":"zh","tag":"uncited","source":"","locator":""}],"definition":{"en":"How much the bow-arm elbow is bent, measured from the motion-capture model's straight-arm reference.","zh":"持弓手臂肘部弯曲的程度，以动作捕捉模型的伸直手臂为参照。"},"unit":{"en":"degrees of rotation from the reference pose, not a clinically calibrated joint angle","zh":"相对参考姿势的旋转度数，不是临床标定的关节角"},"range":{"en":"0 = arm straight in the reference pose; larger = more bent","zh":"0 = 参考姿势中的伸直手臂；越大 = 弯曲越多"}},{"id":"right_wrist_aa_x_dev_deg","group":"body","status":"incumbent","name":{"en":"Right-wrist rotation, model axis X, relative to the player's usual","zh":"右手腕转动，模型 X 轴（相对于演奏者本次的习惯姿势）"},"phrases":[{"text":"bent wrist","lang":"en","tag":"synthesis","source":"Rolland, The Teaching of Action in String Playing (1974)","locator":"T:68"},{"text":"wrist flexion at the frog","lang":"en","tag":"expert-opinion","source":"ViolinITS schema leaf","locator":"X:93"},{"text":"how the wrist is turned about the model's X axis","lang":"en","tag":"uncited","source":"","locator":""},{"text":"手腕弯曲 / 手腕的转动","lang":"zh","tag":"uncited","source":"","locator":""}],"definition":{"en":"One of three parts of how the bow-hand wrist is turned, taken about the motion-capture model's X axis, compared with this player's usual wrist posture in that recording. The three axes are the model's axes, not anatomical names such as flexion or deviation.","zh":"持弓手手腕转动的三个分量之一，取动作捕捉模型 X 轴方向，与演奏者在这次录音中惯常的手腕姿势相比较。三个轴是模型的坐标轴，不是屈伸、偏斜等解剖学名称。"},"unit":{"en":"degrees","zh":"度"},"range":{"en":"0 = the player's usual wrist posture in the recording; positive or negative = turned one way or the other about that axis","zh":"0 = 演奏者本次惯常的手腕姿势；正或负 = 绕该轴向一侧或另一侧转动"}},{"id":"right_wrist_aa_y_dev_deg","group":"body","status":"incumbent","name":{"en":"Right-wrist rotation, model axis Y, relative to the player's usual","zh":"右手腕转动，模型 Y 轴（相对于演奏者本次的习惯姿势）"},"phrases":[{"text":"bent wrist","lang":"en","tag":"synthesis","source":"Rolland, The Teaching of Action in String Playing (1974)","locator":"T:68"},{"text":"wrist flexion at the frog","lang":"en","tag":"expert-opinion","source":"ViolinITS schema leaf","locator":"X:93"},{"text":"how the wrist is turned about the model's Y axis","lang":"en","tag":"uncited","source":"","locator":""},{"text":"手腕弯曲 / 手腕的转动","lang":"zh","tag":"uncited","source":"","locator":""}],"definition":{"en":"One of three parts of how the bow-hand wrist is turned, taken about the motion-capture model's Y axis, compared with this player's usual wrist posture in that recording. The three axes are the model's axes, not anatomical names such as flexion or deviation.","zh":"持弓手手腕转动的三个分量之一，取动作捕捉模型 Y 轴方向，与演奏者在这次录音中惯常的手腕姿势相比较。三个轴是模型的坐标轴，不是屈伸、偏斜等解剖学名称。"},"unit":{"en":"degrees","zh":"度"},"range":{"en":"0 = the player's usual wrist posture in the recording; positive or negative = turned one way or the other about that axis","zh":"0 = 演奏者本次惯常的手腕姿势；正或负 = 绕该轴向一侧或另一侧转动"}},{"id":"right_wrist_aa_z_dev_deg","group":"body","status":"incumbent","name":{"en":"Right-wrist rotation, model axis Z, relative to the player's usual","zh":"右手腕转动，模型 Z 轴（相对于演奏者本次的习惯姿势）"},"phrases":[{"text":"bent wrist","lang":"en","tag":"synthesis","source":"Rolland, The Teaching of Action in String Playing (1974)","locator":"T:68"},{"text":"wrist flexion at the frog","lang":"en","tag":"expert-opinion","source":"ViolinITS schema leaf","locator":"X:93"},{"text":"how the wrist is turned about the model's Z axis","lang":"en","tag":"uncited","source":"","locator":""},{"text":"手腕弯曲 / 手腕的转动","lang":"zh","tag":"uncited","source":"","locator":""}],"definition":{"en":"One of three parts of how the bow-hand wrist is turned, taken about the motion-capture model's Z axis, compared with this player's usual wrist posture in that recording. The three axes are the model's axes, not anatomical names such as flexion or deviation.","zh":"持弓手手腕转动的三个分量之一，取动作捕捉模型 Z 轴方向，与演奏者在这次录音中惯常的手腕姿势相比较。三个轴是模型的坐标轴，不是屈伸、偏斜等解剖学名称。"},"unit":{"en":"degrees","zh":"度"},"range":{"en":"0 = the player's usual wrist posture in the recording; positive or negative = turned one way or the other about that axis","zh":"0 = 演奏者本次惯常的手腕姿势；正或负 = 绕该轴向一侧或另一侧转动"}},{"id":"right_shoulder_rotation_dev_deg","group":"body","status":"incumbent","name":{"en":"Right shoulder rotation, relative to the player's usual","zh":"右肩转动（相对于演奏者本次的习惯姿势）"},"phrases":[{"text":"raised shoulder","lang":"en","tag":"synthesis","source":"Rolland, The Teaching of Action in String Playing (1974)","locator":"T:68"},{"text":"gripping / clamping","lang":"en","tag":"synthesis","source":"Havas, A New Approach to Violin Playing (1961)","locator":"T:103"},{"text":"让琴成为身体的一部分","lang":"zh","tag":"verbatim","source":"林耀基，见 杨宝智《林耀基小提琴教学法精要》(2004)","locator":"C:24"},{"text":"耸肩 / 肩膀抬起","lang":"zh","tag":"uncited","source":"","locator":""}],"definition":{"en":"How much the bow-arm shoulder is turned, compared with this player's usual shoulder position in that recording, in any direction.","zh":"持弓手臂肩关节的转动量，与演奏者在这次录音中惯常的肩部姿势相比较，不分方向。"},"unit":{"en":"degrees of rotation, not a clinically calibrated joint angle","zh":"旋转度数，不是临床标定的关节角"},"range":{"en":"0 = the usual shoulder position; larger = further from it","zh":"0 = 惯常的肩部姿势；越大 = 偏离越多"}},{"id":"neck_tilt_deg","group":"body","status":"incumbent","name":{"en":"Head and neck tilt","zh":"头颈倾斜"},"phrases":[{"text":"head position / head tilt","lang":"en","tag":"uncited","source":"","locator":""},{"text":"chin / jaw pressure","lang":"en","tag":"expert-opinion","source":"ViolinITS schema leaf","locator":"X:130"},{"text":"小提琴学习中常见错误姿势的分析与纠正","lang":"zh","tag":"verbatim","source":"杨凌超 (2001)，文章标题","locator":"C:102"},{"text":"头的位置 / 歪头","lang":"zh","tag":"uncited","source":"","locator":""}],"definition":{"en":"How far the head and neck are tilted away from the motion-capture model's upright reference, in any direction.","zh":"头颈相对于动作捕捉模型直立参考姿势的倾斜程度，不分方向。"},"unit":{"en":"degrees","zh":"度"},"range":{"en":"0 = the upright reference; larger = more tilted","zh":"0 = 直立参考姿势；越大 = 倾斜越多"}},{"id":"spine_curvature_deg","group":"body","status":"incumbent","name":{"en":"Spine curvature: upright versus slouched","zh":"脊柱弯曲（挺直还是弯腰驼背）"},"phrases":[{"text":"posture","lang":"en","tag":"synthesis","source":"Kreitman, Teaching from the Balance Point (1998); Flesch, The Art of Violin Playing, Book 1; Gruenberg (1919)","locator":"T:85, T:40, T:175"},{"text":"balanced stance","lang":"en","tag":"synthesis","source":"Rolland, The Teaching of Action in String Playing (1974)","locator":"T:67"},{"text":"slouching","lang":"en","tag":"uncited","source":"","locator":""},{"text":"姿势 / 站姿 / 挺直","lang":"zh","tag":"uncited","source":"","locator":""}],"definition":{"en":"How far the upper body is bent away from the motion-capture model's upright reference, combining the three spine joints.","zh":"上身相对于动作捕捉模型直立参考姿势的弯曲程度，综合三个脊柱关节。"},"unit":{"en":"degrees","zh":"度"},"range":{"en":"0 = the upright reference; larger = more curved","zh":"0 = 直立参考姿势；越大 = 弯曲越多"}},{"id":"violin_hold_height_ratio","group":"body","status":"incumbent","name":{"en":"Violin hold height","zh":"持琴高度"},"phrases":[{"text":"scroll drooping","lang":"en","tag":"synthesis","source":"Auer, Violin Playing as I Teach It (1921)","locator":"T:58"},{"text":"violin drifting over the right arm","lang":"en","tag":"synthesis","source":"Starr, The Suzuki Violinist","locator":"T:76"},{"text":"instrument support","lang":"en","tag":"synthesis","source":"Rolland, The Teaching of Action in String Playing (1974)","locator":"T:67"},{"text":"让琴成为身体的一部分","lang":"zh","tag":"verbatim","source":"林耀基，见 杨宝智《林耀基小提琴教学法精要》(2004)","locator":"C:24"},{"text":"琴头下垂 / 持琴高度","lang":"zh","tag":"uncited","source":"","locator":""}],"definition":{"en":"How high the violin's bridge sits above the player's hips, so a drooping violin gives a smaller value and a well-raised one a larger value.","zh":"琴马相对于演奏者髋部的高度：琴头下垂时数值变小，持琴较高时数值变大。"},"unit":{"en":"a fraction of the string length, so it does not depend on body size","zh":"弦长的比例，因此不受身材大小影响"},"range":{"en":"larger = the violin is held higher relative to the hips","zh":"越大 = 相对髋部持琴越高"}},{"id":"pitch_dev_semi","group":"audio-score","status":"incoming-v18","name":{"en":"Intonation error: sharp or flat","zh":"音准偏差（偏高或偏低）"},"phrases":[{"text":"constant adjustment","lang":"en","tag":"verbatim","source":"Galamian, Principles of Violin Playing and Teaching (1962)","locator":"T:49"},{"text":"Intonation","lang":"en","tag":"synthesis","source":"Fischer, Basics (1997), section F heading","locator":"T:31"},{"text":"sharp / flat","lang":"en","tag":"experiment","source":"feedback wording in the experimental literature (Salzberg 1980)","locator":"E:164"},{"text":"音准","lang":"zh","tag":"verbatim","source":"肖柯 (2016)；麻西水 (2002)，文章标题","locator":"C:110"},{"text":"准","lang":"zh","tag":"verbatim","source":"林耀基 口诀，见 杨宝智《林耀基小提琴教学法精要》(2004)","locator":"C:24"}],"definition":{"en":"How far the pitch actually played is from the written pitch of the note.","zh":"实际演奏的音高与乐谱上写的音高相差多少。"},"unit":{"en":"semitones; 100 cents make one semitone","zh":"半音；1 个半音 = 100 音分"},"range":{"en":"0 = exactly the written pitch; positive = sharp; negative = flat; 0.5 = a quarter-tone off","zh":"0 = 与谱面一致；正值 = 偏高；负值 = 偏低；0.5 = 差四分之一音"}},{"id":"env_db","group":"audio","status":"registered","name":{"en":"Loudness","zh":"音量（响度）"},"phrases":[{"text":"dynamics (No dynamics, Simple Dynamics, Inter. dynamics)","lang":"en","tag":"expert-opinion","source":"ViolinITS etude classification spreadsheet, \"Tone\" columns","locator":"X:56"},{"text":"nuance","lang":"en","tag":"synthesis","source":"Auer, Violin Playing as I Teach It (1921), chapter topic","locator":"T:58"},{"text":"volume / a bigger sound","lang":"en","tag":"uncited","source":"","locator":""},{"text":"音量 / 力度","lang":"zh","tag":"uncited","source":"","locator":""}],"definition":{"en":"How loud the sound is at each moment, as the ear would hear it rise and fall.","zh":"每一时刻声音有多响，即听觉上音量的起伏。"},"unit":{"en":"decibels, a log scale of sound level","zh":"分贝，声音强度的对数刻度"},"range":{"en":"higher = louder; very low = silence","zh":"越高越响；很低 = 静音"}},{"id":"onset_strength","group":"audio","status":"registered","name":{"en":"Note attack strength","zh":"起音（发音）强度"},"phrases":[{"text":"articulation","lang":"en","tag":"experiment","source":"Cavitt (2003), teacher correction targets (band rehearsals)","locator":"E:76"},{"text":"Accent / Sfz, Martelé & Marcato","lang":"en","tag":"expert-opinion","source":"ViolinITS etude classification spreadsheet, \"Bow strokes\" columns","locator":"X:54"},{"text":"key bow strokes","lang":"en","tag":"synthesis","source":"Fischer, Basics (1997), section C","locator":"T:31"},{"text":"attack / the start of the note","lang":"en","tag":"uncited","source":"","locator":""},{"text":"发音 / 起音 / 音头","lang":"zh","tag":"uncited","source":"","locator":""}],"definition":{"en":"How strongly a new note is beginning at each moment: high at a clear, accented attack, low in the middle of a sustained note.","zh":"每一时刻新音开始的强弱程度：清晰、有重音的起音时高，持续音中间时低。"},"unit":{"en":"an attack-strength score with no physical unit","zh":"起音强度分值，没有物理单位"},"range":{"en":"0 = no new note starting; larger = a stronger, sharper attack","zh":"0 = 没有新音开始；越大 = 起音越强、越突出"}},{"id":"f0_midi","group":"audio","status":"registered","name":{"en":"Pitch being played","zh":"正在演奏的音高"},"phrases":[{"text":"constant adjustment","lang":"en","tag":"verbatim","source":"Galamian, Principles of Violin Playing and Teaching (1962)","locator":"T:49"},{"text":"flat 3rd finger","lang":"en","tag":"synthesis","source":"Hamann & Gillespie, Strategies for Teaching Strings (4th ed., 2018)","locator":"T:158"},{"text":"准","lang":"zh","tag":"verbatim","source":"林耀基 口诀，见 杨宝智《林耀基小提琴教学法精要》(2004)","locator":"C:24"},{"text":"音准","lang":"zh","tag":"verbatim","source":"肖柯 (2016)；麻西水 (2002)，文章标题","locator":"C:110"},{"text":"the note you are playing","lang":"en","tag":"uncited","source":"","locator":""}],"definition":{"en":"The pitch the violin is sounding at each moment, tracked continuously, so vibrato, slides and out-of-tune notes all show.","zh":"每一时刻小提琴发出的音高，连续跟踪，因此揉弦、滑音和音不准都会体现出来。"},"unit":{"en":"piano-key numbers with fractions; a step of 1 is one semitone","zh":"钢琴键号（带小数）；每 1 为一个半音"},"range":{"en":"higher = higher pitch, over the violin's range from the open G string upward","zh":"越高音越高，覆盖从空弦 G 起的小提琴音域"}},{"id":"f0_salience","group":"audio","status":"registered","name":{"en":"Pitch clarity: how clearly a pitch is present","zh":"音高清晰度（声音里有多明确的音高）"},"phrases":[{"text":"It is impossible to scratch if the bow keeps moving","lang":"en","tag":"verbatim","source":"Fischer, The Violin Lesson (2013), chapter heading","locator":"T:23"},{"text":"scratchy tone","lang":"en","tag":"synthesis","source":"Hamann & Gillespie, Strategies for Teaching Strings (4th ed., 2018)","locator":"T:158"},{"text":"tonalization","lang":"en","tag":"verbatim","source":"Suzuki, as described in Starr, The Suzuki Violinist","locator":"T:94"},{"text":"匀、美","lang":"zh","tag":"verbatim","source":"林耀基 口诀，见 杨宝智《林耀基小提琴教学法精要》(2004)","locator":"C:24"},{"text":"clean, focused tone","lang":"en","tag":"uncited","source":"","locator":""},{"text":"声音干净 / 有核心","lang":"zh","tag":"uncited","source":"","locator":""}],"definition":{"en":"How clearly a definite pitch is present in the sound at each moment: high for a clean, focused tone, low for scratch, noise or silence.","zh":"每一时刻声音里有多明确的音高：声音干净、有核心时高，刮擦、噪音或静音时低。"},"unit":{"en":"a pitch-evidence score with no physical unit","zh":"音高证据分值，没有物理单位"},"range":{"en":"near 0 = no clear pitch (silence or noise); larger = a clearer, more focused pitch","zh":"接近 0 = 没有明确音高（静音或噪音）；越大 = 音高越清晰、越集中"}},{"id":"string_disagreement","group":"fusion","status":"registered","name":{"en":"Played on a different string than the score implies","zh":"所用琴弦与乐谱暗示的不同"},"phrases":[{"text":"wrong string / play it on the A string","lang":"en","tag":"uncited","source":"","locator":""},{"text":"String/s","lang":"en","tag":"expert-opinion","source":"ViolinITS etude classification spreadsheet, metadata column","locator":"X:51"},{"text":"building stepwise fingers on one string (D)","lang":"en","tag":"expert-opinion","source":"ViolinITS etude classification spreadsheet, goal text","locator":"X:44"},{"text":"弦用错了 / 在 A 弦上拉","lang":"zh","tag":"uncited","source":"","locator":""}],"definition":{"en":"How strongly the evidence from the sound and the left hand says the note was played on a different string from the one the written music implies.","zh":"根据声音和左手的证据，这个音在与乐谱暗示不同的琴弦上演奏的可能性有多大。"},"unit":{"en":"a score from 0 to 1","zh":"0 到 1 之间的分值"},"range":{"en":"0 = the same string as the score implies; 1 = clearly a different string; blank when the score gives no usable string","zh":"0 = 与乐谱暗示的弦相同；1 = 明确是另一根弦；乐谱无法判定时为空"}},{"id":"position_dev_semi","group":"fusion","status":"registered","name":{"en":"Left-hand position, compared with what the score implies","zh":"左手把位（与乐谱暗示的把位相比）"},"phrases":[{"text":"position changing","lang":"en","tag":"synthesis","source":"Fischer, The Violin Lesson (2013), lesson topic; Fischer, Basics (1997), section E \"Shifting\"","locator":"T:22, T:31"},{"text":"Position, Small Shifting","lang":"en","tag":"expert-opinion","source":"ViolinITS etude classification spreadsheet, \"Hand Frame\" columns","locator":"X:52"},{"text":"missed shift","lang":"en","tag":"synthesis","source":"Gerle, The Art of Practising the Violin (1983)","locator":"T:122"},{"text":"换把 / 手型","lang":"zh","tag":"verbatim","source":"丁芷诺《小提琴基本功强化训练教材》（上海音乐出版社）","locator":"C:64"},{"text":"stay in third position","lang":"en","tag":"uncited","source":"","locator":""}],"definition":{"en":"Where on the fingerboard the left hand actually was for the note, compared with the position the written music implies.","zh":"演奏这个音时左手实际所在的把位，与乐谱暗示的把位相比较。"},"unit":{"en":"semitones along the string","zh":"沿弦的半音数"},"range":{"en":"0 = the position the score implies; positive = higher up the fingerboard than implied; negative = lower","zh":"0 = 乐谱暗示的把位；正值 = 比暗示的更靠上（高把位）；负值 = 更靠下"}},{"id":"contact_bridge_ratio_neutral","group":"bow-string","status":"registered","name":{"en":"The player's habitual sounding point","zh":"演奏者惯常的触弦点"},"phrases":[{"text":"soundpoint / the five soundpoints","lang":"en","tag":"synthesis","source":"Fischer, The Violin Lesson (2013)","locator":"T:23"},{"text":"contact point","lang":"en","tag":"synthesis","source":"Flesch, The Art of Violin Playing, Book 1","locator":"T:40"},{"text":"the bow drifting from the contact point","lang":"en","tag":"synthesis","source":"Starr, The Suzuki Violinist","locator":"T:76"},{"text":"匀","lang":"zh","tag":"verbatim","source":"林耀基 口诀，见 杨宝智《林耀基小提琴教学法精要》(2004)","locator":"C:24"},{"text":"playing too close to the fingerboard / too close to the bridge","lang":"en","tag":"uncited","source":"","locator":""},{"text":"触弦点","lang":"zh","tag":"uncited","source":"","locator":""}],"definition":{"en":"The player's usual contact point in that recording: where along the string the bow hair most often sits, between the bridge and the fingerboard.","zh":"演奏者在这次录音中惯常的触弦点：弓毛在琴马与指板之间最常处的位置。"},"unit":{"en":"a fraction of the string length (bridge to nut)","zh":"弦长（琴马到琴枕）的比例"},"range":{"en":"0 = at the bridge; larger = further toward the fingerboard; one value per recording, not per moment","zh":"0 = 在琴马处；越大 = 越靠近指板；每段录音一个值，而不是每一时刻"}}]}</script>
+<script>
+// Deterministic per-rater card order. Shared verbatim between the page
+// (inlined by scripts/build.py) and the Node test, and ported line-for-line
+// to scripts/order.py so the committed CSV can be checked against it.
+//
+// order = anchors (fixed order, is_anchor=1) + shuffle(data rows, seed)
+// seed  = fnv1a(form_version + "|" + rater)   -> 32-bit
+// shuffle = Fisher-Yates driven by mulberry32(seed)
+// anchor_policy "repeat": anchor atoms appear AGAIN inside the shuffled data
+// block (is_anchor=0, seen_as_calibration=1); "once": they do not.
+(function (root) {
+  function fnv1a(str) {
+    var h = 0x811c9dc5;
+    for (var i = 0; i < str.length; i++) {
+      h ^= str.charCodeAt(i);
+      h = Math.imul(h, 0x01000193) >>> 0;
+    }
+    return h >>> 0;
+  }
+  function mulberry32(a) {
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      var t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function shuffle(arr, seed) {
+    var a = arr.slice(), rnd = mulberry32(seed);
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(rnd() * (i + 1));
+      var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+    }
+    return a;
+  }
+  function buildOrder(ids, anchors, policy, formVersion, rater) {
+    var dataIds = ids.filter(function (id) {
+      return policy === "repeat" || anchors.indexOf(id) < 0;
+    });
+    var seed = fnv1a(formVersion + "|" + rater);
+    var out = anchors.map(function (id) { return { id: id, is_anchor: 1 }; });
+    shuffle(dataIds, seed).forEach(function (id) {
+      out.push({ id: id, is_anchor: 0 });
+    });
+    return out;
+  }
+  var api = { fnv1a: fnv1a, mulberry32: mulberry32, shuffle: shuffle, buildOrder: buildOrder };
+  if (typeof module !== "undefined" && module.exports) module.exports = api;
+  else root.HOrder = api;
+})(typeof window !== "undefined" ? window : this);
+
+</script>
+<script>
+(function () {
+  "use strict";
+  var DATA = JSON.parse(document.getElementById("rows-json").textContent);
+  var FORM_VERSION = "cf35edf19d24";
+  var ROUND = DATA.round;
+  var UI = DATA.ui;
+  var ORDER = window.HOrder;
+  var ROWS = {};
+  DATA.rows.forEach(function (r) { ROWS[r.id] = r; });
+  var params = new URLSearchParams(location.search);
+  var MODE = params.get("mode") === "print" ? "print" : "rate";
+  var app = document.getElementById("app");
+  var state = null;
+
+  // ---------- helpers ----------
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function fill(s, vars) {
+    return String(s).replace(/\{(\w+)\}/g, function (m, k) { return vars && k in vars ? vars[k] : m; });
+  }
+  function t(o, inline, vars) {
+    return '<span class="pair' + (inline ? " inline" : "") + '"><span class="en">' + esc(fill(o.en, vars)) +
+      '</span><span class="zh">' + esc(fill(o.zh, vars)) + "</span></span>";
+  }
+  function nowISO() { return new Date().toISOString(); }
+  function skey(r) { return "hscreen:" + ROUND + ":" + FORM_VERSION + ":" + r; }
+  function akey(o) { return o.id + "#" + o.is_anchor; }
+  function loadState(r) {
+    try { var s = localStorage.getItem(skey(r)); return s ? JSON.parse(s) : null; } catch (e) { return null; }
+  }
+  function saveState() {
+    if (!state) return;
+    try { localStorage.setItem(skey(state.rater), JSON.stringify(state)); } catch (e) { /* storage unavailable: page still works for one sitting */ }
+  }
+  function newState(r) {
+    return {
+      round: ROUND, form_version: FORM_VERSION, rater: r,
+      started_at: null, finished_at: null, idx: 0, view: "intro",
+      order: ORDER.buildOrder(DATA.rows.map(function (x) { return x.id; }), DATA.anchors, DATA.anchor_policy, FORM_VERSION, r),
+      answers: {}
+    };
+  }
+  function answered(o) {
+    var a = state.answers[akey(o)];
+    return !!(a && a.h1 && a.h2);
+  }
+  function nAnswered() { return state.order.filter(answered).length; }
+
+  // ---------- language ----------
+  function setLang(l) {
+    document.body.className = l === "both" ? "" : "lang-" + l;
+    document.querySelectorAll(".lang button").forEach(function (b) {
+      b.setAttribute("aria-pressed", b.getAttribute("data-lang") === l ? "true" : "false");
+    });
+    try { localStorage.setItem("hscreen:lang", l); } catch (e) {}
+  }
+  document.querySelectorAll(".lang button").forEach(function (b) {
+    b.addEventListener("click", function () { setLang(b.getAttribute("data-lang")); });
+  });
+  (function () { var l = null; try { l = localStorage.getItem("hscreen:lang"); } catch (e) {} setLang(l || "both"); })();
+
+  // ---------- header ----------
+  function renderHeader() {
+    document.getElementById("stamp-round").innerHTML = t(DATA.round_label, true);
+    document.getElementById("stamp-version").innerHTML = t(UI.version, true);
+    var r = state ? state.rater : null;
+    document.getElementById("stamp-rater").innerHTML = r ? t(UI.rater, true) + ": " + t(UI.rater_names[r], true) : "";
+    var n = state ? state.order.length : 1;
+    document.getElementById("bar").style.width = state ? Math.round(100 * nAnswered() / n) + "%" : "0%";
+  }
+
+  // ---------- pieces ----------
+  function phrasesHTML(r) {
+    return r.phrases.map(function (p) {
+      var label = UI.tag_labels[p.tag] || { en: p.tag, zh: p.tag };
+      var src = p.tag === "uncited" ? "" : (p.source ? ": " + esc(p.source) : "");
+      return "<li>" + esc(p.text) + ' <span class="src">· ' + t(label, true) + src + "</span></li>";
+    }).join("");
+  }
+  function descHTML(r) {
+    return "<dl><dt>" + t(UI.phrases, true) + '</dt><dd><ul class="phr">' + phrasesHTML(r) + "</ul></dd>" +
+      "<dt>" + t(UI.definition, true) + "</dt><dd>" + t(r.definition) + "</dd>" +
+      "<dt>" + t(UI.unit, true) + "</dt><dd>" + t(r.unit) + "</dd>" +
+      "<dt>" + t(UI.range, true) + "</dt><dd>" + t(r.range) + "</dd></dl>";
+  }
+  function titleHTML(r) {
+    return "<h2>" + t(r.name, true) + (r.status === "incoming-v18" ? '<span class="badge">' + t(UI.incoming, true) + "</span>" : "") +
+      '</h2><div class="code">' + esc(r.id) + "</div>";
+  }
+  function questionHTML(q, text, gloss, val, nameSuffix) {
+    var name = q + (nameSuffix || "");
+    var s = '<div class="q"><p>' + t(text) + (gloss ? '<span class="gloss">' + t(gloss) + "</span>" : "") + '</p><div class="seg">';
+    DATA.scale.forEach(function (o) {
+      var id = name + "-" + o.value;
+      s += '<input type="radio" name="' + name + '" id="' + id + '" value="' + o.value + '"' + (val === o.value ? " checked" : "") +
+        ' data-q="' + q + '"><label for="' + id + '"><b>' + o.value + "</b>" + t(o) + "</label>";
+    });
+    return s + "</div></div>";
+  }
+  function introBody() {
+    var n = state ? state.order.length : DATA.anchors.length + DATA.rows.length;
+    var s = "<h1>" + t(DATA.title, true) + ' <span class="badge">' + t(DATA.round_label, true) + "</span></h1>" +
+      "<p>" + t(DATA.intro, false, { n: n }) + "</p>" +
+      "<h3>" + t(UI.questions_heading, true) + "</h3>" +
+      "<p><b>H1.</b> " + t(DATA.questions.h1) + "</p><p><b>H2.</b> " + t(DATA.questions.h2) + '<span class="gloss">' + t(DATA.questions.h2_gloss) + "</span></p>" +
+      "<h3>" + t(UI.scale_heading, true) + "</h3>" + '<div class="seg" aria-hidden="true">' +
+      DATA.scale.map(function (o) { return "<label><b>" + o.value + "</b>" + t(o) + "</label>"; }).join("") + "</div>";
+    return s;
+  }
+
+  // ---------- views ----------
+  function renderIntro() {
+    var s = '<div class="card">' + introBody() + '<p class="muted">' + t(UI.saved_hint) + "</p>";
+    if (!state) {
+      s += "<h3>" + t(UI.pick_rater, true) + '</h3><div class="row">' + DATA.raters.map(function (r) {
+        return '<button type="button" class="btn ghost" data-pick="' + r + '">' + t(UI.rater_names[r], true) + "</button>";
+      }).join("") + "</div>";
+    } else {
+      var started = state.started_at && nAnswered() > 0;
+      s += '<div class="row"><button type="button" class="btn" id="start">' + t(started ? UI["continue"] : UI.start, true) + "</button>" +
+        (started ? '<button type="button" class="btn ghost" id="restart" data-armed="0">' + t(UI.start_over, true) + "</button>" : "") + "</div>";
+    }
+    s += "</div>";
+    app.innerHTML = s;
+  }
+  function renderCard(i) {
+    var o = state.order[i], r = ROWS[o.id], a = state.answers[akey(o)] || {};
+    if (!a.shown_at) { a.shown_at = nowISO(); state.answers[akey(o)] = a; saveState(); }
+    var n = state.order.length;
+    var s = '<div class="card"><div class="code">' + t(UI.card_of, true, { i: i + 1, n: n }) + "</div>" +
+      (o.is_anchor ? '<div class="banner">' + t(UI.calibration, true) + "</div>" : "") +
+      titleHTML(r) + descHTML(r) +
+      questionHTML("h1", DATA.questions.h1, null, a.h1) +
+      questionHTML("h2", DATA.questions.h2, DATA.questions.h2_gloss, a.h2) +
+      '<div class="q"><p>' + t(UI.note_prompt) + '</p><textarea id="note" rows="3">' + esc(a.note || "") + "</textarea></div>" +
+      '<div class="warn" id="warn"></div>' +
+      '<div class="nav"><button type="button" class="btn ghost" id="back"' + (i === 0 ? " disabled" : "") + ">" + t(UI.back, true) + "</button>" +
+      '<button type="button" class="btn" id="next">' + t(i === n - 1 ? UI.finish : UI.next, true) + "</button></div></div>";
+    app.innerHTML = s;
+    window.scrollTo(0, 0);
+  }
+  function records() {
+    return state.order.map(function (o, pos) {
+      var a = state.answers[akey(o)] || {};
+      return {
+        round: ROUND, form_version: FORM_VERSION, rater: state.rater, position: pos + 1, atom: o.id,
+        is_anchor: o.is_anchor, seen_as_calibration: (o.is_anchor === 0 && DATA.anchors.indexOf(o.id) >= 0) ? 1 : 0,
+        h1: a.h1 || "", h2: a.h2 || "", note: a.note || "",
+        shown_at: a.shown_at || "", answered_at: a.answered_at || "",
+        started_at: state.started_at || "", finished_at: state.finished_at || ""
+      };
+    });
+  }
+  var COLS = ["round", "form_version", "rater", "position", "atom", "is_anchor", "seen_as_calibration", "h1", "h2", "note", "shown_at", "answered_at", "started_at", "finished_at"];
+  function csvCell(v) {
+    var s = String(v == null ? "" : v);
+    return /[",\r\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+  }
+  function toCSV(recs) {
+    return [COLS.join(",")].concat(recs.map(function (r) { return COLS.map(function (c) { return csvCell(r[c]); }).join(","); })).join("\r\n") + "\r\n";
+  }
+  function toJSON() {
+    return JSON.stringify({ round: ROUND, form_version: FORM_VERSION, rater: state.rater, started_at: state.started_at, finished_at: state.finished_at, records: records() }, null, 2);
+  }
+  function fileBase() { return "h-screen-round" + ROUND + "-" + state.rater + "-" + FORM_VERSION; }
+  function download(name, text, mime) {
+    var b = new Blob([text], { type: mime }), u = URL.createObjectURL(b), a = document.createElement("a");
+    a.href = u; a.download = name; document.body.appendChild(a); a.click();
+    setTimeout(function () { URL.revokeObjectURL(u); a.remove(); }, 0);
+  }
+  function elapsedText() {
+    if (!state.started_at || !state.finished_at) return "";
+    var ms = new Date(state.finished_at) - new Date(state.started_at);
+    var m = Math.floor(ms / 60000), s = Math.round((ms % 60000) / 1000);
+    return m + " min " + s + " s";
+  }
+  function renderFinish() {
+    var missing = state.order.map(function (o, i) { return answered(o) ? null : i; }).filter(function (x) { return x !== null; });
+    var s = '<div class="card"><h1>' + t(UI.finish, true) + "</h1>";
+    if (missing.length) {
+      s += '<p class="warn">' + t(UI.unanswered) + '</p><ul class="list">' + missing.map(function (i) {
+        return "<li><span>" + (i + 1) + ". " + t(ROWS[state.order[i].id].name, true) + '</span><a href="#" data-goto="' + i + '">' + t(UI.jump, true) + "</a></li>";
+      }).join("") + "</ul>";
+    } else {
+      s += "<p>" + t(UI.finish_text) + "</p>" +
+        '<p class="muted">' + t(UI.elapsed, true) + ": " + elapsedText() + " · " + t(UI.your_answers, true) + ": " + nAnswered() + " / " + state.order.length + "</p>" +
+        '<div class="row"><button type="button" class="btn" id="dl-csv">' + t(UI.download_csv, true) + "</button>" +
+        '<button type="button" class="btn" id="dl-json">' + t(UI.download_json, true) + "</button>" +
+        '<button type="button" class="btn ghost" id="copy-csv">' + t(UI.copy_csv, true) + '</button><span class="ok" id="copied"></span></div>' +
+        '<p class="muted">' + t(UI.send_hint) + "</p>" +
+        '<pre class="csv" id="csv-preview">' + esc(toCSV(records())) + "</pre>";
+    }
+    s += '<div class="row noprint"><button type="button" class="btn ghost" id="review">' + t(UI.review, true) + "</button>" +
+      '<button type="button" class="btn ghost" id="restart" data-armed="0">' + t(UI.start_over, true) + "</button></div></div>";
+    app.innerHTML = s;
+    window.scrollTo(0, 0);
+  }
+  function renderPrint() {
+    var fixed = DATA.anchors.map(function (id) { return { id: id, is_anchor: 1 }; }).concat(
+      DATA.rows.filter(function (r) { return DATA.anchor_policy === "repeat" || DATA.anchors.indexOf(r.id) < 0; })
+        .map(function (r) { return { id: r.id, is_anchor: 0 }; }));
+    var s = '<div class="card">' + introBody() + '<p class="muted">' + t(UI.print_title) + "</p>" +
+      "<p>" + t(UI.rater, true) + ": " + DATA.raters.map(function (r) { return "☐ " + t(UI.rater_names[r], true); }).join(" &nbsp; ") +
+      ' &nbsp; <span class="code">' + t(UI.version, true) + " " + FORM_VERSION + "</span></p>" +
+      '<div class="row noprint"><button type="button" class="btn" onclick="window.print()">' + t(UI.print_button, true) + "</button></div></div>";
+    fixed.forEach(function (o, i) {
+      var r = ROWS[o.id];
+      s += '<div class="card"><div class="code">' + t(UI.card_of, true, { i: i + 1, n: fixed.length }) + "</div>" +
+        (o.is_anchor ? '<div class="banner">' + t(UI.calibration, true) + "</div>" : "") + titleHTML(r) + descHTML(r) +
+        questionHTML("h1", DATA.questions.h1, null, null, "-p" + i) + questionHTML("h2", DATA.questions.h2, DATA.questions.h2_gloss, null, "-p" + i) +
+        '<div class="q"><p>' + t(UI.note_prompt) + '</p><textarea rows="2"></textarea></div></div>';
+    });
+    app.innerHTML = s;
+  }
+  function render() {
+    renderHeader();
+    if (MODE === "print") { renderPrint(); return; }
+    if (!state || state.view === "intro") renderIntro();
+    else if (state.view === "card") renderCard(state.idx);
+    else renderFinish();
+  }
+
+  // ---------- events ----------
+  app.addEventListener("click", function (ev) {
+    var el = ev.target.closest("button, a"); if (!el) return;
+    if (el.hasAttribute("data-pick")) {
+      var r = el.getAttribute("data-pick");
+      var u = new URL(location.href); u.searchParams.set("rater", r); history.replaceState(null, "", u.toString());
+      state = loadState(r) || newState(r); saveState(); render(); return;
+    }
+    if (!state) return;
+    if (el.id === "start") { if (!state.started_at) state.started_at = nowISO(); state.view = "card"; saveState(); render(); return; }
+    if (el.id === "restart") {
+      if (el.getAttribute("data-armed") !== "1") { el.setAttribute("data-armed", "1"); el.innerHTML = t(UI.start_over_confirm, true); return; }
+      var rr = state.rater; try { localStorage.removeItem(skey(rr)); } catch (e) {}
+      state = newState(rr); saveState(); render(); return;
+    }
+    if (el.id === "next") {
+      var o = state.order[state.idx];
+      if (!answered(o)) { document.getElementById("warn").innerHTML = t(UI.unanswered, true); return; }
+      if (state.idx === state.order.length - 1) { state.view = "finish"; if (!state.finished_at) state.finished_at = nowISO(); }
+      else state.idx += 1;
+      saveState(); render(); return;
+    }
+    if (el.id === "back") { if (state.idx > 0) { state.idx -= 1; saveState(); render(); } return; }
+    if (el.id === "review") { state.view = "card"; state.idx = 0; saveState(); render(); return; }
+    if (el.hasAttribute("data-goto")) { ev.preventDefault(); state.view = "card"; state.idx = +el.getAttribute("data-goto"); saveState(); render(); return; }
+    if (el.id === "dl-csv") { download(fileBase() + ".csv", toCSV(records()), "text/csv;charset=utf-8"); return; }
+    if (el.id === "dl-json") { download(fileBase() + ".json", toJSON(), "application/json;charset=utf-8"); return; }
+    if (el.id === "copy-csv") {
+      var txt = toCSV(records()), done = function () { document.getElementById("copied").innerHTML = t(UI.copied, true); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(done, function () { fallbackCopy(txt); done(); });
+      else { fallbackCopy(txt); done(); }
+      return;
+    }
+  });
+  function fallbackCopy(txt) {
+    var ta = document.createElement("textarea"); ta.value = txt; document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); } catch (e) {} ta.remove();
+  }
+  app.addEventListener("change", function (ev) {
+    if (!state || state.view !== "card") return;
+    var el = ev.target; if (el.type !== "radio") return;
+    var o = state.order[state.idx], a = state.answers[akey(o)] || {};
+    a[el.getAttribute("data-q")] = +el.value;
+    if (a.h1 && a.h2) a.answered_at = nowISO();
+    state.answers[akey(o)] = a; saveState(); renderHeader();
+    document.getElementById("warn").innerHTML = "";
+  });
+  app.addEventListener("input", function (ev) {
+    if (!state || state.view !== "card" || ev.target.id !== "note") return;
+    var o = state.order[state.idx], a = state.answers[akey(o)] || {};
+    a.note = ev.target.value; state.answers[akey(o)] = a; saveState();
+  });
+
+  // ---------- boot ----------
+  var rater = params.get("rater");
+  if (DATA.raters.indexOf(rater) < 0) rater = null;
+  if (rater) { state = loadState(rater) || newState(rater); if (state.form_version !== FORM_VERSION) state = newState(rater); saveState(); }
+  render();
+})();
+</script>
+</body>
+</html>
