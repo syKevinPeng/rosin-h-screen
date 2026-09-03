@@ -140,6 +140,14 @@ def validate(data: dict) -> list[str]:
                 errs.append(f"anchor {a!r} is not a row")
     if data.get("anchor_policy") not in ("repeat", "once"):
         errs.append("anchor_policy: 'repeat' or 'once'")
+    col = data.get("collect")
+    if col is not None:
+        if col.get("kind") != "google_form":
+            errs.append("collect.kind: only 'google_form' is supported")
+        if not (isinstance(col.get("viewform"), str) and col["viewform"].startswith("https://docs.google.com/forms/")):
+            errs.append("collect.viewform: a docs.google.com/forms URL is required")
+        if not re.fullmatch(r"entry\.\d+", col.get("entry", "")):
+            errs.append("collect.entry: must look like entry.123456")
     raters = data.get("raters")
     if not (isinstance(raters, list) and raters
             and all(isinstance(r, str) and ID_RE.match(r) for r in raters)

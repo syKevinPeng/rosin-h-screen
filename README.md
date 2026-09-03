@@ -36,6 +36,7 @@ template/order.js                 per-rater card order (seeded shuffle), inlined
 scripts/build.py                  rows.json -> the three built files (+ root redirect with --current)
 scripts/order.py                  Python port of order.js, used to verify exports
 scripts/merge_scores.py           per-rater exports -> merged CSV + raw agreement counts
+scripts/from_google_sheet.py      Google Form response sheet (CSV) -> per-rater export files
 tests/                            pytest; the Node cross-check needs `node` on PATH
 ```
 
@@ -57,7 +58,13 @@ change after first contact with a rater is a new round by protocol.
    `https://sykevinpeng.github.io/rosin-h-screen/?rater=violinist` or
    `...?rater=author`. The two calibration cards come first; the rest are
    shuffled per rater (seed = form_version + rater), stable across reloads.
-5. Each rater downloads the CSV or JSON at the end and sends it back.
+5. At the end the page opens the round's Google Form (`collect` block in
+   rows.json) with the whole answer file pre-filled in its one paragraph
+   field; the rater signs in and presses Submit (the Form allows editing the
+   response later). Download / copy remain as the fallback.
+   Then: download the Form's response sheet as CSV and run
+   `python scripts/from_google_sheet.py responses.csv --out exports/` to get
+   one export file per rater (the last submission per rater wins).
 6. `python scripts/merge_scores.py --rows rounds/round-<n>/rows.json --out round-<n>-scores.csv <exports>`
    refuses anything that does not match the frozen form (version, rater,
    order, completeness) and prints raw agreement counts only (no kappa/CVR by

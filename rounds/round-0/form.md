@@ -1,6 +1,6 @@
 # Violin teaching survey · round 0
 
-**form version:** `bcae607be3af` · **rater:** ☐ the violinist · ☐ the author (Siyuan)
+**form version:** `b9c0f83c36ed` · **rater:** ☐ the violinist · ☐ the author (Siyuan)
 
 Paper version: cards in a fixed order, tick one box per question.
 
@@ -37,11 +37,11 @@ How fast the bow is moving, and whether it is a down-bow or an up-bow. Zero mean
 **Notes (optional): how would you say this to a student? Anything unclear?**  
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-### 2. Bow-hand wrist turn (direction 3 of 3)
+### 2. Bow-hand wrist turn, direction 3 of 3
 <sub>right_wrist_aa_z_dev_deg</sub>  
 **Warm-up card: answer it like any other.**
 
-One of three ways the bow-hand wrist can turn, in degrees, as a computer body model measures it, compared with the player's usual wrist position. The three directions belong to the model, not to a teacher's vocabulary. The nearest teacher phrase is a "bent wrist" (Rolland).
+The computer body model describes how the bow-hand wrist is turned with three numbers, one for each of three directions, roughly bending the wrist up or down, tilting it from side to side, and rotating it, although we cannot say for certain which number is which. This card is direction 3 of the three. It is measured in degrees, compared with the player's usual wrist position, so zero is the usual position and numbers above or below zero mean the wrist is turned one way or the other. Teachers do not have a name for these directions; the nearest phrase is a "bent wrist" (Rolland).
 
 **Question 1.** Do violin teachers pay attention to the bow-hand wrist turn (direction 3 of 3) in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -192,10 +192,10 @@ How much the right elbow is bent, in degrees, estimated from a computer model of
 **Notes (optional): how would you say this to a student? Anything unclear?**  
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-### 13. Bow-hand wrist turn (direction 1 of 3)
+### 13. Bow-hand wrist turn, direction 1 of 3
 <sub>right_wrist_aa_x_dev_deg</sub>
 
-One of three ways the bow-hand wrist can turn, in degrees, as a computer body model measures it, compared with the player's usual wrist position. The three directions belong to the model, not to a teacher's vocabulary. The nearest teacher phrase is a "bent wrist" (Rolland).
+The computer body model describes how the bow-hand wrist is turned with three numbers, one for each of three directions, roughly bending the wrist up or down, tilting it from side to side, and rotating it, although we cannot say for certain which number is which. This card is direction 1 of the three. It is measured in degrees, compared with the player's usual wrist position, so zero is the usual position and numbers above or below zero mean the wrist is turned one way or the other. Teachers do not have a name for these directions; the nearest phrase is a "bent wrist" (Rolland).
 
 **Question 1.** Do violin teachers pay attention to the bow-hand wrist turn (direction 1 of 3) in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -206,10 +206,10 @@ One of three ways the bow-hand wrist can turn, in degrees, as a computer body mo
 **Notes (optional): how would you say this to a student? Anything unclear?**  
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-### 14. Bow-hand wrist turn (direction 2 of 3)
+### 14. Bow-hand wrist turn, direction 2 of 3
 <sub>right_wrist_aa_y_dev_deg</sub>
 
-One of three ways the bow-hand wrist can turn, in degrees, as a computer body model measures it, compared with the player's usual wrist position. The three directions belong to the model, not to a teacher's vocabulary. The nearest teacher phrase is a "bent wrist" (Rolland).
+The computer body model describes how the bow-hand wrist is turned with three numbers, one for each of three directions, roughly bending the wrist up or down, tilting it from side to side, and rotating it, although we cannot say for certain which number is which. This card is direction 2 of the three. It is measured in degrees, compared with the player's usual wrist position, so zero is the usual position and numbers above or below zero mean the wrist is turned one way or the other. Teachers do not have a name for these directions; the nearest phrase is a "bent wrist" (Rolland).
 
 **Question 1.** Do violin teachers pay attention to the bow-hand wrist turn (direction 2 of 3) in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -220,10 +220,10 @@ One of three ways the bow-hand wrist can turn, in degrees, as a computer body mo
 **Notes (optional): how would you say this to a student? Anything unclear?**  
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-### 15. Bow-hand wrist turn (direction 3 of 3)
+### 15. Bow-hand wrist turn, direction 3 of 3
 <sub>right_wrist_aa_z_dev_deg</sub>
 
-One of three ways the bow-hand wrist can turn, in degrees, as a computer body model measures it, compared with the player's usual wrist position. The three directions belong to the model, not to a teacher's vocabulary. The nearest teacher phrase is a "bent wrist" (Rolland).
+The computer body model describes how the bow-hand wrist is turned with three numbers, one for each of three directions, roughly bending the wrist up or down, tilting it from side to side, and rotating it, although we cannot say for certain which number is which. This card is direction 3 of the three. It is measured in degrees, compared with the player's usual wrist position, so zero is the usual position and numbers above or below zero mean the wrist is turned one way or the other. Teachers do not have a name for these directions; the nearest phrase is a "bent wrist" (Rolland).
 
 **Question 1.** Do violin teachers pay attention to the bow-hand wrist turn (direction 3 of 3) in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes

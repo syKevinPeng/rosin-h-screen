@@ -54,11 +54,11 @@
     "questions_heading": "The two questions",
     "unanswered": "Choose an answer to continue.",
     "finish_text": "All cards answered. Download your answers and send the file to Siyuan.",
-    "download_csv": "Download my answers",
+    "download_csv": "Download the file instead",
     "download_json": "JSON version",
     "copy_csv": "Copy as text",
     "copied": "Copied.",
-    "send_hint": "Please send the downloaded file to Siyuan by email or through the shared Dropbox folder.",
+    "send_hint": "Sent through the Google Form? Then you are done. Otherwise, please send the downloaded file to Siyuan by email or through the shared Dropbox folder.",
     "saved_hint": "Your answers are saved in this browser as you go; you can close the page and come back.",
     "start_over": "Start over (clears your answers)",
     "start_over_confirm": "Click again to confirm",
@@ -73,7 +73,7 @@
     "jump": "go to card",
     "bullet_time": "About 30 minutes, one card at a time.",
     "bullet_saved": "Your answers save automatically in this browser, so you can stop and come back.",
-    "bullet_send": "At the end, download one file and send it to Siyuan.",
+    "bullet_send": "At the end, one click sends your answers through a Google Form.",
     "q1_label": "Question 1",
     "q2_label": "Question 2",
     "scale_note": "There is no middle option on purpose: please lean one way.",
@@ -93,7 +93,7 @@
     "how_title": "How it works",
     "how_1": "Read a few sentences about one thing our system measures.",
     "how_2": "Answer one question at a time on a 1 to 4 scale. Add a note if you like.",
-    "how_3": "Download your answers as one file and send it to Siyuan.",
+    "how_3": "Send your answers with one click through a Google Form.",
     "privacy": "Nothing is sent anywhere. Your answers stay in this browser until you download the file.",
     "rater_prompt": "First, who is answering?",
     "welcome_back": "Welcome back",
@@ -113,7 +113,10 @@
     "step": "Step",
     "question_of": "Question {i} of 2",
     "next_question": "Next question",
-    "next_card": "Next card"
+    "next_card": "Next card",
+    "send_form": "Send my answers",
+    "send_form_help": "This opens a Google Form with your answers already filled in. Sign in with Google and press Submit. You can come back and edit your response later.",
+    "send_form_fallback": "If the Google Form does not open or shows an error, download the file below and send it to Siyuan instead."
   },
   "anchors": [
     "bow_speed",
@@ -441,7 +444,7 @@
       "id": "right_wrist_aa_x_dev_deg",
       "group": "body",
       "status": "incumbent",
-      "name": "Bow-hand wrist turn (direction 1 of 3)",
+      "name": "Bow-hand wrist turn, direction 1 of 3",
       "phrases": [
         {
           "text": "bent wrist",
@@ -461,14 +464,14 @@
       "definition": "One of three ways the bow-hand wrist can turn, as a computer body model measures it, compared with this player's usual wrist position. The three directions belong to the model; they are not the words a teacher would use, such as \"bent\" or \"flexed\".",
       "unit": "degrees (an estimate from a body model, not a medical measurement)",
       "range": "0 = the player's usual wrist position; above or below 0 = turned one way or the other",
-      "prose": "One of three ways the bow-hand wrist can turn, in degrees, as a computer body model measures it, compared with the player's usual wrist position. The three directions belong to the model, not to a teacher's vocabulary. The nearest teacher phrase is a \"bent wrist\" (Rolland).",
+      "prose": "The computer body model describes how the bow-hand wrist is turned with three numbers, one for each of three directions, roughly bending the wrist up or down, tilting it from side to side, and rotating it, although we cannot say for certain which number is which. This card is direction 1 of the three. It is measured in degrees, compared with the player's usual wrist position, so zero is the usual position and numbers above or below zero mean the wrist is turned one way or the other. Teachers do not have a name for these directions; the nearest phrase is a \"bent wrist\" (Rolland).",
       "short": "the bow-hand wrist turn (direction 1 of 3)"
     },
     {
       "id": "right_wrist_aa_y_dev_deg",
       "group": "body",
       "status": "incumbent",
-      "name": "Bow-hand wrist turn (direction 2 of 3)",
+      "name": "Bow-hand wrist turn, direction 2 of 3",
       "phrases": [
         {
           "text": "bent wrist",
@@ -488,14 +491,14 @@
       "definition": "One of three ways the bow-hand wrist can turn, as a computer body model measures it, compared with this player's usual wrist position. The three directions belong to the model; they are not the words a teacher would use, such as \"bent\" or \"flexed\".",
       "unit": "degrees (an estimate from a body model, not a medical measurement)",
       "range": "0 = the player's usual wrist position; above or below 0 = turned one way or the other",
-      "prose": "One of three ways the bow-hand wrist can turn, in degrees, as a computer body model measures it, compared with the player's usual wrist position. The three directions belong to the model, not to a teacher's vocabulary. The nearest teacher phrase is a \"bent wrist\" (Rolland).",
+      "prose": "The computer body model describes how the bow-hand wrist is turned with three numbers, one for each of three directions, roughly bending the wrist up or down, tilting it from side to side, and rotating it, although we cannot say for certain which number is which. This card is direction 2 of the three. It is measured in degrees, compared with the player's usual wrist position, so zero is the usual position and numbers above or below zero mean the wrist is turned one way or the other. Teachers do not have a name for these directions; the nearest phrase is a \"bent wrist\" (Rolland).",
       "short": "the bow-hand wrist turn (direction 2 of 3)"
     },
     {
       "id": "right_wrist_aa_z_dev_deg",
       "group": "body",
       "status": "incumbent",
-      "name": "Bow-hand wrist turn (direction 3 of 3)",
+      "name": "Bow-hand wrist turn, direction 3 of 3",
       "phrases": [
         {
           "text": "bent wrist",
@@ -515,7 +518,7 @@
       "definition": "One of three ways the bow-hand wrist can turn, as a computer body model measures it, compared with this player's usual wrist position. The three directions belong to the model; they are not the words a teacher would use, such as \"bent\" or \"flexed\".",
       "unit": "degrees (an estimate from a body model, not a medical measurement)",
       "range": "0 = the player's usual wrist position; above or below 0 = turned one way or the other",
-      "prose": "One of three ways the bow-hand wrist can turn, in degrees, as a computer body model measures it, compared with the player's usual wrist position. The three directions belong to the model, not to a teacher's vocabulary. The nearest teacher phrase is a \"bent wrist\" (Rolland).",
+      "prose": "The computer body model describes how the bow-hand wrist is turned with three numbers, one for each of three directions, roughly bending the wrist up or down, tilting it from side to side, and rotating it, although we cannot say for certain which number is which. This card is direction 3 of the three. It is measured in degrees, compared with the player's usual wrist position, so zero is the usual position and numbers above or below zero mean the wrist is turned one way or the other. Teachers do not have a name for these directions; the nearest phrase is a \"bent wrist\" (Rolland).",
       "short": "the bow-hand wrist turn (direction 3 of 3)"
     },
     {
@@ -1003,5 +1006,11 @@
       "prose": "Where on the string this player's bow usually sits during a recording, between the bridge and the fingerboard, as one number for the whole recording. Zero is at the bridge; bigger numbers are nearer the fingerboard. Teachers call this the \"soundpoint\" (Fischer) or \"contact point\" (Flesch).",
       "short": "the player's usual bow-contact spot"
     }
-  ]
+  ],
+  "collect": {
+    "kind": "google_form",
+    "viewform": "https://docs.google.com/forms/d/e/1FAIpQLSddHsBNudvTMqDI-3D17IuD0aRj55GOPXZ2Wz8ypu8YPxOy0A/viewform",
+    "entry": "entry.851282867",
+    "note": "One paragraph field; the page pre-fills it with the CSV answer file. Sign-in and response editing are set in the Form."
+  }
 }

@@ -386,6 +386,11 @@ __ORDER_JS__
   function toJSON() {
     return JSON.stringify({ round: ROUND, form_version: FORM_VERSION, rater: state.rater, started_at: state.started_at, finished_at: state.finished_at, records: records() }, null, 2);
   }
+  function formURL() {
+    var c = DATA.collect;
+    if (!c || c.kind !== "google_form" || !c.viewform || !c.entry) return "";
+    return c.viewform + "?usp=pp_url&" + c.entry + "=" + encodeURIComponent(toCSV(records()));
+  }
   function fileBase() { return "h-screen-round" + ROUND + "-" + state.rater + "-" + FORM_VERSION; }
   function download(name, text, mime) {
     var b = new Blob([text], { type: mime }), u = URL.createObjectURL(b), a = document.createElement("a");
@@ -402,9 +407,12 @@ __ORDER_JS__
     var s = '<div class="view"><section class="card"><div class="done">' +
       '<svg viewBox="0 0 72 72" aria-hidden="true"><circle cx="36" cy="36" r="34" fill="var(--accent-soft)"/><path d="M22 37l9 9 19-20" fill="none" stroke="var(--accent)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
       "<h1>" + t(UI.done_title) + '</h1><p class="lead" style="margin:0 auto 1.2rem">' + t(UI.done_summary, { n: state.order.length, t: elapsedText() }) + "</p>" +
-      '<div class="row" style="justify-content:center"><button type="button" class="btn lg" id="dl-csv">⬇ ' + t(UI.download_csv) + "</button>" +
+      (formURL() ? '<div class="row" style="justify-content:center"><a class="btn lg" id="send-form" href="' + esc(formURL()) + '" target="_blank" rel="noopener">' + t(UI.send_form) + ' ↗</a></div>' +
+        '<p class="muted" style="max-width:52ch;margin:.8rem auto 0">' + t(UI.send_form_help) + "</p>" : "") +
+      '<div class="row" style="justify-content:center;margin-top:1rem"><button type="button" class="btn ' + (formURL() ? "ghost" : "lg") + '" id="dl-csv">⬇ ' + t(UI.download_csv) + "</button>" +
       '<button type="button" class="btn ghost" id="dl-json">' + t(UI.download_json) + "</button>" +
-      '<button type="button" class="btn ghost" id="copy-csv">' + t(UI.copy_csv) + "</button></div></div>" +
+      '<button type="button" class="btn ghost" id="copy-csv">' + t(UI.copy_csv) + "</button></div>" +
+      (formURL() ? '<p class="muted" style="max-width:52ch;margin:.6rem auto 0">' + t(UI.send_form_fallback) + "</p>" : "") + "</div>" +
       '<div class="callout">' + t(UI.send_hint) + "</div>" +
       "<details><summary>" + t(UI.preview) + '</summary><pre class="csv" id="csv-preview">' + esc(toCSV(records())) + "</pre></details>" +
       '<div class="row noprint" style="margin-top:1.2rem"><button type="button" class="btn link" id="review">' + t(UI.review) + "</button>" +
