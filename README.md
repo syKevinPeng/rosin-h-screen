@@ -8,9 +8,10 @@ measurement "atom" of violin performance on two questions, each on a
 - **H1 attended**: is this something violin teachers actually attend to in lessons?
 - **H2 actionable**: if a tutor reported this value to a student, could the student act on it?
 
-Static site, no server. The only external request is the Inter font from
-Google Fonts; no answer data ever leaves the page. Answers autosave in the
-rater's browser and are exported as a file; the durable record is the merged CSV
+Static site, no server. The only automatic external request is the Inter
+font from Google Fonts. Answers autosave in the rater's browser; at the end the
+rater sends them through the round's Google Form (a pre-filled link they open
+and submit themselves) or downloads them as a file; the durable record is the merged CSV
 committed to the rosin repo (`docs/h-screen/round-<n>-scores.csv`). The
 protocol is `docs/2026-09-03-h-screen-plan.md` in rosin; decisions D-M6 and
 D-M8 in `docs/2026-09-03-mining-loop-decisions.md`.
@@ -18,9 +19,10 @@ D-M8 in `docs/2026-09-03-mining-loop-decisions.md`.
 ## Repo rule
 
 **No atom values, plots, corpus statistics, screen outcomes, utility numbers
-or model numbers ever enter this repo.** The rater sees only names,
-definitions, units, ranges in words, and cited teacher phrases (D-M8,
-outcome-independence). `tests/test_build.py` guards a short list of withheld
+or model numbers ever enter this repo.** The rater sees only a card title and
+one plain-English paragraph per atom (the `prose` field; the structured
+fields and cited phrases in rows.json are the record behind it), plus the two
+questions (D-M8, outcome-independence). `tests/test_build.py` guards a short list of withheld
 caveat words; the rule is broader than the test.
 
 ## Layout
@@ -52,16 +54,19 @@ change after first contact with a rater is a new round by protocol.
 2. `python scripts/build.py rounds/round-<n> --current`, then
    `python -m pytest`.
 3. Commit rows.json **and** the built files together. Copy `form.md` to rosin
-   `docs/h-screen/round-<n>-form.md` and pin this repo's commit as the rosin
-   submodule. That commit is the freeze.
+   `docs/h-screen/` (round 0: `round-0-incumbents-form.md`) and pin this
+   repo's commit as the rosin submodule. That commit is the freeze.
 4. Send each rater their link:
    `https://sykevinpeng.github.io/rosin-h-screen/?rater=violinist` or
    `...?rater=author`. The two calibration cards come first; the rest are
    shuffled per rater (seed = form_version + rater), stable across reloads.
 5. At the end the page opens the round's Google Form (`collect` block in
-   rows.json) with the whole answer file pre-filled in its one paragraph
-   field; the rater signs in and presses Submit (the Form allows editing the
-   response later). Download / copy remain as the fallback.
+   rows.json) with a compact copy of the answer file pre-filled in its one
+   paragraph field (per-card timestamps are left out to keep the link under
+   Google's ~8 KB limit; if notes make it longer still, the page switches to
+   copy-then-paste); the rater signs in and presses Submit (the Form allows
+   editing the response later). Download / copy remain as the fallback and
+   carry the full timestamps.
    Then: download the Form's response sheet as CSV and run
    `python scripts/from_google_sheet.py responses.csv --out exports/` to get
    one export file per rater (the last submission per rater wins).

@@ -48,6 +48,8 @@ def test_version_changes_when_any_content_changes():
     (lambda d: d["scale"].pop(), "scale: exactly"),
     (lambda d: d["ui"]["tag_labels"].pop("uncited"), "ui.tag_labels.uncited"),
     (lambda d: d["rows"][2]["phrases"][0].pop("short_source"), "short_source"),
+    (lambda d: d["questions"].update(h1="Do teachers care?"), "must contain {x}"),
+    (lambda d: d.update(intro="Welcome."), "must contain {n}"),
     (lambda d: d["raters"].append("guest"), "ui.rater_names.guest"),
 ])
 def test_validate_catches(mutate, needle):
@@ -118,8 +120,9 @@ def test_rows_are_english_only():
 
 def test_public_rows_carry_no_withheld_caveats():
     text = json.dumps(load(), ensure_ascii=False)
-    for banned in ("P07", "noise floor", "confound", "SUSTAINED", "defect"):
-        assert banned not in text, banned
+    low = text.lower()
+    for banned in ("p07", "noise floor", "confound", "sustained", "defect", "kappa", "cvr"):
+        assert banned not in low, banned
 
 
 def test_cli_build_is_deterministic_and_check_guards(tmp_path):

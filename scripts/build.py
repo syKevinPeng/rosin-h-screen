@@ -78,6 +78,10 @@ def validate(data: dict) -> list[str]:
     q = data.get("questions") or {}
     for k in ("h1", "h2", "h2_gloss"):
         _s(q.get(k), f"questions.{k}", errs)
+    if isinstance(q.get("h1"), str) and "{x}" not in q["h1"]:
+        errs.append("questions.h1: must contain {x} (the card's subject)")
+    if isinstance(data.get("intro"), str) and "{n}" not in data["intro"]:
+        errs.append("intro: must contain {n} (the card count)")
     sc = data.get("scale")
     if not (isinstance(sc, list) and [o.get("value") for o in sc] == [1, 2, 3, 4]):
         errs.append("scale: exactly the values 1,2,3,4 in order")
@@ -189,7 +193,7 @@ def render_html(data: dict, version: str) -> str:
     out = (tpl.replace("__ROWS_JSON__", inlined)
               .replace("__ORDER_JS__", js)
               .replace("__FORM_VERSION__", version)
-              .replace("__TITLE__", data["title"].replace("<", "&lt;"))
+              .replace("__TITLE__", data["title"].replace("&", "&amp;").replace("<", "&lt;"))
               .replace("__ROUND__", str(data["round"])))
     left = PLACEHOLDER_RE.findall(out)
     if left:
@@ -250,8 +254,8 @@ def render_blank_csv(data: dict, version: str) -> str:
 
 def render_redirect(rel: str) -> str:
     return ("<!doctype html>\n<html lang=\"en\"><head><meta charset=\"utf-8\">"
-            "<meta name=\"robots\" content=\"noindex\"><title>Atom audit</title>"
-            f"<meta http-equiv=\"refresh\" content=\"0; url={rel}\">"
+            "<meta name=\"robots\" content=\"noindex\"><title>Survey</title>"
+            f"<noscript><meta http-equiv=\"refresh\" content=\"0; url={rel}\"></noscript>"
             f"<script>location.replace({json.dumps(rel)} + location.search + location.hash);</script>"
             f"</head><body><p>Redirecting to <a href=\"{rel}\">{rel}</a>…</p></body></html>\n")
 

@@ -67,6 +67,24 @@ def test_merge_two_raters_counts_and_flags(tmp_path, fmt_a, fmt_b):
     assert any(r["note"] == 'a, "quoted" note' for r in back)
 
 
+def test_multiline_note_survives_csv_roundtrip(tmp_path):
+    recs = records("violinist", lambda *_: (4, 4))
+    recs[5]["note"] = "line one\nline two, with a comma and \"quotes\""
+    p = write(tmp_path, "v", recs, "csv")
+    merged, _ = ms.merge([p], ROWS)
+    got = [r for r in merged if r["atom"] == recs[5]["atom"] and r["is_anchor"] == recs[5]["is_anchor"]][0]
+    assert got["note"] == recs[5]["note"]
+
+
+def test_refuses_round_mismatch(tmp_path):
+    recs = records("violinist", lambda *_: (3, 3))
+    for r in recs:
+        r["round"] = 1
+    p = write(tmp_path, "v", recs, "csv")
+    with pytest.raises(ms.MergeError, match="round"):
+        ms.merge([p], ROWS)
+
+
 def test_refuses_version_mismatch(tmp_path):
     recs = records("violinist", lambda *_: (3, 3))
     for r in recs:

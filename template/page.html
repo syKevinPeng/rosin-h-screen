@@ -229,7 +229,10 @@ __ORDER_JS__
   function answered(o) { var a = state.answers[akey(o)]; return !!(a && a.h1 && a.h2); }
   function nAnswered() { return state.order.filter(answered).length; }
   function nQuestions() { var k = 0; state.order.forEach(function (o) { var a = state.answers[akey(o)] || {}; if (a.h1) k++; if (a.h2) k++; }); return k; }
-  function nCards() { return state ? state.order.length : DATA.anchors.length + DATA.rows.length; }
+  function nCards() {
+    if (state) return state.order.length;
+    return DATA.anchors.length + DATA.rows.filter(function (r) { return DATA.anchor_policy === "repeat" || DATA.anchors.indexOf(r.id) < 0; }).length;
+  }
   function firstOpen() { for (var i = 0; i < state.order.length; i++) if (!answered(state.order[i])) return i; return -1; }
 
   // ---------- header / footer ----------
@@ -295,7 +298,7 @@ __ORDER_JS__
       return g;
     }
     return '<figure class="fig"><svg viewBox="0 0 330 120" role="img" aria-label="' + esc(L.caption || "") + '">' +
-      panel(5, 1, L["1"] || "twisting", "seen along the arm") + panel(115, 2, L["2"] || "side to side", "seen from above") + panel(225, 3, L["3"] || "up and down", "seen from the side") +
+      panel(5, 1, L["1"] || "twisting", L.view1 || "") + panel(115, 2, L["2"] || "side to side", L.view2 || "") + panel(225, 3, L["3"] || "up and down", L.view3 || "") +
       "</svg><figcaption>" + esc(L.caption || "") + "</figcaption></figure>";
   }
   function figureHTML(r) {
@@ -310,7 +313,7 @@ __ORDER_JS__
   function questionHTML(q, label, text, gloss, val, suffix) {
     var name = q + (suffix || "");
     var s = '<div class="q"><div class="qlabel">' + t(label) + "</div><p>" + t(text) +
-      (gloss ? '<span class="gloss">' + t(gloss) + "</span>" : "") + '</p><div class="seg" role="radiogroup">';
+      (gloss ? '<span class="gloss">' + t(gloss) + "</span>" : "") + '</p><div class="seg" role="radiogroup" aria-label="' + t(text) + '">';
     DATA.scale.forEach(function (o) {
       var id = name + "-" + o.value;
       s += '<input type="radio" name="' + name + '" id="' + id + '" value="' + o.value + '"' + (val === o.value ? " checked" : "") +
@@ -366,7 +369,7 @@ __ORDER_JS__
       right = questionHTML("h1", UI.q1_label, fill(DATA.questions.h1, { x: r.short }), null, a.h1);
     } else {
       right = questionHTML("h2", UI.q2_label, fill(DATA.questions.h2, { x: r.short }), DATA.questions.h2_gloss, a.h2) +
-        '<div class="q"><textarea id="note" rows="3" placeholder="' + t(UI.note_placeholder) + '">' + esc(a.note || "") + "</textarea></div>";
+        '<div class="q"><textarea id="note" rows="3" aria-label="' + t(UI.note_placeholder) + '" placeholder="' + t(UI.note_placeholder) + '">' + esc(a.note || "") + "</textarea></div>";
     }
     var s = '<div class="view"><div class="grid"><div class="sticky">' + infoCard(r, o.is_anchor) + "</div>" +
       '<section class="card"><span class="k">' + t(UI.question_of, { i: step }) + "</span>" + right +
@@ -419,10 +422,26 @@ __ORDER_JS__
   function toJSON() {
     return JSON.stringify({ round: ROUND, form_version: FORM_VERSION, rater: state.rater, started_at: state.started_at, finished_at: state.finished_at, records: records() }, null, 2);
   }
-  function formURL() {
+  var FORM_URL_MAX = 7500;   // Google returns 400 above ~8 KB (measured 2026-09-03)
+  function compactRecords() {
+    // Same columns as the download, but the per-card timestamps are left out and
+    // the sitting's start/finish appear on the first row only: keeps the pre-filled
+    // Form link short. The downloaded file keeps everything.
+    return records().map(function (r, i) {
+      var c = {}; for (var k in r) c[k] = r[k];
+      c.shown_at = ""; c.answered_at = "";
+      if (i > 0) { c.started_at = ""; c.finished_at = ""; }
+      return c;
+    });
+  }
+  function formBase() {
     var c = DATA.collect;
-    if (!c || c.kind !== "google_form" || !c.viewform || !c.entry) return "";
-    return c.viewform + "?usp=pp_url&" + c.entry + "=" + encodeURIComponent(toCSV(records()));
+    return (c && c.kind === "google_form" && c.viewform && c.entry) ? c : null;
+  }
+  function formURL() {
+    var c = formBase(); if (!c) return "";
+    var u = c.viewform + "?usp=pp_url&" + c.entry + "=" + encodeURIComponent(toCSV(compactRecords()));
+    return u.length <= FORM_URL_MAX ? u : "";
   }
   function fileBase() { return "h-screen-round" + ROUND + "-" + state.rater + "-" + FORM_VERSION; }
   function download(name, text, mime) {
@@ -441,10 +460,11 @@ __ORDER_JS__
       '<svg viewBox="0 0 72 72" aria-hidden="true"><circle cx="36" cy="36" r="34" fill="var(--accent-soft)"/><path d="M22 37l9 9 19-20" fill="none" stroke="var(--accent)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
       "<h1>" + t(UI.done_title) + '</h1><p class="lead" style="margin:0 auto 1.2rem">' + t(UI.done_summary, { n: state.order.length, t: elapsedText() }) + "</p>" +
       (formURL() ? '<div class="row" style="justify-content:center"><a class="btn lg" id="send-form" href="' + esc(formURL()) + '" target="_blank" rel="noopener">' + t(UI.send_form) + ' ↗</a></div>' +
-        '<p class="muted" style="max-width:52ch;margin:.8rem auto 0">' + t(UI.send_form_help) + "</p>" : "") +
+        '<p class="muted" style="max-width:52ch;margin:.8rem auto 0">' + t(UI.send_form_help) + "</p>" :
+       (formBase() ? '<p class="muted" style="max-width:52ch;margin:0 auto .8rem">' + t(UI.send_form_long) + '</p><div class="row" style="justify-content:center"><button type="button" class="btn lg" id="copy-csv">' + t(UI.copy_answers) + '</button><a class="btn ghost" href="' + esc(formBase().viewform) + '" target="_blank" rel="noopener">' + t(UI.open_form) + " ↗</a></div>" : "")) +
       '<div class="row" style="justify-content:center;margin-top:1rem"><button type="button" class="btn ' + (formURL() ? "ghost" : "lg") + '" id="dl-csv">⬇ ' + t(UI.download_csv) + "</button>" +
       '<button type="button" class="btn ghost" id="dl-json">' + t(UI.download_json) + "</button>" +
-      '<button type="button" class="btn ghost" id="copy-csv">' + t(UI.copy_csv) + "</button></div>" +
+      (formURL() || !formBase() ? '<button type="button" class="btn ghost" id="copy-csv">' + t(UI.copy_csv) + "</button>" : "") + "</div>" +
       (formURL() ? '<p class="muted" style="max-width:52ch;margin:.6rem auto 0">' + t(UI.send_form_fallback) + "</p>" : "") + "</div>" +
       '<div class="callout">' + t(UI.send_hint) + "</div>" +
       "<details><summary>" + t(UI.preview) + '</summary><pre class="csv" id="csv-preview">' + esc(toCSV(records())) + "</pre></details>" +
@@ -516,7 +536,7 @@ __ORDER_JS__
     if (el.id === "next") { goNext(); return; }
     if (el.id === "back") { goBack(); return; }
     if (el.id === "to-review" || el.id === "review") { state.view = "review"; saveState(true); render(); return; }
-    if (el.id === "submit") { if (firstOpen() >= 0) return; state.view = "done"; if (!state.finished_at) state.finished_at = nowISO(); saveState(true); render(); return; }
+    if (el.id === "submit") { if (firstOpen() >= 0) return; state.view = "done"; state.finished_at = nowISO(); saveState(true); render(); return; }
     if (el.hasAttribute("data-goto")) { ev.preventDefault(); state.view = "card"; state.idx = +el.getAttribute("data-goto"); state.step = 1; saveState(true); render(); return; }
     if (el.id === "dl-csv") { download(fileBase() + ".csv", toCSV(records()), "text/csv;charset=utf-8"); return; }
     if (el.id === "dl-json") { download(fileBase() + ".json", toJSON(), "application/json;charset=utf-8"); return; }
@@ -561,7 +581,8 @@ __ORDER_JS__
   });
   document.addEventListener("keydown", function (ev) {
     if (!state || state.view !== "card" || MODE === "print") return;
-    if (ev.target && (ev.target.tagName === "TEXTAREA" || ev.target.tagName === "INPUT" && ev.target.type === "text")) return;
+    var tag = ev.target && ev.target.tagName;
+    if (tag === "TEXTAREA" || tag === "BUTTON" || tag === "A" || (tag === "INPUT" && ev.target.type === "text")) return;
     if (ev.key >= "1" && ev.key <= "4") {
       var q = state.step === 2 ? "h2" : "h1";
       var inp = document.getElementById(q + "-" + ev.key);

@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import io
 import json
 import sys
 from collections import defaultdict
@@ -40,7 +41,7 @@ def load_export(path: Path) -> list[dict]:
         obj = json.loads(text)
         recs = obj["records"] if isinstance(obj, dict) else obj
     else:
-        recs = list(csv.DictReader(text.splitlines()))
+        recs = list(csv.DictReader(io.StringIO(text, newline="")))
     out = []
     for r in recs:
         row = {c: r.get(c, "") for c in CSV_COLS}
@@ -61,6 +62,9 @@ def check_export(recs: list[dict], data: dict, version: str, src: str) -> list[s
     rater = recs[0]["rater"]
     if rater not in data["raters"]:
         errs.append(f"{src}: unknown rater {rater!r}")
+    rounds = {r["round"] for r in recs}
+    if rounds != {data["round"]}:
+        errs.append(f"{src}: round {sorted(rounds)} != rows.json round {data['round']}")
     versions = {r["form_version"] for r in recs}
     if versions != {version}:
         errs.append(f"{src}: form_version {sorted(versions)} != rows.json {version}")

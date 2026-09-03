@@ -1,6 +1,6 @@
 # Violin teaching survey · round 0
 
-**form version:** `68f2fa9df3ff` · **rater:** ☐ the violinist · ☐ the author (Siyuan)
+**form version:** `d262d26a4770` · **rater:** ☐ the violinist · ☐ the author (Siyuan)
 
 Paper version: cards in a fixed order, tick one box per question.
 
@@ -41,7 +41,7 @@ This records how fast the bow is moving, and whether it is a down-bow or an up-b
 <sub>right_wrist_aa_z_dev_deg</sub>  
 **Warm-up card: answer it like any other.**
 
-Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist bends up and down. The number is zero when the wrist is in the player's usual position and grows as the wrist moves more than usual in this way. We could not find a teacher's word for this exact movement; the closest is a "bent wrist".
+Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist bends up and down. The number is zero at the player's usual position and goes above or below zero as it moves one way or the other; the further from zero, the bigger the change. We could not find a teacher's word for this exact movement; the closest is a "bent wrist".
 
 **Question 1.** In lessons, do violin teachers pay attention to how the bow-hand wrist bends up and down?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -69,7 +69,7 @@ This records where the bow touches the string and compares it with the spot this
 ### 4. Which part of the bow is on the string
 <sub>hair_pos</sub>
 
-This records which part of the bow is on the string: near the hand end (the frog), the middle, or the tip. The number is 0 at the frog, 0.5 in the middle and 1 at the tip. Teachers talk about playing "at the frog" or "at the tip".
+This records which part of the bow is on the string: near the hand end (the frog), the middle, or the tip. The number is 0 at the frog, 0.5 in the middle and 1 at the tip. Teachers talk about "bow distribution" and "whole bows"; you might hear "at the frog" or "at the tip".
 
 **Question 1.** In lessons, do violin teachers pay attention to which part of the bow is on the string?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -83,7 +83,7 @@ This records which part of the bow is on the string: near the hand end (the frog
 ### 5. Is the bow on the string or lifted off?
 <sub>hair_string_gap_ratio</sub>
 
-This records whether the bow is touching the string or lifted off it. The number is zero when the bow is on the string and grows as the bow lifts higher. Teachers speak of playing "on the string" or "off the string".
+This records whether the bow is touching the string or lifted off it. The number is zero when the bow is on the string and grows as the bow lifts higher. You might hear this described as playing "on the string" or "off the string"; teachers name off-the-string strokes such as spiccato.
 
 **Question 1.** In lessons, do violin teachers pay attention to whether the bow is on the string or lifted off?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -97,7 +97,7 @@ This records whether the bow is touching the string or lifted off it. The number
 ### 6. Is the bow straight or crooked?
 <sub>skew_deg</sub>
 
-This records whether the bow is straight or crooked, in other words whether it crosses the strings at a right angle. The number is zero for a perfectly straight bow and grows as the bow gets more crooked. Teachers say "keep the bow straight" or "your bow is crooked".
+This records whether the bow is straight or crooked, in other words whether it crosses the strings at a right angle. The number is zero for a perfectly straight bow and grows as the bow gets more crooked. Teachers diagnose a "crooked bow"; you might hear "keep the bow straight".
 
 **Question 1.** In lessons, do violin teachers pay attention to how straight the bow is?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -153,7 +153,7 @@ This records how fast the bow is moving, without caring whether it is a down-bow
 ### 10. How quickly the bow speeds up or slows down
 <sub>bow_accel</sub>
 
-This records whether the bow is speeding up, slowing down, or keeping a steady speed during a stroke. The number is zero for a steady speed, and the bigger the number, the faster the speed is changing. Teachers talk about "speeding up" or "slowing down" the bow within a stroke.
+This records whether the bow is speeding up, slowing down, or keeping a steady speed during a stroke. The number is zero for a steady speed and goes above or below zero as the speed changes one way or the other; the further from zero, the quicker the change. You might hear this described as "speeding up" or "slowing down" the bow within a stroke.
 
 **Question 1.** In lessons, do violin teachers pay attention to how quickly the bow speeds up or slows down?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -167,7 +167,7 @@ This records whether the bow is speeding up, slowing down, or keeping a steady s
 ### 11. Down-bow or up-bow
 <sub>direction_sign</sub>
 
-This records whether the bow is moving as a down-bow or an up-bow. The number is +1 for a clear down-bow, −1 for a clear up-bow, and near zero while the bow is stopped or turning around. Teachers say "down-bow" and "up-bow". (A related card gives the speed together with the direction.)
+This records whether the bow is moving as a down-bow or an up-bow. The number is +1 for a clear down-bow, −1 for a clear up-bow, and near zero while the bow is stopped or turning around. You might hear simply "down-bow" and "up-bow".
 
 **Question 1.** In lessons, do violin teachers pay attention to whether the bow is going down or up?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -181,7 +181,7 @@ This records whether the bow is moving as a down-bow or an up-bow. The number is
 ### 12. How bent the bow-arm elbow is
 <sub>right_elbow_flexion_deg</sub>
 
-This records how much the elbow of the bow arm is bent. The number is zero for a straight arm, and the bigger the number, the more the elbow is bent. Teachers talk about the "elbow" being too high or too low, and about "whole-arm strokes".
+This records how much the elbow of the bow arm is bent. The number is zero for a straight arm, and the bigger the number, the more the elbow is bent. Teachers talk about "whole-arm strokes"; you might hear the elbow described as too high or too low.
 
 **Question 1.** In lessons, do violin teachers pay attention to how bent the bow-arm elbow is?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -195,7 +195,7 @@ This records how much the elbow of the bow arm is bent. The number is zero for a
 ### 13. Bow-hand wrist: twisting
 <sub>right_wrist_aa_x_dev_deg</sub>
 
-Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist twists. The number is zero when the wrist is in the player's usual position and grows as the wrist moves more than usual in this way. We could not find a teacher's word for this exact movement; the closest is a "bent wrist".
+Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist twists. The number is zero at the player's usual position and goes above or below zero as it moves one way or the other; the further from zero, the bigger the change. We could not find a teacher's word for this exact movement; the closest is a "bent wrist".
 
 **Question 1.** In lessons, do violin teachers pay attention to how the bow-hand wrist twists?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -209,7 +209,7 @@ Our program watches the wrist of the bow hand and records how it is turned, spli
 ### 14. Bow-hand wrist: tilting from side to side
 <sub>right_wrist_aa_y_dev_deg</sub>
 
-Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist tilts from side to side. The number is zero when the wrist is in the player's usual position and grows as the wrist moves more than usual in this way. We could not find a teacher's word for this exact movement; the closest is a "bent wrist".
+Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist tilts from side to side. The number is zero at the player's usual position and goes above or below zero as it moves one way or the other; the further from zero, the bigger the change. We could not find a teacher's word for this exact movement; the closest is a "bent wrist".
 
 **Question 1.** In lessons, do violin teachers pay attention to how the bow-hand wrist tilts from side to side?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -223,7 +223,7 @@ Our program watches the wrist of the bow hand and records how it is turned, spli
 ### 15. Bow-hand wrist: bending up and down
 <sub>right_wrist_aa_z_dev_deg</sub>
 
-Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist bends up and down. The number is zero when the wrist is in the player's usual position and grows as the wrist moves more than usual in this way. We could not find a teacher's word for this exact movement; the closest is a "bent wrist".
+Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist bends up and down. The number is zero at the player's usual position and goes above or below zero as it moves one way or the other; the further from zero, the bigger the change. We could not find a teacher's word for this exact movement; the closest is a "bent wrist".
 
 **Question 1.** In lessons, do violin teachers pay attention to how the bow-hand wrist bends up and down?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -234,12 +234,12 @@ Our program watches the wrist of the bow hand and records how it is turned, spli
 **Notes (optional): how would you say this to a student? Anything unclear?**  
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-### 16. Bow-arm shoulder position, compared with the player's usual
+### 16. How the bow arm is turned or lifted at the shoulder
 <sub>right_shoulder_rotation_dev_deg</sub>
 
-This records how far the bow-arm shoulder has moved away from the position this player normally holds it in, for example when the shoulder rises or hunches. The number is zero in the usual position, and the bigger the number, the further the shoulder has moved. Teachers warn about a "raised shoulder".
+This records how much the bow arm is turned or lifted at the shoulder joint, compared with the way this player usually holds it. The number is zero at the player's usual position and goes above or below zero as it moves one way or the other; the further from zero, the bigger the change. Teachers talk about the height of the bow arm; the nearest common warning is a "raised shoulder".
 
-**Question 1.** In lessons, do violin teachers pay attention to the bow-arm shoulder position?  
+**Question 1.** In lessons, do violin teachers pay attention to how the bow arm is turned or lifted at the shoulder?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Question 2.** If a practice app showed a student this number, could the student do something about it?  
@@ -248,12 +248,12 @@ This records how far the bow-arm shoulder has moved away from the position this 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-### 17. Head tilt
+### 17. Head tilt or turn
 <sub>neck_tilt_deg</sub>
 
-This records how far the head is tilted away from upright, in any direction. The number is zero when the head is upright, and the bigger the number, the more it is tilted. Teachers talk about "head position".
+This records how far the head is tilted or turned away from facing straight ahead and upright, in any direction. The number is zero when the head is upright and facing forward, and the bigger the number, the more it is tilted or turned. You might hear this described as "head position".
 
-**Question 1.** In lessons, do violin teachers pay attention to head tilt?  
+**Question 1.** In lessons, do violin teachers pay attention to head tilt or turn?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Question 2.** If a practice app showed a student this number, could the student do something about it?  
@@ -279,7 +279,7 @@ This records how much the upper body is bent forward or sideways instead of stan
 ### 19. How high the violin is held
 <sub>violin_hold_height_ratio</sub>
 
-This records how high the violin is held compared with the player's hips: lower when the scroll droops, higher when the violin is held up. The bigger the number, the higher the violin. Teachers warn about a "drooping scroll".
+This records how high the violin sits above the player's hips, measured at the bridge, the small wooden piece under the strings. The bigger the number, the higher the whole violin is held. Teachers talk about "holding the violin up".
 
 **Question 1.** In lessons, do violin teachers pay attention to how high the violin is held?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -321,7 +321,7 @@ This records how loud the playing is from moment to moment. The bigger the numbe
 ### 22. How strongly each note starts
 <sub>onset_strength</sub>
 
-This records how clearly and strongly each note starts. The number is high for a crisp, accented start and low in the middle of a long, held note. Teachers talk about the "attack" of a note.
+This records how clearly and strongly each note starts. The number is high for a crisp, accented start and low in the middle of a long, held note. Teachers talk about "articulation" and accented strokes; you might hear it called the "attack" of a note.
 
 **Question 1.** In lessons, do violin teachers pay attention to how strongly each note starts?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -335,7 +335,7 @@ This records how clearly and strongly each note starts. The number is high for a
 ### 23. The note being played
 <sub>f0_midi</sub>
 
-This records which note the violin is sounding at every moment, including the small wobbles of vibrato and the slides between notes. Higher numbers mean higher notes. Teachers talk about "the note you are playing".
+This records which note the violin is sounding at every moment, including the small wobbles of vibrato and the slides between notes. Higher numbers mean higher notes. Teachers talk about "intonation" and "constant adjustment" of the note being played.
 
 **Question 1.** In lessons, do violin teachers pay attention to the note being played?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
@@ -346,12 +346,12 @@ This records which note the violin is sounding at every moment, including the sm
 **Notes (optional): how would you say this to a student? Anything unclear?**  
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-### 24. How clean and clear the tone is
+### 24. Whether a clear note can be heard
 <sub>f0_salience</sub>
 
-This records how clean and clear the tone is. The number is high for a clear, focused sound and low when the sound is scratchy, noisy, or silent. Teachers talk about a "clean tone" or a "scratchy tone".
+This records how strongly a definite note can be heard in the sound at each moment. The number is high when a clear note is sounding and low when there is silence, noise, or no clear pitch, for example a scratchy moment. Teachers speak of a "scratchy tone"; one teacher's rule is that "it is impossible to scratch if the bow keeps moving".
 
-**Question 1.** In lessons, do violin teachers pay attention to how clean and clear the tone is?  
+**Question 1.** In lessons, do violin teachers pay attention to whether a clear note can be heard?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Question 2.** If a practice app showed a student this number, could the student do something about it?  
@@ -360,12 +360,12 @@ This records how clean and clear the tone is. The number is high for a clear, fo
 **Notes (optional): how would you say this to a student? Anything unclear?**  
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-### 25. Played on a different string than the music suggests
+### 25. Played on a string that could not produce the written note
 <sub>string_disagreement</sub>
 
-This records whether a note was played on a different string from the one the sheet music suggests. The number is zero when it is the same string and 1 when it is clearly a different string; it is left blank when the music does not suggest a string. Teachers say "wrong string" or "play it on the A string".
+This records whether a note seems to have been played on a string that could not produce the note written in the music, judging from the sound and the left hand. The number is zero when the string used could play the written note and 1 when it clearly could not; it is left blank when the music does not say which notes are possible. The nearest thing a teacher says is "wrong string".
 
-**Question 1.** In lessons, do violin teachers pay attention to playing a note on a different string than the music suggests?  
+**Question 1.** In lessons, do violin teachers pay attention to playing a note on a string that could not produce the written note?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Question 2.** If a practice app showed a student this number, could the student do something about it?  
