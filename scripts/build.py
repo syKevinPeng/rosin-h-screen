@@ -107,7 +107,7 @@ def validate(data: dict) -> list[str]:
         for k in ("group", "status"):
             if not (isinstance(r.get(k), str) and r[k]):
                 errs.append(f"{p}.{k}: non-empty string required")
-        for k in ("name", "definition", "unit", "range", "prose"):
+        for k in ("name", "definition", "unit", "range", "prose", "short"):
             _s(r.get(k), f"{p}.{k}", errs)
         ph = r.get("phrases")
         if not (isinstance(ph, list) and ph):
@@ -206,7 +206,7 @@ def render_form_md(data: dict, version: str) -> str:
          _bl(ui["print_title"]), "",
          _fill(data["intro"], n=n), "",
          f"## {_bl(ui['questions_heading'])}", "",
-         f"**{_bl(ui['q1_label'])}.** {_bl(q['h1'])}", "", f"**{_bl(ui['q2_label'])}.** {_bl(q['h2'])}  ", f"*{_bl(q['h2_gloss'])}*", "",
+         f"**{_bl(ui['q1_label'])}.** {_fill(q['h1'], x='this')}", "", f"**{_bl(ui['q2_label'])}.** {_fill(q['h2'], x='this')}  ", f"*{_bl(q['h2_gloss'])}*", "",
          f"## {_bl(ui['scale_heading'])}", ""]
     L += [f"- **{o['value']}** {o['label']}" for o in data["scale"]]
     L += ["", "---", ""]
@@ -217,9 +217,9 @@ def render_form_md(data: dict, version: str) -> str:
         L.append("")
         L.append(r["prose"])
         L.append("")
-        L.append(f"**{_bl(ui['q1_label'])}.** {_bl(q['h1'])}  \n{boxes}")
+        L.append(f"**{_bl(ui['q1_label'])}.** {_fill(q['h1'], x=r['short'])}  \n{boxes}")
         L.append("")
-        L.append(f"**{_bl(ui['q2_label'])}.** {_bl(q['h2'])}  \n{boxes}")
+        L.append(f"**{_bl(ui['q2_label'])}.** {_fill(q['h2'], x=r['short'])}  \n{boxes}")
         L.append("")
         L.append(f"**{_bl(ui['note_prompt'])}**  \n" + "\\_" * 40)
         L.append("")

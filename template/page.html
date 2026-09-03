@@ -289,8 +289,8 @@ __ORDER_JS__
   }
   function questionsBlock() {
     return '<span class="k">' + t(UI.questions_heading) + '</span><div class="twoq">' +
-      '<div class="qcard"><b>' + t(UI.q1_label) + "</b><p>" + t(DATA.questions.h1) + "</p></div>" +
-      '<div class="qcard"><b>' + t(UI.q2_label) + "</b><p>" + t(DATA.questions.h2) + '<span class="gloss">' + t(DATA.questions.h2_gloss) + "</span></p></div></div>" +
+      '<div class="qcard"><b>' + t(UI.q1_label) + "</b><p>" + t(DATA.questions.h1, { x: "this" }) + "</p></div>" +
+      '<div class="qcard"><b>' + t(UI.q2_label) + "</b><p>" + t(DATA.questions.h2, { x: "this" }) + '<span class="gloss">' + t(DATA.questions.h2_gloss) + "</span></p></div></div>" +
       '<span class="k">' + t(UI.scale_heading) + "</span>" + legendHTML() + '<p class="muted">' + t(UI.scale_note) + "</p>";
   }
 
@@ -325,8 +325,8 @@ __ORDER_JS__
     var n = state.order.length, last = i === n - 1, done = !!(a.h1 && a.h2);
     var s = '<div class="view"><div class="grid"><div class="sticky">' + infoCard(r, o.is_anchor) + "</div>" +
       '<section class="card">' +
-      questionHTML("h1", UI.q1_label, DATA.questions.h1, null, a.h1) +
-      questionHTML("h2", UI.q2_label, DATA.questions.h2, DATA.questions.h2_gloss, a.h2) +
+      questionHTML("h1", UI.q1_label, fill(DATA.questions.h1, { x: r.short }), null, a.h1) +
+      questionHTML("h2", UI.q2_label, fill(DATA.questions.h2, { x: r.short }), DATA.questions.h2_gloss, a.h2) +
       '<div class="q"><textarea id="note" rows="3" placeholder="' + t(UI.note_placeholder) + '">' + esc(a.note || "") + "</textarea></div>" +
       '<div class="nav"><button type="button" class="btn ghost" id="back"' + (i === 0 ? " disabled" : "") + ">← " + t(UI.back) + "</button>" +
       '<div class="hint" id="hint">' + (done ? "" : t(UI.next_hint)) + "</div>" +
@@ -415,8 +415,8 @@ __ORDER_JS__
       var r = ROWS[o.id];
       s += '<div class="card"><span class="k">' + t(UI.card_of, { i: i + 1, n: fixed.length }) + "</span>" +
         (o.is_anchor ? '<div class="ribbon">★ ' + t(UI.calibration) + "</div>" : "") + '<h2 class="atom">' + t(r.name) + '</h2><p class="def">' + t(r.prose) + "</p>" +
-        questionHTML("h1", UI.q1_label, DATA.questions.h1, null, null, "-p" + i) +
-        questionHTML("h2", UI.q2_label, DATA.questions.h2, DATA.questions.h2_gloss, null, "-p" + i) +
+        questionHTML("h1", UI.q1_label, fill(DATA.questions.h1, { x: r.short }), null, null, "-p" + i) +
+        questionHTML("h2", UI.q2_label, fill(DATA.questions.h2, { x: r.short }), DATA.questions.h2_gloss, null, "-p" + i) +
         '<div class="q"><textarea rows="2" placeholder="' + t(UI.note_placeholder) + '"></textarea></div></div>';
     });
     app.innerHTML = s;
