@@ -1,6 +1,6 @@
 # Violin teaching survey · round 0
 
-**form version:** `d7e500d220d3` · **rater:** ☐ the violinist · ☐ the author (Siyuan)
+**form version:** `f5e7848cbe49` · **rater:** ☐ the violinist · ☐ the author (Siyuan)
 
 Paper version: cards in a fixed order, tick one box per question.
 
@@ -37,16 +37,16 @@ This records how fast the bow is moving, and whether it is a down-bow or an up-b
 **Notes (optional): how would you say this to a student? Anything unclear?**  
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-### 2. Bow-hand wrist turn, direction 3 of 3
+### 2. Bow-hand wrist: bending up and down
 <sub>right_wrist_aa_z_dev_deg</sub>  
 **Warm-up card: answer it like any other.**
 
-Our system watches the wrist of the bow hand and records how it is turned. It splits that turn into three directions, a bit like bending the wrist up and down, tilting it from side to side, and twisting it, though we cannot say exactly which direction is which. This card is about direction 3 of the three. The number is zero when the wrist is in the player's usual position, and it goes up or down as the wrist turns away from that. Teachers do not have a word for this; the closest is a "bent wrist".
+Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist bends up and down. The number is zero when the wrist is in the player's usual position and goes up or down as the wrist moves away from that. Teachers do not have a word for this exact movement; the closest is a "bent wrist". The three labels are our best understanding of the program's three directions.
 
-**Question 1.** Do violin teachers pay attention to how the bow-hand wrist is turned in lessons?  
+**Question 1.** Do violin teachers pay attention to how the bow-hand wrist bends up and down in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app gave a student a number for how the bow-hand wrist is turned, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for how the bow-hand wrist bends up and down, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -192,43 +192,43 @@ This records how much the elbow of the bow arm is bent. The number is zero for a
 **Notes (optional): how would you say this to a student? Anything unclear?**  
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-### 13. Bow-hand wrist turn, direction 1 of 3
+### 13. Bow-hand wrist: twisting
 <sub>right_wrist_aa_x_dev_deg</sub>
 
-Our system watches the wrist of the bow hand and records how it is turned. It splits that turn into three directions, a bit like bending the wrist up and down, tilting it from side to side, and twisting it, though we cannot say exactly which direction is which. This card is about direction 1 of the three. The number is zero when the wrist is in the player's usual position, and it goes up or down as the wrist turns away from that. Teachers do not have a word for this; the closest is a "bent wrist".
+Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist twists. The number is zero when the wrist is in the player's usual position and goes up or down as the wrist moves away from that. Teachers do not have a word for this exact movement; the closest is a "bent wrist". The three labels are our best understanding of the program's three directions.
 
-**Question 1.** Do violin teachers pay attention to how the bow-hand wrist is turned in lessons?  
+**Question 1.** Do violin teachers pay attention to how the bow-hand wrist twists in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app gave a student a number for how the bow-hand wrist is turned, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for how the bow-hand wrist twists, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-### 14. Bow-hand wrist turn, direction 2 of 3
+### 14. Bow-hand wrist: tilting from side to side
 <sub>right_wrist_aa_y_dev_deg</sub>
 
-Our system watches the wrist of the bow hand and records how it is turned. It splits that turn into three directions, a bit like bending the wrist up and down, tilting it from side to side, and twisting it, though we cannot say exactly which direction is which. This card is about direction 2 of the three. The number is zero when the wrist is in the player's usual position, and it goes up or down as the wrist turns away from that. Teachers do not have a word for this; the closest is a "bent wrist".
+Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist tilts from side to side. The number is zero when the wrist is in the player's usual position and goes up or down as the wrist moves away from that. Teachers do not have a word for this exact movement; the closest is a "bent wrist". The three labels are our best understanding of the program's three directions.
 
-**Question 1.** Do violin teachers pay attention to how the bow-hand wrist is turned in lessons?  
+**Question 1.** Do violin teachers pay attention to how the bow-hand wrist tilts from side to side in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app gave a student a number for how the bow-hand wrist is turned, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for how the bow-hand wrist tilts from side to side, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
 \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
 
-### 15. Bow-hand wrist turn, direction 3 of 3
+### 15. Bow-hand wrist: bending up and down
 <sub>right_wrist_aa_z_dev_deg</sub>
 
-Our system watches the wrist of the bow hand and records how it is turned. It splits that turn into three directions, a bit like bending the wrist up and down, tilting it from side to side, and twisting it, though we cannot say exactly which direction is which. This card is about direction 3 of the three. The number is zero when the wrist is in the player's usual position, and it goes up or down as the wrist turns away from that. Teachers do not have a word for this; the closest is a "bent wrist".
+Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist bends up and down. The number is zero when the wrist is in the player's usual position and goes up or down as the wrist moves away from that. Teachers do not have a word for this exact movement; the closest is a "bent wrist". The three labels are our best understanding of the program's three directions.
 
-**Question 1.** Do violin teachers pay attention to how the bow-hand wrist is turned in lessons?  
+**Question 1.** Do violin teachers pay attention to how the bow-hand wrist bends up and down in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app gave a student a number for how the bow-hand wrist is turned, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for how the bow-hand wrist bends up and down, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  

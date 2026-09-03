@@ -109,6 +109,9 @@ def validate(data: dict) -> list[str]:
                 errs.append(f"{p}.{k}: non-empty string required")
         for k in ("name", "definition", "unit", "range", "prose", "short"):
             _s(r.get(k), f"{p}.{k}", errs)
+        fig = r.get("figure")
+        if fig is not None and not (isinstance(fig, dict) and fig.get("kind") == "wrist" and fig.get("dir") in (1, 2, 3)):
+            errs.append(f"{p}.figure: only {{kind: wrist, dir: 1|2|3}} is supported")
         ph = r.get("phrases")
         if not (isinstance(ph, list) and ph):
             errs.append(f"{p}.phrases: non-empty list required")

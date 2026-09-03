@@ -116,7 +116,13 @@
     "next_card": "Next card",
     "send_form": "Send my answers",
     "send_form_help": "This opens a Google Form with your answers already filled in. Sign in with Google and press Submit. You can come back and edit your response later.",
-    "send_form_fallback": "If the Google Form does not open or shows an error, download the file below and send it to Siyuan instead."
+    "send_form_fallback": "If the Google Form does not open or shows an error, download the file below and send it to Siyuan instead.",
+    "figure_wrist": {
+      "1": "twisting",
+      "2": "side to side",
+      "3": "up and down",
+      "caption": "The three wrist movements our program keeps apart; this card's movement is highlighted."
+    }
   },
   "anchors": [
     "bow_speed",
@@ -444,7 +450,7 @@
       "id": "right_wrist_aa_x_dev_deg",
       "group": "body",
       "status": "incumbent",
-      "name": "Bow-hand wrist turn, direction 1 of 3",
+      "name": "Bow-hand wrist: twisting",
       "phrases": [
         {
           "text": "bent wrist",
@@ -464,14 +470,18 @@
       "definition": "One of three ways the bow-hand wrist can turn, as a computer body model measures it, compared with this player's usual wrist position. The three directions belong to the model; they are not the words a teacher would use, such as \"bent\" or \"flexed\".",
       "unit": "degrees (an estimate from a body model, not a medical measurement)",
       "range": "0 = the player's usual wrist position; above or below 0 = turned one way or the other",
-      "prose": "Our system watches the wrist of the bow hand and records how it is turned. It splits that turn into three directions, a bit like bending the wrist up and down, tilting it from side to side, and twisting it, though we cannot say exactly which direction is which. This card is about direction 1 of the three. The number is zero when the wrist is in the player's usual position, and it goes up or down as the wrist turns away from that. Teachers do not have a word for this; the closest is a \"bent wrist\".",
-      "short": "how the bow-hand wrist is turned"
+      "prose": "Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist twists. The number is zero when the wrist is in the player's usual position and goes up or down as the wrist moves away from that. Teachers do not have a word for this exact movement; the closest is a \"bent wrist\". The three labels are our best understanding of the program's three directions.",
+      "short": "how the bow-hand wrist twists",
+      "figure": {
+        "kind": "wrist",
+        "dir": 1
+      }
     },
     {
       "id": "right_wrist_aa_y_dev_deg",
       "group": "body",
       "status": "incumbent",
-      "name": "Bow-hand wrist turn, direction 2 of 3",
+      "name": "Bow-hand wrist: tilting from side to side",
       "phrases": [
         {
           "text": "bent wrist",
@@ -491,14 +501,18 @@
       "definition": "One of three ways the bow-hand wrist can turn, as a computer body model measures it, compared with this player's usual wrist position. The three directions belong to the model; they are not the words a teacher would use, such as \"bent\" or \"flexed\".",
       "unit": "degrees (an estimate from a body model, not a medical measurement)",
       "range": "0 = the player's usual wrist position; above or below 0 = turned one way or the other",
-      "prose": "Our system watches the wrist of the bow hand and records how it is turned. It splits that turn into three directions, a bit like bending the wrist up and down, tilting it from side to side, and twisting it, though we cannot say exactly which direction is which. This card is about direction 2 of the three. The number is zero when the wrist is in the player's usual position, and it goes up or down as the wrist turns away from that. Teachers do not have a word for this; the closest is a \"bent wrist\".",
-      "short": "how the bow-hand wrist is turned"
+      "prose": "Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist tilts from side to side. The number is zero when the wrist is in the player's usual position and goes up or down as the wrist moves away from that. Teachers do not have a word for this exact movement; the closest is a \"bent wrist\". The three labels are our best understanding of the program's three directions.",
+      "short": "how the bow-hand wrist tilts from side to side",
+      "figure": {
+        "kind": "wrist",
+        "dir": 2
+      }
     },
     {
       "id": "right_wrist_aa_z_dev_deg",
       "group": "body",
       "status": "incumbent",
-      "name": "Bow-hand wrist turn, direction 3 of 3",
+      "name": "Bow-hand wrist: bending up and down",
       "phrases": [
         {
           "text": "bent wrist",
@@ -518,8 +532,12 @@
       "definition": "One of three ways the bow-hand wrist can turn, as a computer body model measures it, compared with this player's usual wrist position. The three directions belong to the model; they are not the words a teacher would use, such as \"bent\" or \"flexed\".",
       "unit": "degrees (an estimate from a body model, not a medical measurement)",
       "range": "0 = the player's usual wrist position; above or below 0 = turned one way or the other",
-      "prose": "Our system watches the wrist of the bow hand and records how it is turned. It splits that turn into three directions, a bit like bending the wrist up and down, tilting it from side to side, and twisting it, though we cannot say exactly which direction is which. This card is about direction 3 of the three. The number is zero when the wrist is in the player's usual position, and it goes up or down as the wrist turns away from that. Teachers do not have a word for this; the closest is a \"bent wrist\".",
-      "short": "how the bow-hand wrist is turned"
+      "prose": "Our program watches the wrist of the bow hand and records how it is turned, split into three movements: twisting, tilting from side to side, and bending up and down (see the picture). This card is about how the wrist bends up and down. The number is zero when the wrist is in the player's usual position and goes up or down as the wrist moves away from that. Teachers do not have a word for this exact movement; the closest is a \"bent wrist\". The three labels are our best understanding of the program's three directions.",
+      "short": "how the bow-hand wrist bends up and down",
+      "figure": {
+        "kind": "wrist",
+        "dir": 3
+      }
     },
     {
       "id": "right_shoulder_rotation_dev_deg",
