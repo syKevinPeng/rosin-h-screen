@@ -52,7 +52,7 @@
     },
     "scale_heading": "How to answer",
     "questions_heading": "The two questions",
-    "unanswered": "Please answer both questions first.",
+    "unanswered": "Choose an answer to continue.",
     "finish_text": "All cards answered. Download your answers and send the file to Siyuan.",
     "download_csv": "Download my answers",
     "download_json": "JSON version",
@@ -77,7 +77,7 @@
     "q1_label": "Question 1",
     "q2_label": "Question 2",
     "scale_note": "There is no middle option on purpose: please lean one way.",
-    "next_hint": "Answer both questions to continue.",
+    "next_hint": "Choose an answer to continue.",
     "keys_hint": "Tip: keys 1 to 4 answer the next open question; Enter moves on.",
     "note_placeholder": "Optional: anything to add? How would you say this to a student?",
     "thanks": "Thank you",
@@ -92,7 +92,7 @@
     "meta_saved": "saves as you go",
     "how_title": "How it works",
     "how_1": "Read a few sentences about one thing our system measures.",
-    "how_2": "Answer two quick questions on a 1 to 4 scale. Add a note if you like.",
+    "how_2": "Answer one question at a time on a 1 to 4 scale. Add a note if you like.",
     "how_3": "Download your answers as one file and send it to Siyuan.",
     "privacy": "Nothing is sent anywhere. Your answers stay in this browser until you download the file.",
     "rater_prompt": "First, who is answering?",
@@ -110,7 +110,10 @@
     "done_title": "All done. Thank you!",
     "done_summary": "{n} cards answered in {t}.",
     "footer_note": "Round {r} · form {v}",
-    "step": "Step"
+    "step": "Step",
+    "question_of": "Question {i} of 2",
+    "next_question": "Next question",
+    "next_card": "Next card"
   },
   "anchors": [
     "bow_speed",

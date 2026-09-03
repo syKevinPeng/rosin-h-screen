@@ -218,13 +218,14 @@ __ORDER_JS__
   function newState(r) {
     return {
       round: ROUND, form_version: FORM_VERSION, rater: r,
-      started_at: null, finished_at: null, idx: 0, view: "intro",
+      started_at: null, finished_at: null, idx: 0, step: 1, view: "intro",
       order: ORDER.buildOrder(DATA.rows.map(function (x) { return x.id; }), DATA.anchors, DATA.anchor_policy, FORM_VERSION, r),
       answers: {}
     };
   }
   function answered(o) { var a = state.answers[akey(o)]; return !!(a && a.h1 && a.h2); }
   function nAnswered() { return state.order.filter(answered).length; }
+  function nQuestions() { var k = 0; state.order.forEach(function (o) { var a = state.answers[akey(o)] || {}; if (a.h1) k++; if (a.h2) k++; }); return k; }
   function nCards() { return state ? state.order.length : DATA.anchors.length + DATA.rows.length; }
   function firstOpen() { for (var i = 0; i < state.order.length; i++) if (!answered(state.order[i])) return i; return -1; }
 
@@ -232,10 +233,10 @@ __ORDER_JS__
   function renderChrome() {
     document.getElementById("brand").textContent = DATA.title;
     var c = document.getElementById("count"), p = document.getElementById("pct");
-    if (state && state.view === "card") { c.textContent = fill(UI.card_of, { i: state.idx + 1, n: state.order.length }); }
+    if (state && state.view === "card") { c.textContent = fill(UI.card_of, { i: state.idx + 1, n: state.order.length }) + " · " + fill(UI.question_of, { i: state.step === 2 ? 2 : 1 }); }
     else if (state && state.view !== "intro") { c.textContent = nAnswered() + " / " + state.order.length; }
     else { c.textContent = fill(UI.meta_time); }
-    var pct = state ? Math.round(100 * nAnswered() / state.order.length) : 0;
+    var pct = state ? Math.round(100 * nQuestions() / (2 * state.order.length)) : 0;
     p.textContent = pct + "%"; p.style.display = state ? "" : "none";
     document.getElementById("bar").style.width = pct + "%";
     document.getElementById("foot-left").innerHTML = state ? t(UI.rating_as) + ": " + t(UI.rater_names[state.rater]) : t(UI.privacy);
@@ -319,18 +320,26 @@ __ORDER_JS__
       '<section class="card">' + questionsBlock() + "</section></div>";
     app.innerHTML = s;
   }
+  function stepOf(a) { return state.step === 2 && a.h1 ? 2 : 1; }
   function renderCard(i) {
     var o = state.order[i], r = ROWS[o.id], a = state.answers[akey(o)] || {};
     if (!a.shown_at) { a.shown_at = nowISO(); state.answers[akey(o)] = a; saveState(true); }
-    var n = state.order.length, last = i === n - 1, done = !!(a.h1 && a.h2);
+    var n = state.order.length, last = i === n - 1, step = stepOf(a);
+    state.step = step;
+    var done = step === 1 ? !!a.h1 : !!a.h2;
+    var nextLabel = step === 1 ? UI.next_question : (last || state.reviewed ? UI.review_title : UI.next_card);
+    var right;
+    if (step === 1) {
+      right = questionHTML("h1", UI.q1_label, fill(DATA.questions.h1, { x: r.short }), null, a.h1);
+    } else {
+      right = questionHTML("h2", UI.q2_label, fill(DATA.questions.h2, { x: r.short }), DATA.questions.h2_gloss, a.h2) +
+        '<div class="q"><textarea id="note" rows="3" placeholder="' + t(UI.note_placeholder) + '">' + esc(a.note || "") + "</textarea></div>";
+    }
     var s = '<div class="view"><div class="grid"><div class="sticky">' + infoCard(r, o.is_anchor) + "</div>" +
-      '<section class="card">' +
-      questionHTML("h1", UI.q1_label, fill(DATA.questions.h1, { x: r.short }), null, a.h1) +
-      questionHTML("h2", UI.q2_label, fill(DATA.questions.h2, { x: r.short }), DATA.questions.h2_gloss, a.h2) +
-      '<div class="q"><textarea id="note" rows="3" placeholder="' + t(UI.note_placeholder) + '">' + esc(a.note || "") + "</textarea></div>" +
-      '<div class="nav"><button type="button" class="btn ghost" id="back"' + (i === 0 ? " disabled" : "") + ">← " + t(UI.back) + "</button>" +
-      '<div class="hint" id="hint">' + (done ? "" : t(UI.next_hint)) + "</div>" +
-      '<button type="button" class="btn" id="next"' + (done ? "" : " disabled") + ">" + t(last ? UI.review_title : UI.next) + " →</button></div>" +
+      '<section class="card"><span class="k">' + t(UI.question_of, { i: step }) + "</span>" + right +
+      '<div class="nav"><button type="button" class="btn ghost" id="back"' + (i === 0 && step === 1 ? " disabled" : "") + ">← " + t(UI.back) + "</button>" +
+      '<div class="hint" id="hint">' + (done ? "" : t(UI.unanswered)) + "</div>" +
+      '<button type="button" class="btn" id="next"' + (done ? "" : " disabled") + ">" + t(nextLabel) + " →</button></div>" +
       '<p class="kbd noprint"><kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd> ' + t(UI.keys_hint).replace(/^Tip: keys 1 to 4 /i, "") + "</p>" +
       (state.reviewed ? '<div class="row" style="margin-top:.6rem"><button type="button" class="btn link" id="to-review">' + t(UI.back_to_review) + "</button></div>" : "") +
       "</section></div></div>";
@@ -432,10 +441,21 @@ __ORDER_JS__
 
   // ---------- events ----------
   function goNext() {
-    var o = state.order[state.idx];
-    if (!answered(o)) { var h = document.getElementById("hint"); if (h) { h.className = "hint warn"; h.textContent = fill(UI.unanswered); } return; }
+    var o = state.order[state.idx], a = state.answers[akey(o)] || {};
+    var h = document.getElementById("hint");
+    if (state.step !== 2) {
+      if (!a.h1) { if (h) { h.className = "hint warn"; h.textContent = fill(UI.unanswered); } return; }
+      state.step = 2; saveState(true); render(); return;
+    }
+    if (!a.h2) { if (h) { h.className = "hint warn"; h.textContent = fill(UI.unanswered); } return; }
     if (state.idx === state.order.length - 1 || state.reviewed) state.view = "review";
-    else state.idx += 1;
+    else { state.idx += 1; state.step = 1; }
+    saveState(true); render();
+  }
+  function goBack() {
+    if (state.step === 2) { state.step = 1; }
+    else if (state.idx > 0) { state.idx -= 1; state.step = 2; }
+    else return;
     saveState(true); render();
   }
   app.addEventListener("click", function (ev) {
@@ -446,17 +466,17 @@ __ORDER_JS__
       state = loadState(r) || newState(r); saveState(true); render(); return;
     }
     if (!state) return;
-    if (el.id === "start") { if (!state.started_at) state.started_at = nowISO(); state.view = "card"; if (nAnswered() > 0 && firstOpen() >= 0) state.idx = Math.min(state.idx, state.order.length - 1); saveState(true); render(); return; }
+    if (el.id === "start") { if (!state.started_at) state.started_at = nowISO(); state.view = "card"; state.idx = Math.min(state.idx, state.order.length - 1); saveState(true); render(); return; }
     if (el.id === "restart") {
       if (el.getAttribute("data-armed") !== "1") { el.setAttribute("data-armed", "1"); el.textContent = fill(UI.start_over_confirm); return; }
       var rr = state.rater; try { localStorage.removeItem(skey(rr)); } catch (e) {}
       state = newState(rr); saveState(true); render(); return;
     }
     if (el.id === "next") { goNext(); return; }
-    if (el.id === "back") { if (state.idx > 0) { state.idx -= 1; saveState(true); render(); } return; }
+    if (el.id === "back") { goBack(); return; }
     if (el.id === "to-review" || el.id === "review") { state.view = "review"; saveState(true); render(); return; }
     if (el.id === "submit") { if (firstOpen() >= 0) return; state.view = "done"; if (!state.finished_at) state.finished_at = nowISO(); saveState(true); render(); return; }
-    if (el.hasAttribute("data-goto")) { ev.preventDefault(); state.view = "card"; state.idx = +el.getAttribute("data-goto"); saveState(true); render(); return; }
+    if (el.hasAttribute("data-goto")) { ev.preventDefault(); state.view = "card"; state.idx = +el.getAttribute("data-goto"); state.step = 1; saveState(true); render(); return; }
     if (el.id === "dl-csv") { download(fileBase() + ".csv", toCSV(records()), "text/csv;charset=utf-8"); return; }
     if (el.id === "dl-json") { download(fileBase() + ".json", toJSON(), "application/json;charset=utf-8"); return; }
     if (el.id === "copy-csv") {
@@ -473,13 +493,20 @@ __ORDER_JS__
     var ta = document.createElement("textarea"); ta.value = txt; document.body.appendChild(ta); ta.select();
     try { document.execCommand("copy"); } catch (e) {} ta.remove();
   }
+  var advanceTimer = null;
   function setAnswer(q, v) {
     var o = state.order[state.idx], a = state.answers[akey(o)] || {};
     a[q] = v;
     if (a.h1 && a.h2) a.answered_at = nowISO();
     state.answers[akey(o)] = a; saveState(); renderChrome();
     var nx = document.getElementById("next"), h = document.getElementById("hint");
-    if (a.h1 && a.h2) { if (nx) nx.disabled = false; if (h) { h.className = "hint"; h.textContent = ""; } }
+    if (nx) nx.disabled = false;
+    if (h) { h.className = "hint"; h.textContent = ""; }
+    if (q === "h1" && state.step !== 2) {
+      var idx = state.idx;
+      clearTimeout(advanceTimer);
+      advanceTimer = setTimeout(function () { if (state && state.view === "card" && state.idx === idx && state.step !== 2) { state.step = 2; saveState(true); render(); } }, 380);
+    }
   }
   app.addEventListener("change", function (ev) {
     if (!state || state.view !== "card") return;
@@ -495,8 +522,7 @@ __ORDER_JS__
     if (!state || state.view !== "card" || MODE === "print") return;
     if (ev.target && (ev.target.tagName === "TEXTAREA" || ev.target.tagName === "INPUT" && ev.target.type === "text")) return;
     if (ev.key >= "1" && ev.key <= "4") {
-      var o = state.order[state.idx], a = state.answers[akey(o)] || {};
-      var q = a.h1 ? "h2" : "h1";
+      var q = state.step === 2 ? "h2" : "h1";
       var inp = document.getElementById(q + "-" + ev.key);
       if (inp) { inp.checked = true; setAnswer(q, +ev.key); ev.preventDefault(); }
     } else if (ev.key === "Enter") { goNext(); ev.preventDefault(); }
