@@ -6,83 +6,97 @@
 <meta name="robots" content="noindex">
 <title>Atom audit · round __ROUND__</title>
 <style>
-:root{--bg:#f7f6f2;--card:#ffffff;--ink:#1d1d1b;--muted:#6b6a66;--line:#e2e0d9;--accent:#3b5bdb;--accent-ink:#ffffff;--warn:#c92a2a;--tag:#eef0f5}
-@media (prefers-color-scheme:dark){:root{--bg:#161615;--card:#1f1f1d;--ink:#ecebe6;--muted:#a3a29b;--line:#34332f;--accent:#8fa3ff;--accent-ink:#0f1330;--warn:#ff8787;--tag:#2a2b31}}
+:root{--bg:#f6f4ef;--card:#ffffff;--ink:#1f1d1a;--muted:#6f6a62;--line:#e4dfd5;--accent:#3a5fcd;--accent-ink:#ffffff;--accent-soft:#e9eefb;--warn:#b3261e;--chip:#efece5;--ok:#1d7a4a}
+@media (prefers-color-scheme:dark){:root{--bg:#151412;--card:#1e1c19;--ink:#ecebe6;--muted:#a49f95;--line:#33302b;--accent:#8fa5ff;--accent-ink:#0e1533;--accent-soft:#232a45;--warn:#ff8a80;--chip:#2a2723;--ok:#6fd39a}}
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Noto Sans CJK SC","PingFang SC","Microsoft YaHei",sans-serif}
-header{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);padding:.55rem 1rem .5rem;z-index:2}
-.hrow{max-width:760px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.3rem 1rem;align-items:center;justify-content:space-between;font-size:.82rem;color:var(--muted)}
-.hrow code{font-size:.78rem}
-.lang button{background:none;border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:.1rem .6rem;cursor:pointer;font:inherit;font-size:.78rem}
-.lang button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.progress{height:4px;background:var(--line);border-radius:2px;margin:.45rem auto 0;max-width:760px}
-.progress i{display:block;height:100%;background:var(--accent);border-radius:2px;width:0;transition:width .2s}
-main{max-width:760px;margin:0 auto;padding:1.2rem 1rem 4rem}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.2rem 1.3rem;margin-bottom:1rem}
-h1{font-size:1.5rem;margin:.2rem 0 .6rem;line-height:1.25}
-h2{font-size:1.2rem;margin:0 0 .25rem;line-height:1.3}
-h3{font-size:1rem;margin:1rem 0 .3rem}
-.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.78rem;color:var(--muted)}
-.badge{display:inline-block;font-size:.7rem;padding:.05rem .5rem;border-radius:999px;background:var(--tag);color:var(--muted);margin-left:.4rem;vertical-align:middle;font-weight:400}
-.banner{background:var(--tag);border-left:4px solid var(--accent);padding:.5rem .8rem;border-radius:6px;margin:0 0 .8rem;font-size:.9rem}
-dl{margin:.8rem 0 0}
-dt{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-top:.75rem}
-dd{margin:.15rem 0 0}
-ul.phr{margin:.15rem 0 0;padding-left:1.1rem}
-ul.phr li{margin:.2rem 0}
-.src{font-size:.78rem;color:var(--muted)}
-.q{margin-top:1.1rem;padding-top:.9rem;border-top:1px dashed var(--line)}
-.q p{margin:0 0 .55rem;font-weight:600}
-.gloss{font-weight:400;color:var(--muted);font-size:.88rem}
-.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:.4rem}
-.seg label{border:1px solid var(--line);border-radius:8px;padding:.45rem .25rem;text-align:center;cursor:pointer;font-size:.82rem;line-height:1.25;user-select:none}
-.seg label b{display:block;font-size:1.1rem}
-.seg input{position:absolute;opacity:0;pointer-events:none;width:0;height:0}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+header{position:sticky;top:0;z-index:2;background:var(--bg);border-bottom:1px solid var(--line)}
+.hwrap{max-width:720px;margin:0 auto;padding:.7rem 1rem .6rem}
+.hrow{display:flex;align-items:baseline;justify-content:space-between;gap:1rem}
+.brand{font-weight:700;letter-spacing:.01em}
+.count{color:var(--muted);font-size:.95rem;font-variant-numeric:tabular-nums}
+.progress{height:6px;background:var(--line);border-radius:3px;margin-top:.55rem;overflow:hidden}
+.progress i{display:block;height:100%;width:0;background:var(--accent);border-radius:3px;transition:width .25s}
+main{max-width:720px;margin:0 auto;padding:1.4rem 1rem 5rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.5rem 1.6rem;margin-bottom:1rem;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+h1{font-size:1.9rem;line-height:1.2;margin:0 0 .8rem}
+h2.atom{font-size:1.55rem;line-height:1.25;margin:.2rem 0 .5rem}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 1rem}
+.chip{display:inline-block;font-size:.8rem;padding:.15rem .6rem;border-radius:999px;background:var(--chip);color:var(--muted)}
+.chip.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.chip.incoming{background:var(--accent-soft);color:var(--accent)}
+.ribbon{display:flex;align-items:center;gap:.5rem;background:var(--accent-soft);color:var(--accent);border-radius:10px;padding:.55rem .85rem;margin:0 0 1rem;font-weight:600}
+.lead{font-size:1.1rem;margin:0 0 1rem}
+.def{font-size:1.12rem;margin:0 0 1rem}
+.k{display:block;font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:.15rem}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:.9rem 1.2rem;margin:0 0 1.1rem}
+.facts>div{background:var(--bg);border-radius:10px;padding:.6rem .8rem}
+.phr{list-style:none;margin:0;padding:0}
+.phr li{padding:.45rem 0;border-top:1px solid var(--line)}
+.phr li:first-child{border-top:0}
+.phr q{quotes:"“" "”";font-weight:600}
+.phr small{display:block;color:var(--muted);font-size:.84rem;line-height:1.4}
+.q{padding:1.1rem 0 .4rem;border-top:1px solid var(--line)}
+.q:first-child{border-top:0;padding-top:.2rem}
+.qlabel{font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:.25rem}
+.q p{margin:0 0 .7rem;font-weight:600;font-size:1.08rem}
+.gloss{display:block;font-weight:400;color:var(--muted);font-size:.92rem;margin-top:.25rem}
+.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem}
+@media (max-width:560px){.seg{grid-template-columns:1fr 1fr}.facts{grid-template-columns:1fr}.card{padding:1.2rem 1.1rem}}
+.seg input{position:absolute;opacity:0;width:0;height:0;pointer-events:none}
+.seg label{display:flex;flex-direction:column;align-items:center;gap:.15rem;border:1.5px solid var(--line);background:var(--card);border-radius:12px;padding:.7rem .4rem;text-align:center;cursor:pointer;font-size:.9rem;line-height:1.25;user-select:none;transition:border-color .15s,background .15s}
+.seg label b{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:50%;background:var(--chip);font-size:1rem}
+.seg label:hover{border-color:var(--accent)}
 .seg input:checked+label{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-.seg input:checked+label .zh{color:inherit}
-.seg input:focus-visible+label{outline:2px solid var(--accent);outline-offset:2px}
-textarea{width:100%;min-height:4.5rem;border:1px solid var(--line);border-radius:8px;padding:.5rem;font:inherit;background:var(--bg);color:var(--ink)}
-.nav{display:flex;justify-content:space-between;gap:.6rem;margin-top:1.1rem}
-button.btn{background:var(--accent);color:var(--accent-ink);border:0;border-radius:8px;padding:.6rem 1.1rem;font:inherit;font-weight:600;cursor:pointer}
-button.btn[disabled]{opacity:.45;cursor:not-allowed}
-button.btn .zh{color:inherit;opacity:.85}
-button.ghost{background:none;color:var(--ink);border:1px solid var(--line);font-weight:500}
-.row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.8rem}
-.warn{color:var(--warn);font-size:.85rem;margin-top:.5rem;min-height:1.2em}
-.muted{color:var(--muted);font-size:.9rem}
-.zh{display:block;color:var(--muted)}
-.pair.inline .zh{display:inline;margin-left:.4em}
-body.lang-en .zh{display:none}
-body.lang-zh .en{display:none}
-body.lang-zh .zh{color:inherit}
+.seg input:checked+label b{background:rgba(255,255,255,.25);color:inherit}
+.seg input:focus-visible+label{outline:3px solid var(--accent-soft);outline-offset:1px;border-color:var(--accent)}
+textarea{width:100%;min-height:4.6rem;border:1.5px solid var(--line);border-radius:12px;padding:.7rem .85rem;font:inherit;font-size:1rem;background:var(--card);color:var(--ink);resize:vertical}
+textarea:focus{outline:none;border-color:var(--accent)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:.8rem;margin-top:1.2rem;flex-wrap:wrap}
+.hint{flex:1;color:var(--muted);font-size:.9rem;min-width:12rem}
+.hint.warn{color:var(--warn)}
+.btn{background:var(--accent);color:var(--accent-ink);border:0;border-radius:12px;padding:.8rem 1.4rem;font:inherit;font-weight:700;cursor:pointer;transition:opacity .15s}
+.btn[disabled]{opacity:.4;cursor:not-allowed}
+.btn.big{width:100%;font-size:1.1rem;padding:1rem}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);font-weight:600}
+.btn.ghost:hover{border-color:var(--accent)}
+.row{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+.bullets{margin:0 0 1.2rem;padding-left:1.2rem}
+.bullets li{margin:.25rem 0}
+.twoq{display:grid;gap:.7rem;margin:0 0 1rem}
+.qcard{background:var(--bg);border-radius:12px;padding:.8rem 1rem}
+.qcard b{color:var(--accent);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:.15rem}
+.legend{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin:.4rem 0 .4rem}
+@media (max-width:560px){.legend{grid-template-columns:1fr 1fr}}
+.legend div{border:1.5px solid var(--line);border-radius:12px;padding:.5rem .3rem;text-align:center;font-size:.9rem;line-height:1.25}
+.legend div b{display:block;font-size:1.05rem}
+.muted{color:var(--muted);font-size:.92rem}
+.callout{background:var(--accent-soft);border-radius:12px;padding:.9rem 1rem;margin:1rem 0}
+.ok{color:var(--ok);font-weight:600}
 .list{list-style:none;padding:0;margin:.5rem 0}
-.list li{display:flex;justify-content:space-between;gap:.5rem;border-bottom:1px solid var(--line);padding:.35rem 0;font-size:.9rem}
+.list li{display:flex;justify-content:space-between;gap:.5rem;border-bottom:1px solid var(--line);padding:.4rem 0;font-size:.95rem}
 .list a{color:var(--accent)}
-.ok{color:var(--accent)}
-pre.csv{white-space:pre;overflow:auto;font-size:.72rem;background:var(--tag);padding:.6rem;border-radius:8px;max-height:14rem}
+pre.csv{white-space:pre;overflow:auto;font-size:.74rem;background:var(--bg);padding:.7rem;border-radius:10px;max-height:14rem;margin:.5rem 0 0}
+details summary{cursor:pointer;color:var(--muted)}
+footer.stamp{color:var(--muted);font-size:.82rem;margin-top:1.4rem;text-align:center}
+footer.stamp code{font-size:.78rem}
 @media print{
   header,.nav,.noprint{display:none!important}
   body{background:#fff;color:#000;font-size:11pt}
-  .card{break-inside:avoid;border-color:#999;padding:.7rem .9rem;margin-bottom:.6rem}
-  .zh{color:#333}
-  .seg label{border-color:#777;padding:.25rem}
-  .seg input:checked+label{background:none;color:#000}
+  .card{break-inside:avoid;border-color:#999;box-shadow:none;padding:.7rem .9rem;margin-bottom:.6rem}
+  .seg label{border-color:#777;padding:.3rem}
+  .seg label b{background:none;border:1px solid #777}
   textarea{min-height:3rem;border-color:#777;background:#fff}
+  .facts>div,.qcard{background:#fff;border:1px solid #ddd}
 }
 </style>
 </head>
 <body>
-<header>
-  <div class="hrow">
-    <div class="stamp"><span id="stamp-round"></span> · <span class="pair inline" id="stamp-version"></span> <code>__FORM_VERSION__</code> · <span id="stamp-rater"></span></div>
-    <div class="lang" role="group" aria-label="language">
-      <button type="button" data-lang="both" aria-pressed="true">EN + 中文</button>
-      <button type="button" data-lang="en" aria-pressed="false">EN</button>
-      <button type="button" data-lang="zh" aria-pressed="false">中文</button>
-    </div>
-  </div>
+<header><div class="hwrap">
+  <div class="hrow"><div class="brand" id="brand"></div><div class="count" id="count"></div></div>
   <div class="progress" aria-hidden="true"><i id="bar"></i></div>
-</header>
+</div></header>
 <main id="app"></main>
 <script id="rows-json" type="application/json">__ROWS_JSON__</script>
 <script>
@@ -112,10 +126,7 @@ __ORDER_JS__
   function fill(s, vars) {
     return String(s).replace(/\{(\w+)\}/g, function (m, k) { return vars && k in vars ? vars[k] : m; });
   }
-  function t(o, inline, vars) {
-    return '<span class="pair' + (inline ? " inline" : "") + '"><span class="en">' + esc(fill(o.en, vars)) +
-      '</span><span class="zh">' + esc(fill(o.zh, vars)) + "</span></span>";
-  }
+  function t(s, vars) { return esc(fill(s, vars)); }
   function nowISO() { return new Date().toISOString(); }
   function skey(r) { return "hscreen:" + ROUND + ":" + FORM_VERSION + ":" + r; }
   function akey(o) { return o.id + "#" + o.is_anchor; }
@@ -124,7 +135,7 @@ __ORDER_JS__
   }
   function saveState() {
     if (!state) return;
-    try { localStorage.setItem(skey(state.rater), JSON.stringify(state)); } catch (e) { /* storage unavailable: page still works for one sitting */ }
+    try { localStorage.setItem(skey(state.rater), JSON.stringify(state)); } catch (e) { /* no storage: still works for one sitting */ }
   }
   function newState(r) {
     return {
@@ -134,102 +145,98 @@ __ORDER_JS__
       answers: {}
     };
   }
-  function answered(o) {
-    var a = state.answers[akey(o)];
-    return !!(a && a.h1 && a.h2);
-  }
+  function answered(o) { var a = state.answers[akey(o)]; return !!(a && a.h1 && a.h2); }
   function nAnswered() { return state.order.filter(answered).length; }
-
-  // ---------- language ----------
-  function setLang(l) {
-    document.body.className = l === "both" ? "" : "lang-" + l;
-    document.querySelectorAll(".lang button").forEach(function (b) {
-      b.setAttribute("aria-pressed", b.getAttribute("data-lang") === l ? "true" : "false");
-    });
-    try { localStorage.setItem("hscreen:lang", l); } catch (e) {}
-  }
-  document.querySelectorAll(".lang button").forEach(function (b) {
-    b.addEventListener("click", function () { setLang(b.getAttribute("data-lang")); });
-  });
-  (function () { var l = null; try { l = localStorage.getItem("hscreen:lang"); } catch (e) {} setLang(l || "both"); })();
+  function nCards() { return state ? state.order.length : DATA.anchors.length + DATA.rows.length; }
 
   // ---------- header ----------
   function renderHeader() {
-    document.getElementById("stamp-round").innerHTML = t(DATA.round_label, true);
-    document.getElementById("stamp-version").innerHTML = t(UI.version, true);
-    var r = state ? state.rater : null;
-    document.getElementById("stamp-rater").innerHTML = r ? t(UI.rater, true) + ": " + t(UI.rater_names[r], true) : "";
-    var n = state ? state.order.length : 1;
-    document.getElementById("bar").style.width = state ? Math.round(100 * nAnswered() / n) + "%" : "0%";
+    document.getElementById("brand").textContent = DATA.title;
+    var c = document.getElementById("count");
+    if (state && state.view === "card") c.textContent = fill(UI.card_of, { i: state.idx + 1, n: state.order.length });
+    else if (state) c.textContent = nAnswered() + " / " + state.order.length;
+    else c.textContent = "";
+    document.getElementById("bar").style.width = state ? Math.round(100 * nAnswered() / state.order.length) + "%" : "0%";
+  }
+  function stampHTML() {
+    return '<footer class="stamp">' + (state ? t(UI.rating_as) + ": " + t(UI.rater_names[state.rater]) + " · " : "") +
+      t(DATA.round_label) + " · " + t(UI.version) + " <code>" + FORM_VERSION + "</code></footer>";
   }
 
   // ---------- pieces ----------
   function phrasesHTML(r) {
     return r.phrases.map(function (p) {
-      var label = UI.tag_labels[p.tag] || { en: p.tag, zh: p.tag };
-      var src = p.tag === "uncited" ? "" : (p.source ? ": " + esc(p.source) : "");
-      return "<li>" + esc(p.text) + ' <span class="src">· ' + t(label, true) + src + "</span></li>";
+      var label = UI.tag_labels[p.tag] || p.tag;
+      var src = p.tag === "uncited" ? label : (label + " " + (p.source || ""));
+      return "<li><q>" + esc(p.text) + "</q><small>" + esc(src) + "</small></li>";
     }).join("");
   }
-  function descHTML(r) {
-    return "<dl><dt>" + t(UI.phrases, true) + '</dt><dd><ul class="phr">' + phrasesHTML(r) + "</ul></dd>" +
-      "<dt>" + t(UI.definition, true) + "</dt><dd>" + t(r.definition) + "</dd>" +
-      "<dt>" + t(UI.unit, true) + "</dt><dd>" + t(r.unit) + "</dd>" +
-      "<dt>" + t(UI.range, true) + "</dt><dd>" + t(r.range) + "</dd></dl>";
-  }
   function titleHTML(r) {
-    return "<h2>" + t(r.name, true) + (r.status === "incoming-v18" ? '<span class="badge">' + t(UI.incoming, true) + "</span>" : "") +
-      '</h2><div class="code">' + esc(r.id) + "</div>";
+    return '<h2 class="atom">' + t(r.name) + '</h2><div class="chips"><span class="chip code">' + esc(r.id) + "</span>" +
+      (r.status === "incoming-v18" ? '<span class="chip incoming">' + t(UI.incoming) + "</span>" : "") + "</div>";
   }
-  function questionHTML(q, text, gloss, val, nameSuffix) {
-    var name = q + (nameSuffix || "");
-    var s = '<div class="q"><p>' + t(text) + (gloss ? '<span class="gloss">' + t(gloss) + "</span>" : "") + '</p><div class="seg">';
+  function descHTML(r) {
+    return '<span class="k">' + t(UI.definition) + '</span><p class="def">' + t(r.definition) + "</p>" +
+      '<div class="facts"><div><span class="k">' + t(UI.unit) + "</span>" + t(r.unit) + "</div>" +
+      '<div><span class="k">' + t(UI.range) + "</span>" + t(r.range) + "</div></div>" +
+      '<span class="k">' + t(UI.phrases) + '</span><ul class="phr">' + phrasesHTML(r) + "</ul>";
+  }
+  function questionHTML(q, label, text, gloss, val, suffix) {
+    var name = q + (suffix || "");
+    var s = '<div class="q"><div class="qlabel">' + t(label) + "</div><p>" + t(text) +
+      (gloss ? '<span class="gloss">' + t(gloss) + "</span>" : "") + '</p><div class="seg">';
     DATA.scale.forEach(function (o) {
       var id = name + "-" + o.value;
       s += '<input type="radio" name="' + name + '" id="' + id + '" value="' + o.value + '"' + (val === o.value ? " checked" : "") +
-        ' data-q="' + q + '"><label for="' + id + '"><b>' + o.value + "</b>" + t(o) + "</label>";
+        ' data-q="' + q + '"><label for="' + id + '"><b>' + o.value + "</b>" + t(o.label) + "</label>";
     });
     return s + "</div></div>";
   }
+  function legendHTML() {
+    return '<div class="legend">' + DATA.scale.map(function (o) {
+      return "<div><b>" + o.value + "</b>" + t(o.label) + "</div>";
+    }).join("") + "</div>";
+  }
   function introBody() {
-    var n = state ? state.order.length : DATA.anchors.length + DATA.rows.length;
-    var s = "<h1>" + t(DATA.title, true) + ' <span class="badge">' + t(DATA.round_label, true) + "</span></h1>" +
-      "<p>" + t(DATA.intro, false, { n: n }) + "</p>" +
-      "<h3>" + t(UI.questions_heading, true) + "</h3>" +
-      "<p><b>H1.</b> " + t(DATA.questions.h1) + "</p><p><b>H2.</b> " + t(DATA.questions.h2) + '<span class="gloss">' + t(DATA.questions.h2_gloss) + "</span></p>" +
-      "<h3>" + t(UI.scale_heading, true) + "</h3>" + '<div class="seg" aria-hidden="true">' +
-      DATA.scale.map(function (o) { return "<label><b>" + o.value + "</b>" + t(o) + "</label>"; }).join("") + "</div>";
-    return s;
+    return "<h1>" + t(DATA.title) + ' <span class="chip">' + t(DATA.round_label) + "</span></h1>" +
+      '<p class="lead">' + t(DATA.intro, { n: nCards() }) + "</p>" +
+      '<ul class="bullets"><li>' + t(UI.bullet_time) + "</li><li>" + t(UI.bullet_saved) + "</li><li>" + t(UI.bullet_send) + "</li></ul>" +
+      '<span class="k">' + t(UI.questions_heading) + '</span><div class="twoq">' +
+      '<div class="qcard"><b>' + t(UI.q1_label) + "</b>" + t(DATA.questions.h1) + "</div>" +
+      '<div class="qcard"><b>' + t(UI.q2_label) + "</b>" + t(DATA.questions.h2) + '<span class="gloss">' + t(DATA.questions.h2_gloss) + "</span></div></div>" +
+      '<span class="k">' + t(UI.scale_heading) + "</span>" + legendHTML() + '<p class="muted">' + t(UI.scale_note) + "</p>";
   }
 
   // ---------- views ----------
   function renderIntro() {
-    var s = '<div class="card">' + introBody() + '<p class="muted">' + t(UI.saved_hint) + "</p>";
+    var s = '<div class="card">' + introBody();
     if (!state) {
-      s += "<h3>" + t(UI.pick_rater, true) + '</h3><div class="row">' + DATA.raters.map(function (r) {
-        return '<button type="button" class="btn ghost" data-pick="' + r + '">' + t(UI.rater_names[r], true) + "</button>";
+      s += '<span class="k">' + t(UI.pick_rater) + '</span><div class="row">' + DATA.raters.map(function (r) {
+        return '<button type="button" class="btn ghost" data-pick="' + r + '">' + t(UI.rater_names[r]) + "</button>";
       }).join("") + "</div>";
     } else {
       var started = state.started_at && nAnswered() > 0;
-      s += '<div class="row"><button type="button" class="btn" id="start">' + t(started ? UI["continue"] : UI.start, true) + "</button>" +
-        (started ? '<button type="button" class="btn ghost" id="restart" data-armed="0">' + t(UI.start_over, true) + "</button>" : "") + "</div>";
+      s += '<button type="button" class="btn big" id="start">' + t(started ? UI["continue"] : UI.start) + "</button>" +
+        (started ? '<div class="row" style="margin-top:.8rem"><button type="button" class="btn ghost" id="restart" data-armed="0">' + t(UI.start_over) + "</button></div>" : "");
     }
-    s += "</div>";
+    s += "</div>" + stampHTML();
     app.innerHTML = s;
   }
   function renderCard(i) {
     var o = state.order[i], r = ROWS[o.id], a = state.answers[akey(o)] || {};
     if (!a.shown_at) { a.shown_at = nowISO(); state.answers[akey(o)] = a; saveState(); }
-    var n = state.order.length;
-    var s = '<div class="card"><div class="code">' + t(UI.card_of, true, { i: i + 1, n: n }) + "</div>" +
-      (o.is_anchor ? '<div class="banner">' + t(UI.calibration, true) + "</div>" : "") +
-      titleHTML(r) + descHTML(r) +
-      questionHTML("h1", DATA.questions.h1, null, a.h1) +
-      questionHTML("h2", DATA.questions.h2, DATA.questions.h2_gloss, a.h2) +
-      '<div class="q"><p>' + t(UI.note_prompt) + '</p><textarea id="note" rows="3">' + esc(a.note || "") + "</textarea></div>" +
-      '<div class="warn" id="warn"></div>' +
-      '<div class="nav"><button type="button" class="btn ghost" id="back"' + (i === 0 ? " disabled" : "") + ">" + t(UI.back, true) + "</button>" +
-      '<button type="button" class="btn" id="next">' + t(i === n - 1 ? UI.finish : UI.next, true) + "</button></div></div>";
+    var n = state.order.length, last = i === n - 1, done = !!(a.h1 && a.h2);
+    var s = '<article class="card">' +
+      (o.is_anchor ? '<div class="ribbon">★ ' + t(UI.calibration) + "</div>" : "") +
+      titleHTML(r) + descHTML(r) + "</article>" +
+      '<section class="card">' +
+      questionHTML("h1", UI.q1_label, DATA.questions.h1, null, a.h1) +
+      questionHTML("h2", UI.q2_label, DATA.questions.h2, DATA.questions.h2_gloss, a.h2) +
+      '<div class="q"><textarea id="note" rows="3" placeholder="' + t(UI.note_placeholder) + '">' + esc(a.note || "") + "</textarea></div>" +
+      '<div class="nav"><button type="button" class="btn ghost" id="back"' + (i === 0 ? " disabled" : "") + ">← " + t(UI.back) + "</button>" +
+      '<div class="hint" id="hint">' + (done ? "" : t(UI.next_hint)) + "</div>" +
+      '<button type="button" class="btn" id="next"' + (done ? "" : " disabled") + ">" + t(last ? UI.finish : UI.next) + (last ? "" : " →") + "</button></div>" +
+      '<p class="muted noprint" style="margin:.8rem 0 0">' + t(UI.keys_hint) + "</p></section>" + stampHTML();
     app.innerHTML = s;
     window.scrollTo(0, 0);
   }
@@ -270,22 +277,21 @@ __ORDER_JS__
   }
   function renderFinish() {
     var missing = state.order.map(function (o, i) { return answered(o) ? null : i; }).filter(function (x) { return x !== null; });
-    var s = '<div class="card"><h1>' + t(UI.finish, true) + "</h1>";
+    var s = '<div class="card">';
     if (missing.length) {
-      s += '<p class="warn">' + t(UI.unanswered) + '</p><ul class="list">' + missing.map(function (i) {
-        return "<li><span>" + (i + 1) + ". " + t(ROWS[state.order[i].id].name, true) + '</span><a href="#" data-goto="' + i + '">' + t(UI.jump, true) + "</a></li>";
+      s += "<h1>" + t(UI.review) + '</h1><p class="hint warn">' + t(UI.unanswered) + '</p><ul class="list">' + missing.map(function (i) {
+        return "<li><span>" + (i + 1) + ". " + t(ROWS[state.order[i].id].name) + '</span><a href="#" data-goto="' + i + '">' + t(UI.jump) + "</a></li>";
       }).join("") + "</ul>";
     } else {
-      s += "<p>" + t(UI.finish_text) + "</p>" +
-        '<p class="muted">' + t(UI.elapsed, true) + ": " + elapsedText() + " · " + t(UI.your_answers, true) + ": " + nAnswered() + " / " + state.order.length + "</p>" +
-        '<div class="row"><button type="button" class="btn" id="dl-csv">' + t(UI.download_csv, true) + "</button>" +
-        '<button type="button" class="btn" id="dl-json">' + t(UI.download_json, true) + "</button>" +
-        '<button type="button" class="btn ghost" id="copy-csv">' + t(UI.copy_csv, true) + '</button><span class="ok" id="copied"></span></div>' +
-        '<p class="muted">' + t(UI.send_hint) + "</p>" +
-        '<pre class="csv" id="csv-preview">' + esc(toCSV(records())) + "</pre>";
+      s += "<h1>" + t(UI.thanks) + '</h1><p class="lead">' + t(UI.finish_summary, { n: state.order.length, t: elapsedText() }) + "</p>" +
+        '<button type="button" class="btn big" id="dl-csv">⬇ ' + t(UI.download_csv) + "</button>" +
+        '<div class="row" style="margin-top:.7rem"><button type="button" class="btn ghost" id="dl-json">' + t(UI.download_json) + "</button>" +
+        '<button type="button" class="btn ghost" id="copy-csv">' + t(UI.copy_csv) + '</button><span class="ok" id="copied"></span></div>' +
+        '<div class="callout">' + t(UI.send_hint) + "</div>" +
+        "<details><summary>" + t(UI.preview) + '</summary><pre class="csv" id="csv-preview">' + esc(toCSV(records())) + "</pre></details>";
     }
-    s += '<div class="row noprint"><button type="button" class="btn ghost" id="review">' + t(UI.review, true) + "</button>" +
-      '<button type="button" class="btn ghost" id="restart" data-armed="0">' + t(UI.start_over, true) + "</button></div></div>";
+    s += '<div class="row noprint" style="margin-top:1.2rem"><button type="button" class="btn ghost" id="review">' + t(UI.review) + "</button>" +
+      '<button type="button" class="btn ghost" id="restart" data-armed="0">' + t(UI.start_over) + "</button></div></div>" + stampHTML();
     app.innerHTML = s;
     window.scrollTo(0, 0);
   }
@@ -294,15 +300,16 @@ __ORDER_JS__
       DATA.rows.filter(function (r) { return DATA.anchor_policy === "repeat" || DATA.anchors.indexOf(r.id) < 0; })
         .map(function (r) { return { id: r.id, is_anchor: 0 }; }));
     var s = '<div class="card">' + introBody() + '<p class="muted">' + t(UI.print_title) + "</p>" +
-      "<p>" + t(UI.rater, true) + ": " + DATA.raters.map(function (r) { return "☐ " + t(UI.rater_names[r], true); }).join(" &nbsp; ") +
-      ' &nbsp; <span class="code">' + t(UI.version, true) + " " + FORM_VERSION + "</span></p>" +
-      '<div class="row noprint"><button type="button" class="btn" onclick="window.print()">' + t(UI.print_button, true) + "</button></div></div>";
+      "<p>" + t(UI.rater) + ": " + DATA.raters.map(function (r) { return "☐ " + t(UI.rater_names[r]); }).join(" &nbsp; ") +
+      ' &nbsp; <span class="chip code">' + t(UI.version) + " " + FORM_VERSION + "</span></p>" +
+      '<div class="row noprint"><button type="button" class="btn" onclick="window.print()">' + t(UI.print_button) + "</button></div></div>";
     fixed.forEach(function (o, i) {
       var r = ROWS[o.id];
-      s += '<div class="card"><div class="code">' + t(UI.card_of, true, { i: i + 1, n: fixed.length }) + "</div>" +
-        (o.is_anchor ? '<div class="banner">' + t(UI.calibration, true) + "</div>" : "") + titleHTML(r) + descHTML(r) +
-        questionHTML("h1", DATA.questions.h1, null, null, "-p" + i) + questionHTML("h2", DATA.questions.h2, DATA.questions.h2_gloss, null, "-p" + i) +
-        '<div class="q"><p>' + t(UI.note_prompt) + '</p><textarea rows="2"></textarea></div></div>';
+      s += '<div class="card"><div class="count">' + t(UI.card_of, { i: i + 1, n: fixed.length }) + "</div>" +
+        (o.is_anchor ? '<div class="ribbon">★ ' + t(UI.calibration) + "</div>" : "") + titleHTML(r) + descHTML(r) +
+        questionHTML("h1", UI.q1_label, DATA.questions.h1, null, null, "-p" + i) +
+        questionHTML("h2", UI.q2_label, DATA.questions.h2, DATA.questions.h2_gloss, null, "-p" + i) +
+        '<div class="q"><textarea rows="2" placeholder="' + t(UI.note_placeholder) + '"></textarea></div></div>';
     });
     app.innerHTML = s;
   }
@@ -315,6 +322,13 @@ __ORDER_JS__
   }
 
   // ---------- events ----------
+  function goNext() {
+    var o = state.order[state.idx];
+    if (!answered(o)) { var h = document.getElementById("hint"); if (h) { h.className = "hint warn"; h.textContent = fill(UI.unanswered); } return; }
+    if (state.idx === state.order.length - 1) { state.view = "finish"; if (!state.finished_at) state.finished_at = nowISO(); }
+    else state.idx += 1;
+    saveState(); render();
+  }
   app.addEventListener("click", function (ev) {
     var el = ev.target.closest("button, a"); if (!el) return;
     if (el.hasAttribute("data-pick")) {
@@ -325,24 +339,18 @@ __ORDER_JS__
     if (!state) return;
     if (el.id === "start") { if (!state.started_at) state.started_at = nowISO(); state.view = "card"; saveState(); render(); return; }
     if (el.id === "restart") {
-      if (el.getAttribute("data-armed") !== "1") { el.setAttribute("data-armed", "1"); el.innerHTML = t(UI.start_over_confirm, true); return; }
+      if (el.getAttribute("data-armed") !== "1") { el.setAttribute("data-armed", "1"); el.textContent = fill(UI.start_over_confirm); return; }
       var rr = state.rater; try { localStorage.removeItem(skey(rr)); } catch (e) {}
       state = newState(rr); saveState(); render(); return;
     }
-    if (el.id === "next") {
-      var o = state.order[state.idx];
-      if (!answered(o)) { document.getElementById("warn").innerHTML = t(UI.unanswered, true); return; }
-      if (state.idx === state.order.length - 1) { state.view = "finish"; if (!state.finished_at) state.finished_at = nowISO(); }
-      else state.idx += 1;
-      saveState(); render(); return;
-    }
+    if (el.id === "next") { goNext(); return; }
     if (el.id === "back") { if (state.idx > 0) { state.idx -= 1; saveState(); render(); } return; }
     if (el.id === "review") { state.view = "card"; state.idx = 0; saveState(); render(); return; }
     if (el.hasAttribute("data-goto")) { ev.preventDefault(); state.view = "card"; state.idx = +el.getAttribute("data-goto"); saveState(); render(); return; }
     if (el.id === "dl-csv") { download(fileBase() + ".csv", toCSV(records()), "text/csv;charset=utf-8"); return; }
     if (el.id === "dl-json") { download(fileBase() + ".json", toJSON(), "application/json;charset=utf-8"); return; }
     if (el.id === "copy-csv") {
-      var txt = toCSV(records()), done = function () { document.getElementById("copied").innerHTML = t(UI.copied, true); };
+      var txt = toCSV(records()), done = function () { document.getElementById("copied").textContent = fill(UI.copied); };
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(done, function () { fallbackCopy(txt); done(); });
       else { fallbackCopy(txt); done(); }
       return;
@@ -352,19 +360,33 @@ __ORDER_JS__
     var ta = document.createElement("textarea"); ta.value = txt; document.body.appendChild(ta); ta.select();
     try { document.execCommand("copy"); } catch (e) {} ta.remove();
   }
+  function setAnswer(q, v) {
+    var o = state.order[state.idx], a = state.answers[akey(o)] || {};
+    a[q] = v;
+    if (a.h1 && a.h2) a.answered_at = nowISO();
+    state.answers[akey(o)] = a; saveState(); renderHeader();
+    var nx = document.getElementById("next"), h = document.getElementById("hint");
+    if (a.h1 && a.h2) { if (nx) nx.disabled = false; if (h) { h.className = "hint"; h.textContent = ""; } }
+  }
   app.addEventListener("change", function (ev) {
     if (!state || state.view !== "card") return;
     var el = ev.target; if (el.type !== "radio") return;
-    var o = state.order[state.idx], a = state.answers[akey(o)] || {};
-    a[el.getAttribute("data-q")] = +el.value;
-    if (a.h1 && a.h2) a.answered_at = nowISO();
-    state.answers[akey(o)] = a; saveState(); renderHeader();
-    document.getElementById("warn").innerHTML = "";
+    setAnswer(el.getAttribute("data-q"), +el.value);
   });
   app.addEventListener("input", function (ev) {
     if (!state || state.view !== "card" || ev.target.id !== "note") return;
     var o = state.order[state.idx], a = state.answers[akey(o)] || {};
     a.note = ev.target.value; state.answers[akey(o)] = a; saveState();
+  });
+  document.addEventListener("keydown", function (ev) {
+    if (!state || state.view !== "card" || MODE === "print") return;
+    if (ev.target && ev.target.tagName === "TEXTAREA") return;
+    if (ev.key >= "1" && ev.key <= "4") {
+      var o = state.order[state.idx], a = state.answers[akey(o)] || {};
+      var q = a.h1 ? "h2" : "h1";
+      var inp = document.getElementById(q + "-" + ev.key);
+      if (inp) { inp.checked = true; setAnswer(q, +ev.key); ev.preventDefault(); }
+    } else if (ev.key === "Enter") { goNext(); ev.preventDefault(); }
   });
 
   // ---------- boot ----------

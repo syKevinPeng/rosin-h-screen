@@ -31,12 +31,14 @@ def test_version_is_a_stable_content_hash():
 def test_version_changes_when_any_content_changes():
     d = load()
     base = build.form_version(d)
-    d["rows"][3]["definition"]["zh"] += "。"
+    d["rows"][3]["definition"] += "."
     assert build.form_version(d) != base
 
 
 @pytest.mark.parametrize("mutate, needle", [
-    (lambda d: d["rows"][0]["definition"].pop("zh"), "needs non-empty 'en' and 'zh'"),
+    (lambda d: d["rows"][0].update(definition=""), "non-empty string required"),
+    (lambda d: d["rows"][0].update(definition="弓速"), "contains CJK text"),
+    (lambda d: d["ui"].update(start="开始"), "contains CJK text"),
     (lambda d: d["rows"][0]["phrases"][0].update(tag="made-up"), "tag: must be one of"),
     (lambda d: d["rows"][1]["phrases"][0].update(tag="uncited", source="X"), "uncited phrase must have an empty source"),
     (lambda d: d["rows"][1]["phrases"][0].update(tag="synthesis", source=""), "cited phrase needs its attribution"),
@@ -61,7 +63,7 @@ def test_html_inlines_every_row_and_fills_every_placeholder():
     for r in d["rows"]:
         assert f'"id":"{r["id"]}"' in html
     assert not build.PLACEHOLDER_RE.search(html)
-    assert html.count(v) >= 2          # header stamp + JS constant
+    assert html.count(v) >= 1          # the JS constant; the page renders it into the footer
     assert "HOrder" in html and "buildOrder" in html
 
 
@@ -93,7 +95,7 @@ def test_form_md_has_every_card_and_marks_calibration():
     assert [int(h) for h in heads] == list(range(1, len(build.cards(d)) + 1))
     for r in d["rows"]:
         assert f"`{r['id']}`" in md
-    cal = d["ui"]["calibration"]["en"]
+    cal = d["ui"]["calibration"]
     assert md.count(cal) == len(d["anchors"]) + 0  # calibration cards only
     assert build.form_version(d) in md
 
@@ -105,6 +107,12 @@ def test_blank_csv_shape():
     assert lines[0] == ",".join(build.CSV_COLS)
     assert len(lines) - 1 == len(build.cards(d))
     assert all(v in ln for ln in lines[1:])
+
+
+def test_rows_are_english_only():
+    """Siyuan, 2026-09-03: no Chinese text on the instrument; translated English instead."""
+    text = json.dumps(load(), ensure_ascii=False)
+    assert not build.CJK_RE.search(text)
 
 
 def test_public_rows_carry_no_withheld_caveats():

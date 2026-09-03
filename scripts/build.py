@@ -50,22 +50,22 @@ def form_version(data: dict) -> str:
 
 
 # --------------------------------------------------------------- validate --
-def _bi(x, path: str, errs: list[str]) -> None:
-    ok = (isinstance(x, dict)
-          and isinstance(x.get("en"), str) and x["en"].strip()
-          and isinstance(x.get("zh"), str) and x["zh"].strip())
-    if not ok:
-        errs.append(f"{path}: needs non-empty 'en' and 'zh'")
+CJK_RE = re.compile(r"[\u3000-\u303f\u3400-\u4dbf\u4e00-\u9fff\uff00-\uffef]")
 
 
-def _bi_tree(x, path: str, errs: list[str]) -> None:
-    if isinstance(x, dict) and "en" in x and "zh" in x:
-        _bi(x, path, errs)
-    elif isinstance(x, dict):
+def _s(x, path: str, errs: list[str]) -> None:
+    if not (isinstance(x, str) and x.strip()):
+        errs.append(f"{path}: non-empty string required")
+    elif CJK_RE.search(x):
+        errs.append(f"{path}: contains CJK text; the instrument is English-only (Siyuan, 2026-09-03)")
+
+
+def _s_tree(x, path: str, errs: list[str]) -> None:
+    if isinstance(x, dict):
         for k, v in x.items():
-            _bi_tree(v, f"{path}.{k}", errs)
+            _s_tree(v, f"{path}.{k}", errs)
     else:
-        errs.append(f"{path}: expected a bilingual object")
+        _s(x, path, errs)
 
 
 def validate(data: dict) -> list[str]:
@@ -74,21 +74,21 @@ def validate(data: dict) -> list[str]:
     if not isinstance(data.get("round"), int):
         errs.append("round: int required")
     for k in ("title", "round_label", "intro"):
-        _bi(data.get(k), k, errs)
+        _s(data.get(k), k, errs)
     q = data.get("questions") or {}
     for k in ("h1", "h2", "h2_gloss"):
-        _bi(q.get(k), f"questions.{k}", errs)
+        _s(q.get(k), f"questions.{k}", errs)
     sc = data.get("scale")
     if not (isinstance(sc, list) and [o.get("value") for o in sc] == [1, 2, 3, 4]):
         errs.append("scale: exactly the values 1,2,3,4 in order")
     else:
         for o in sc:
-            _bi(o, f"scale[{o.get('value')}]", errs)
+            _s(o.get("label"), f"scale[{o.get('value')}].label", errs)
     ui = data.get("ui")
     if not isinstance(ui, dict):
         errs.append("ui: object required")
     else:
-        _bi_tree(ui, "ui", errs)
+        _s_tree(ui, "ui", errs)
         for k in ("tag_labels", "rater_names"):
             if k not in ui:
                 errs.append(f"ui.{k}: missing")
@@ -108,17 +108,16 @@ def validate(data: dict) -> list[str]:
             if not (isinstance(r.get(k), str) and r[k]):
                 errs.append(f"{p}.{k}: non-empty string required")
         for k in ("name", "definition", "unit", "range"):
-            _bi(r.get(k), f"{p}.{k}", errs)
+            _s(r.get(k), f"{p}.{k}", errs)
         ph = r.get("phrases")
         if not (isinstance(ph, list) and ph):
             errs.append(f"{p}.phrases: non-empty list required")
             continue
         for j, x in enumerate(ph):
             pp = f"{p}.phrases[{j}]"
-            if not (isinstance(x.get("text"), str) and x["text"].strip()):
-                errs.append(f"{pp}.text: required")
-            if x.get("lang") not in ("en", "zh"):
-                errs.append(f"{pp}.lang: must be en or zh")
+            _s(x.get("text"), f"{pp}.text", errs)
+            if x.get("source"):
+                _s(x.get("source"), f"{pp}.source", errs)
             if x.get("tag") not in TAGS:
                 errs.append(f"{pp}.tag: must be one of {sorted(TAGS)}")
             src = x.get("source", "")
@@ -185,8 +184,8 @@ def render_html(data: dict, version: str) -> str:
     return out
 
 
-def _bl(o: dict) -> str:
-    return f"{o['en']} / {o['zh']}"
+def _bl(o: str) -> str:
+    return o
 
 
 def _fill(s: str, **vars) -> str:
@@ -198,16 +197,16 @@ def render_form_md(data: dict, version: str) -> str:
     rows = {r["id"]: r for r in data["rows"]}
     cs = cards(data)
     n = len(cs)
-    boxes = " · ".join(f"☐ {o['value']} {o['en']} {o['zh']}" for o in data["scale"])
+    boxes = " · ".join(f"☐ {o['value']} {o['label']}" for o in data["scale"])
     L = [f"# {_bl(data['title'])} · {_bl(data['round_label'])}", "",
          f"**{_bl(ui['version'])}:** `{version}` · **{_bl(ui['rater'])}:** "
          + " · ".join(f"☐ {_bl(ui['rater_names'][r])}" for r in data["raters"]), "",
          _bl(ui["print_title"]), "",
-         _fill(data["intro"]["en"], n=n), "", _fill(data["intro"]["zh"], n=n), "",
+         _fill(data["intro"], n=n), "",
          f"## {_bl(ui['questions_heading'])}", "",
          f"**H1.** {_bl(q['h1'])}", "", f"**H2.** {_bl(q['h2'])}  ", f"*{_bl(q['h2_gloss'])}*", "",
          f"## {_bl(ui['scale_heading'])}", ""]
-    L += [f"- **{o['value']}** {o['en']} / {o['zh']}" for o in data["scale"]]
+    L += [f"- **{o['value']}** {o['label']}" for o in data["scale"]]
     L += ["", "---", ""]
     for i, c in enumerate(cs, 1):
         r = rows[c["atom"]]
