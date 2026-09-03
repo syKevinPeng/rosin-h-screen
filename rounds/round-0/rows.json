@@ -5,7 +5,7 @@
   "intro": "We built a computer program that watches and listens to someone playing the violin and keeps track of {n} different things. Each card describes one of them in everyday words. For each one, tell us two things: do violin teachers care about it, and could a student use the number? There are no right or wrong answers.",
   "questions": {
     "h1": "Do violin teachers pay attention to {x} in lessons?",
-    "h2": "If a practice app reported {x} to a student, could the student act on it?",
+    "h2": "If a practice app gave a student a number for {x}, could the student act on it?",
     "h2_gloss": "We mean the number itself. Could a student practise differently because of it?"
   },
   "scale": [
@@ -167,7 +167,7 @@
       "unit": "a share of the string's length",
       "range": "0 = the player's usual spot; below 0 = closer to the bridge than usual; above 0 = closer to the fingerboard than usual",
       "prose": "This records where the bow touches the string and compares it with the spot this player normally uses. The number is zero at the usual spot, below zero when the bow is nearer the bridge than usual, and above zero when it is nearer the fingerboard. Teachers call this spot the \"sounding point\" or \"contact point\".",
-      "short": "where the bow touches the string, compared with the player's usual spot"
+      "short": "where the bow touches the string"
     },
     {
       "id": "hair_pos",
@@ -357,7 +357,7 @@
       "unit": "bow-lengths per second (1 = a full bow in one second)",
       "range": "0 = not moving; bigger = faster",
       "prose": "This records how fast the bow is moving, without caring whether it is a down-bow or an up-bow. The number is zero when the bow is still, and the bigger the number, the faster the bow. Teachers call this \"bow speed\".",
-      "short": "bow speed, ignoring direction"
+      "short": "bow speed regardless of direction"
     },
     {
       "id": "bow_accel",
@@ -465,7 +465,7 @@
       "unit": "degrees (an estimate from a body model, not a medical measurement)",
       "range": "0 = the player's usual wrist position; above or below 0 = turned one way or the other",
       "prose": "Our system watches the wrist of the bow hand and records how it is turned. It splits that turn into three directions, a bit like bending the wrist up and down, tilting it from side to side, and twisting it, though we cannot say exactly which direction is which. This card is about direction 1 of the three. The number is zero when the wrist is in the player's usual position, and it goes up or down as the wrist turns away from that. Teachers do not have a word for this; the closest is a \"bent wrist\".",
-      "short": "direction 1 of the bow-hand wrist turn"
+      "short": "how the bow-hand wrist is turned"
     },
     {
       "id": "right_wrist_aa_y_dev_deg",
@@ -492,7 +492,7 @@
       "unit": "degrees (an estimate from a body model, not a medical measurement)",
       "range": "0 = the player's usual wrist position; above or below 0 = turned one way or the other",
       "prose": "Our system watches the wrist of the bow hand and records how it is turned. It splits that turn into three directions, a bit like bending the wrist up and down, tilting it from side to side, and twisting it, though we cannot say exactly which direction is which. This card is about direction 2 of the three. The number is zero when the wrist is in the player's usual position, and it goes up or down as the wrist turns away from that. Teachers do not have a word for this; the closest is a \"bent wrist\".",
-      "short": "direction 2 of the bow-hand wrist turn"
+      "short": "how the bow-hand wrist is turned"
     },
     {
       "id": "right_wrist_aa_z_dev_deg",
@@ -519,7 +519,7 @@
       "unit": "degrees (an estimate from a body model, not a medical measurement)",
       "range": "0 = the player's usual wrist position; above or below 0 = turned one way or the other",
       "prose": "Our system watches the wrist of the bow hand and records how it is turned. It splits that turn into three directions, a bit like bending the wrist up and down, tilting it from side to side, and twisting it, though we cannot say exactly which direction is which. This card is about direction 3 of the three. The number is zero when the wrist is in the player's usual position, and it goes up or down as the wrist turns away from that. Teachers do not have a word for this; the closest is a \"bent wrist\".",
-      "short": "direction 3 of the bow-hand wrist turn"
+      "short": "how the bow-hand wrist is turned"
     },
     {
       "id": "right_shoulder_rotation_dev_deg",
@@ -956,7 +956,7 @@
       "unit": "semitones along the string",
       "range": "0 = the expected position; above 0 = higher up the fingerboard; below 0 = lower",
       "prose": "This records whether the left hand was higher or lower on the fingerboard than the sheet music suggests. The number is zero in the expected position, above zero when the hand is higher up and below zero when it is lower. Teachers talk about \"positions\" and \"shifting\".",
-      "short": "the left-hand position compared with what the music suggests"
+      "short": "the left-hand position"
     },
     {
       "id": "contact_bridge_ratio_neutral",

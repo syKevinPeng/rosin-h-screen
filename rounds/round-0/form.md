@@ -1,6 +1,6 @@
 # Violin teaching survey · round 0
 
-**form version:** `29bd8e2d7bae` · **rater:** ☐ the violinist · ☐ the author (Siyuan)
+**form version:** `d7e500d220d3` · **rater:** ☐ the violinist · ☐ the author (Siyuan)
 
 Paper version: cards in a fixed order, tick one box per question.
 
@@ -10,7 +10,7 @@ We built a computer program that watches and listens to someone playing the viol
 
 **Question 1.** Do violin teachers pay attention to this in lessons?
 
-**Question 2.** If a practice app reported this to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for this, could the student act on it?  
 *We mean the number itself. Could a student practise differently because of it?*
 
 ## How to answer
@@ -31,7 +31,7 @@ This records how fast the bow is moving, and whether it is a down-bow or an up-b
 **Question 1.** Do violin teachers pay attention to bow speed in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported bow speed to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for bow speed, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -43,10 +43,10 @@ This records how fast the bow is moving, and whether it is a down-bow or an up-b
 
 Our system watches the wrist of the bow hand and records how it is turned. It splits that turn into three directions, a bit like bending the wrist up and down, tilting it from side to side, and twisting it, though we cannot say exactly which direction is which. This card is about direction 3 of the three. The number is zero when the wrist is in the player's usual position, and it goes up or down as the wrist turns away from that. Teachers do not have a word for this; the closest is a "bent wrist".
 
-**Question 1.** Do violin teachers pay attention to direction 3 of the bow-hand wrist turn in lessons?  
+**Question 1.** Do violin teachers pay attention to how the bow-hand wrist is turned in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported direction 3 of the bow-hand wrist turn to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for how the bow-hand wrist is turned, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -57,10 +57,10 @@ Our system watches the wrist of the bow hand and records how it is turned. It sp
 
 This records where the bow touches the string and compares it with the spot this player normally uses. The number is zero at the usual spot, below zero when the bow is nearer the bridge than usual, and above zero when it is nearer the fingerboard. Teachers call this spot the "sounding point" or "contact point".
 
-**Question 1.** Do violin teachers pay attention to where the bow touches the string, compared with the player's usual spot in lessons?  
+**Question 1.** Do violin teachers pay attention to where the bow touches the string in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported where the bow touches the string, compared with the player's usual spot to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for where the bow touches the string, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -74,7 +74,7 @@ This records which part of the bow is on the string: near the hand end (the frog
 **Question 1.** Do violin teachers pay attention to which part of the bow is on the string in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported which part of the bow is on the string to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for which part of the bow is on the string, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -88,7 +88,7 @@ This records whether the bow is touching the string or lifted off it. The number
 **Question 1.** Do violin teachers pay attention to whether the bow is on the string or lifted off in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported whether the bow is on the string or lifted off to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for whether the bow is on the string or lifted off, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -102,7 +102,7 @@ This records whether the bow is straight or crooked, in other words whether it c
 **Question 1.** Do violin teachers pay attention to how straight the bow is in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported how straight the bow is to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for how straight the bow is, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -116,7 +116,7 @@ This records which string the bow is leaning toward. Lower numbers mean the bow 
 **Question 1.** Do violin teachers pay attention to which string the bow is leaning toward in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported which string the bow is leaning toward to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for which string the bow is leaning toward, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -130,7 +130,7 @@ This records how fast the bow is moving, and whether it is a down-bow or an up-b
 **Question 1.** Do violin teachers pay attention to bow speed in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported bow speed to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for bow speed, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -141,10 +141,10 @@ This records how fast the bow is moving, and whether it is a down-bow or an up-b
 
 This records how fast the bow is moving, without caring whether it is a down-bow or an up-bow. The number is zero when the bow is still, and the bigger the number, the faster the bow. Teachers call this "bow speed".
 
-**Question 1.** Do violin teachers pay attention to bow speed, ignoring direction in lessons?  
+**Question 1.** Do violin teachers pay attention to bow speed regardless of direction in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported bow speed, ignoring direction to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for bow speed regardless of direction, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -158,7 +158,7 @@ This records whether the bow is speeding up, slowing down, or keeping a steady s
 **Question 1.** Do violin teachers pay attention to how quickly the bow speeds up or slows down in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported how quickly the bow speeds up or slows down to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for how quickly the bow speeds up or slows down, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -172,7 +172,7 @@ This records whether the bow is moving as a down-bow or an up-bow. The number is
 **Question 1.** Do violin teachers pay attention to whether the bow is going down or up in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported whether the bow is going down or up to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for whether the bow is going down or up, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -186,7 +186,7 @@ This records how much the elbow of the bow arm is bent. The number is zero for a
 **Question 1.** Do violin teachers pay attention to how bent the bow-arm elbow is in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported how bent the bow-arm elbow is to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for how bent the bow-arm elbow is, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -197,10 +197,10 @@ This records how much the elbow of the bow arm is bent. The number is zero for a
 
 Our system watches the wrist of the bow hand and records how it is turned. It splits that turn into three directions, a bit like bending the wrist up and down, tilting it from side to side, and twisting it, though we cannot say exactly which direction is which. This card is about direction 1 of the three. The number is zero when the wrist is in the player's usual position, and it goes up or down as the wrist turns away from that. Teachers do not have a word for this; the closest is a "bent wrist".
 
-**Question 1.** Do violin teachers pay attention to direction 1 of the bow-hand wrist turn in lessons?  
+**Question 1.** Do violin teachers pay attention to how the bow-hand wrist is turned in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported direction 1 of the bow-hand wrist turn to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for how the bow-hand wrist is turned, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -211,10 +211,10 @@ Our system watches the wrist of the bow hand and records how it is turned. It sp
 
 Our system watches the wrist of the bow hand and records how it is turned. It splits that turn into three directions, a bit like bending the wrist up and down, tilting it from side to side, and twisting it, though we cannot say exactly which direction is which. This card is about direction 2 of the three. The number is zero when the wrist is in the player's usual position, and it goes up or down as the wrist turns away from that. Teachers do not have a word for this; the closest is a "bent wrist".
 
-**Question 1.** Do violin teachers pay attention to direction 2 of the bow-hand wrist turn in lessons?  
+**Question 1.** Do violin teachers pay attention to how the bow-hand wrist is turned in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported direction 2 of the bow-hand wrist turn to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for how the bow-hand wrist is turned, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -225,10 +225,10 @@ Our system watches the wrist of the bow hand and records how it is turned. It sp
 
 Our system watches the wrist of the bow hand and records how it is turned. It splits that turn into three directions, a bit like bending the wrist up and down, tilting it from side to side, and twisting it, though we cannot say exactly which direction is which. This card is about direction 3 of the three. The number is zero when the wrist is in the player's usual position, and it goes up or down as the wrist turns away from that. Teachers do not have a word for this; the closest is a "bent wrist".
 
-**Question 1.** Do violin teachers pay attention to direction 3 of the bow-hand wrist turn in lessons?  
+**Question 1.** Do violin teachers pay attention to how the bow-hand wrist is turned in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported direction 3 of the bow-hand wrist turn to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for how the bow-hand wrist is turned, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -242,7 +242,7 @@ This records how far the bow-arm shoulder has moved away from the position this 
 **Question 1.** Do violin teachers pay attention to the bow-arm shoulder position in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported the bow-arm shoulder position to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for the bow-arm shoulder position, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -256,7 +256,7 @@ This records how far the head is tilted away from upright, in any direction. The
 **Question 1.** Do violin teachers pay attention to head tilt in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported head tilt to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for head tilt, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -270,7 +270,7 @@ This records how much the upper body is bent forward or sideways instead of stan
 **Question 1.** Do violin teachers pay attention to posture in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported posture to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for posture, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -284,7 +284,7 @@ This records how high the violin is held compared with the player's hips: lower 
 **Question 1.** Do violin teachers pay attention to how high the violin is held in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported how high the violin is held to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for how high the violin is held, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -298,7 +298,7 @@ This records whether each note is in tune and, if not, how far off it is. The nu
 **Question 1.** Do violin teachers pay attention to whether a note is in tune, sharp or flat in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported whether a note is in tune, sharp or flat to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for whether a note is in tune, sharp or flat, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -312,7 +312,7 @@ This records how loud the playing is from moment to moment. The bigger the numbe
 **Question 1.** Do violin teachers pay attention to loudness in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported loudness to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for loudness, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -326,7 +326,7 @@ This records how clearly and strongly each note starts. The number is high for a
 **Question 1.** Do violin teachers pay attention to how strongly each note starts in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported how strongly each note starts to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for how strongly each note starts, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -340,7 +340,7 @@ This records which note the violin is sounding at every moment, including the sm
 **Question 1.** Do violin teachers pay attention to the note being played in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported the note being played to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for the note being played, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -354,7 +354,7 @@ This records how clean and clear the tone is. The number is high for a clear, fo
 **Question 1.** Do violin teachers pay attention to how clean and clear the tone is in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported how clean and clear the tone is to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for how clean and clear the tone is, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -368,7 +368,7 @@ This records whether a note was played on a different string from the one the sh
 **Question 1.** Do violin teachers pay attention to whether the player used a different string than the music suggests in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported whether the player used a different string than the music suggests to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for whether the player used a different string than the music suggests, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -379,10 +379,10 @@ This records whether a note was played on a different string from the one the sh
 
 This records whether the left hand was higher or lower on the fingerboard than the sheet music suggests. The number is zero in the expected position, above zero when the hand is higher up and below zero when it is lower. Teachers talk about "positions" and "shifting".
 
-**Question 1.** Do violin teachers pay attention to the left-hand position compared with what the music suggests in lessons?  
+**Question 1.** Do violin teachers pay attention to the left-hand position in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported the left-hand position compared with what the music suggests to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for the left-hand position, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
@@ -396,7 +396,7 @@ This records where the bow usually touches the string over a whole recording, be
 **Question 1.** Do violin teachers pay attention to the player's usual bow-contact spot in lessons?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
-**Question 2.** If a practice app reported the player's usual bow-contact spot to a student, could the student act on it?  
+**Question 2.** If a practice app gave a student a number for the player's usual bow-contact spot, could the student act on it?  
 ☐ 1 definitely not · ☐ 2 probably not · ☐ 3 probably yes · ☐ 4 definitely yes
 
 **Notes (optional): how would you say this to a student? Anything unclear?**  
