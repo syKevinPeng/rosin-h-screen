@@ -21,7 +21,7 @@ header{position:sticky;top:0;z-index:2;background:var(--bg);border-bottom:1px so
 main{max-width:720px;margin:0 auto;padding:1.4rem 1rem 5rem}
 .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.5rem 1.6rem;margin-bottom:1rem;box-shadow:0 1px 2px rgba(0,0,0,.03)}
 h1{font-size:1.9rem;line-height:1.2;margin:0 0 .8rem}
-h2.atom{font-size:1.55rem;line-height:1.25;margin:.2rem 0 .5rem}
+h2.atom{font-size:1.55rem;line-height:1.25;margin:.2rem 0 1rem}
 .chips{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 1rem}
 .chip{display:inline-block;font-size:.8rem;padding:.15rem .6rem;border-radius:999px;background:var(--chip);color:var(--muted)}
 .chip.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
@@ -33,10 +33,10 @@ h2.atom{font-size:1.55rem;line-height:1.25;margin:.2rem 0 .5rem}
 .facts{display:grid;grid-template-columns:1fr 1fr;gap:.9rem 1.2rem;margin:0 0 1.1rem}
 .facts>div{background:var(--bg);border-radius:10px;padding:.6rem .8rem}
 .phr{list-style:none;margin:0;padding:0}
-.phr li{padding:.45rem 0;border-top:1px solid var(--line)}
-.phr li:first-child{border-top:0}
+.phr{display:flex;flex-wrap:wrap;gap:.5rem}
+.phr li{background:var(--bg);border-radius:10px;padding:.4rem .75rem}
 .phr q{quotes:"“" "”";font-weight:600}
-.phr small{display:block;color:var(--muted);font-size:.84rem;line-height:1.4}
+.phr small{color:var(--muted);font-size:.84rem;margin-left:.4rem}
 .q{padding:1.1rem 0 .4rem;border-top:1px solid var(--line)}
 .q:first-child{border-top:0;padding-top:.2rem}
 .qlabel{font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:.25rem}
@@ -166,14 +166,11 @@ __ORDER_JS__
   // ---------- pieces ----------
   function phrasesHTML(r) {
     return r.phrases.map(function (p) {
-      var label = UI.tag_labels[p.tag] || p.tag;
-      var src = p.tag === "uncited" ? label : (label + " " + (p.source || ""));
-      return "<li><q>" + esc(p.text) + "</q><small>" + esc(src) + "</small></li>";
+      return "<li><q>" + esc(p.text) + "</q><small>" + esc(p.short_source || "") + "</small></li>";
     }).join("");
   }
   function titleHTML(r) {
-    return '<h2 class="atom">' + t(r.name) + '</h2><div class="chips"><span class="chip code">' + esc(r.id) + "</span>" +
-      (r.status === "incoming-v18" ? '<span class="chip incoming">' + t(UI.incoming) + "</span>" : "") + "</div>";
+    return '<h2 class="atom">' + t(r.name) + "</h2>";
   }
   function descHTML(r) {
     return '<span class="k">' + t(UI.definition) + '</span><p class="def">' + t(r.definition) + "</p>" +

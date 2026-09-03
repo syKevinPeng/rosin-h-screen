@@ -127,6 +127,7 @@ def validate(data: dict) -> list[str]:
                 errs.append(f"{pp}: a cited phrase needs its attribution in source")
             if not isinstance(x.get("locator", ""), str):
                 errs.append(f"{pp}.locator: string required")
+            _s(x.get("short_source"), f"{pp}.short_source", errs)
     dup = sorted({i for i in ids if ids.count(i) > 1})
     if dup:
         errs.append(f"duplicate row ids: {dup}")
@@ -204,30 +205,24 @@ def render_form_md(data: dict, version: str) -> str:
          _bl(ui["print_title"]), "",
          _fill(data["intro"], n=n), "",
          f"## {_bl(ui['questions_heading'])}", "",
-         f"**H1.** {_bl(q['h1'])}", "", f"**H2.** {_bl(q['h2'])}  ", f"*{_bl(q['h2_gloss'])}*", "",
+         f"**{_bl(ui['q1_label'])}.** {_bl(q['h1'])}", "", f"**{_bl(ui['q2_label'])}.** {_bl(q['h2'])}  ", f"*{_bl(q['h2_gloss'])}*", "",
          f"## {_bl(ui['scale_heading'])}", ""]
     L += [f"- **{o['value']}** {o['label']}" for o in data["scale"]]
     L += ["", "---", ""]
     for i, c in enumerate(cs, 1):
         r = rows[c["atom"]]
-        head = f"### {i}. {_bl(r['name'])}"
-        if r["status"] == "incoming-v18":
-            head += f" · *{_bl(ui['incoming'])}*"
-        L.append(head)
-        L.append(f"`{r['id']}`" + (f"  \n**{_bl(ui['calibration'])}**" if c["is_anchor"] else ""))
+        L.append(f"### {i}. {_bl(r['name'])}")
+        L.append(f"<sub>{r['id']}</sub>" + (f"  \n**{_bl(ui['calibration'])}**" if c["is_anchor"] else ""))
         L.append("")
-        L.append(f"**{_bl(ui['phrases'])}:**")
-        for p in r["phrases"]:
-            lab = _bl(ui["tag_labels"][p["tag"]])
-            L.append(f"- {p['text']} · {lab}" + (f": {p['source']}" if p["source"] else ""))
+        L.append(f"**{_bl(ui['phrases'])}:** " + " · ".join(f"“{p['text']}” ({p['short_source']})" for p in r["phrases"]))
         L.append("")
         L.append(f"**{_bl(ui['definition'])}:** {_bl(r['definition'])}  ")
         L.append(f"**{_bl(ui['unit'])}:** {_bl(r['unit'])}  ")
         L.append(f"**{_bl(ui['range'])}:** {_bl(r['range'])}")
         L.append("")
-        L.append(f"**H1.** {_bl(q['h1'])}  \n{boxes}")
+        L.append(f"**{_bl(ui['q1_label'])}.** {_bl(q['h1'])}  \n{boxes}")
         L.append("")
-        L.append(f"**H2.** {_bl(q['h2'])}  \n{boxes}")
+        L.append(f"**{_bl(ui['q2_label'])}.** {_bl(q['h2'])}  \n{boxes}")
         L.append("")
         L.append(f"**{_bl(ui['note_prompt'])}**  \n" + "\\_" * 40)
         L.append("")

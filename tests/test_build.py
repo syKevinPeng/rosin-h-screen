@@ -47,6 +47,7 @@ def test_version_changes_when_any_content_changes():
     (lambda d: d.update(anchor_policy="sometimes"), "anchor_policy"),
     (lambda d: d["scale"].pop(), "scale: exactly"),
     (lambda d: d["ui"]["tag_labels"].pop("uncited"), "ui.tag_labels.uncited"),
+    (lambda d: d["rows"][2]["phrases"][0].pop("short_source"), "short_source"),
     (lambda d: d["raters"].append("guest"), "ui.rater_names.guest"),
 ])
 def test_validate_catches(mutate, needle):
@@ -94,7 +95,7 @@ def test_form_md_has_every_card_and_marks_calibration():
     heads = re.findall(r"^### (\d+)\. ", md, re.M)
     assert [int(h) for h in heads] == list(range(1, len(build.cards(d)) + 1))
     for r in d["rows"]:
-        assert f"`{r['id']}`" in md
+        assert f"<sub>{r['id']}</sub>" in md
     cal = d["ui"]["calibration"]
     assert md.count(cal) == len(d["anchors"]) + 0  # calibration cards only
     assert build.form_version(d) in md
